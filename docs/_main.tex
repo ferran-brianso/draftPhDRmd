@@ -198,6 +198,10 @@
 \usepackage{fvextra}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines=true, breakanywhere=true, commandchars=\\\{\}}
 
+% for quotations -- loaded here rather than in ociamthesis.cls, as it needs to
+% be loaded after fvextra, otherwise we get a warning message
+\usepackage{csquotes}
+
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
 % your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
@@ -341,17 +345,17 @@ Template for R Markdown}
 \begin{acknowledgements}
  	This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.
 
- We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
+  We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
 
- Special thanks to \href{http://chester.rbind.io}{Chester Ismay}, who created the \texttt{thesisdown} package that helped many a PhD student write their theses in R Markdown. And a very special thanks to John McManigle, whose adaption of Sam Evans' adaptation of Keith Gillow's original maths template for writing an Oxford University DPhil thesis in LaTeX provided the template that I in turn adapted for R Markdown.
+  Special thanks to \href{http://chester.rbind.io}{Chester Ismay}, who created the \texttt{thesisdown} package that helped many a PhD student write their theses in R Markdown. And a very special thanks to John McManigle, whose adaption of Sam Evans' adaptation of Keith Gillow's original maths template for writing an Oxford University DPhil thesis in LaTeX provided the template that I in turn adapted for R Markdown.
 
- Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
+  Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
 
- \begin{flushright}
- Ulrik Lyngs \\
- Linacre College, Oxford \\
- 2 December 2018
- \end{flushright}
+  \begin{flushright}
+  Ulrik Lyngs \\
+  Linacre College, Oxford \\
+  2 December 2018
+  \end{flushright}
 \end{acknowledgements}
 
 
@@ -361,11 +365,19 @@ Template for R Markdown}
 
 \renewcommand{\abstracttitle}{Abstract}
 \begin{abstract}
-	This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
+	\textbf{Needs to be simplified (WIP)}
 
-This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
+ The general concept of Data Integration can be defined as the combination of data residing in different sources in order to provide the users with a unified view of these data {[}1{]}. However, the practical meaning of the term Integration may vary from, for instance, the computational combination of data, to the combination of studies performed independently, the simultaneous analysis of multiple variables on multiple datasets, or any possible approach for homogeneously querying heterogeneous data sources. Therefore, in many cases, an integrative analysis may be preferable than a simple combination of data from distinct sources. Integrative analysis allows not only for the combination of heterogeneous data, but also for the combined use of these data in order to get the most relevant information and, what is better, to be able to extract some information that could not be unveiled by the separated analysis of each of the original data types.
 
-Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
+ Over the past decade, advancements in omics technologies have facilitated the high-throughput monitoring of molecular and organism processes. These techniques have been widely applied to identify biological agents and to characterize biochemical systems, often focusing on the discovery of therapeutic targets and biomarkers related with specific diseases {[}2,3,4{]}. While many single-omic approaches target comprehensive analysis of genes (genomics), mRNA (transcriptomics), proteins (proteomics), and metabolites (metabolomics) among other, there is still field to improve omics data analyses through integrative methods {[}5,6{]}. In this sense, the integrative point of view defined in the paragraph above, applied to multi-omics data, is a promising approach to achieve better biomarker development in biomedical research projects, and this is the core idea of this work.
+
+ As the field of omics has evolved from analyzing a unique type of data to multiple types, it has been natural to extend the previous use of multivariate techniques to this new situation. With this aim classical and new multivariate techniques have been applied to the analysis of multi-omics datasets. Many of these techniques are dimension reduction methods that aim at finding main sources of variability in the data while maximizing some information characteristic such as the variance of each dataset, the correlation between groups of variables or other. Examples of such techniques are well consolidated methods such as Principal Component Analysis (PCA), Singular Value Decomposition (SVD), Correspondence Analysis (CA), and Partial Least Squares (PLS). Besides these more ``novel'' approaches have been used such as: Principal Components Regression, Coinertia and Multiple Coinertia Analysis, Generalized SVD, Sparse PLS, Multiple Factor Analysis (MFA), or combined versions of them {[}7,8,9{]}. Meng {[}10{]}, Cavill {[}11{]}, Wu {[}12{]}, Subramanian {[}30{]}, Krassowski {[}31{]}, and Cantini {[}32{]}, are good reviews of the state of the art of using multivariate and joint reduction methods for Integrative Multi-Omics Analysis.
+
+ Dimension reduction methods, especially those that are able to deal with situations that are typical from the omics context (with many more variables than samples, or possibly sparse matrices with many missing values), have been of great help in visualizing datasets or even for performing variable selection to find biomarkers for a given situation {[}12{]}. There is however one point where they underperform other approaches, that is, the difficulty in interpreting results from a biological point of view. This is relatively reasonable, because the most of these methods work by creating new variables that are some type of linear combination from the original ones. While this is useful, for example, for removing redundancy, this does not provide any clues on what these new dimensions may mean from a biological point of view.
+
+ This problem has been known since the beginning of using multivariate methods with omics data, but only a few approaches have been taken to deal with this. The first attempts to introduce biological information in the analyses consisted of using the most well-known database of biological functions, the Gene Ontology (GO) {[}13{]}. Fellenberg {[}14{]} introduces a way to integrate Gene Ontology information with Correspondence Analysis to facilitate the interpretation of microarray data. De Tayrac et al.~{[}15{]} applies multiple factor analysis to the integrative analysis of microarray and DNA copy number data. They apply GO Terms on data visualizations by treating these terms as supplemental information. In recent years the representation of biological knowledge has shifted from Gene Ontology to using Gene Sets {[}16{]}. Meng and Culhane {[}10{]} have introduced the Integrative Clustering with Gene Set Analysis where gene set expression analysis is performed based on multiple omics data; and Tyekucheva et al.~{[}17{]}, go one step further and use the results of Gene Set Expression Analysis (GSEA) to integrate different omics data.
+
+ Altogether, the previous approaches show several things: Although the idea that integrating quantitative data with biological knowledge may increase interpretability, the number of successful attempts to do this is still small. In this thesis, the use of either classical GO Terms or more flexible annotations (Gene Sets or custom annotations), will be combined with different approaches, and combinations of them if needed, to guide integrative analysis and to improve its biological interpretability from the point of view of the biomedical researchers.
 \end{abstract}
 
 
@@ -427,15 +439,33 @@ Quite a nice prickly friend.
 \adjustmtc
 \markboth{Introduction}{}
 
+\hypertarget{content-of-the-introductory-text-wip}{%
+\section*{Content of the introductory text (WIP)}\label{content-of-the-introductory-text-wip}}
+\addcontentsline{toc}{section}{Content of the introductory text (WIP)}
+
+The general concept of Data Integration can be defined as the combination of data residing in different sources in order to provide the users with a unified view of these data {[}1{]}. However, the practical meaning of the term Integration may vary from, for instance, the computational combination of data, to the combination of studies performed independently, the simultaneous analysis of multiple variables on multiple datasets, or any possible approach for homogeneously querying heterogeneous data sources. Therefore, in many cases, an integrative analysis may be preferable than a simple combination of data from distinct sources. Integrative analysis allows not only for the combination of heterogeneous data, but also for the combined use of these data in order to get the most relevant information and, what is better, to be able to extract some information that could not be unveiled by the separated analysis of each of the original data types.
+
+Over the past decade, advancements in omics technologies have facilitated the high-throughput monitoring of molecular and organism processes. These techniques have been widely applied to identify biological agents and to characterize biochemical systems, often focusing on the discovery of therapeutic targets and biomarkers related with specific diseases {[}2,3,4{]}. While many single-omic approaches target comprehensive analysis of genes (genomics), mRNA (transcriptomics), proteins (proteomics), and metabolites (metabolomics) among other, there is still field to improve omics data analyses through integrative methods {[}5,6{]}. In this sense, the integrative point of view defined in the paragraph above, applied to multi-omics data, is a promising approach to achieve better biomarker development in biomedical research projects, and this is the core idea of this work.
+
+As the field of omics has evolved from analyzing a unique type of data to multiple types, it has been natural to extend the previous use of multivariate techniques to this new situation. With this aim classical and new multivariate techniques have been applied to the analysis of multi-omics datasets. Many of these techniques are dimension reduction methods that aim at finding main sources of variability in the data while maximizing some information characteristic such as the variance of each dataset, the correlation between groups of variables or other. Examples of such techniques are well consolidated methods such as Principal Component Analysis (PCA), Singular Value Decomposition (SVD), Correspondence Analysis (CA), and Partial Least Squares (PLS). Besides these more ``novel'' approaches have been used such as: Principal Components Regression, Coinertia and Multiple Coinertia Analysis, Generalized SVD, Sparse PLS, Multiple Factor Analysis (MFA), or combined versions of them {[}7,8,9{]}. Meng {[}10{]}, Cavill {[}11{]}, Wu {[}12{]}, Subramanian {[}30{]}, Krassowski {[}31{]}, and Cantini {[}32{]}, are good reviews of the state of the art of using multivariate and joint reduction methods for Integrative Multi-Omics Analysis.
+
+Dimension reduction methods, especially those that are able to deal with situations that are typical from the omics context (with many more variables than samples, or possibly sparse matrices with many missing values), have been of great help in visualizing datasets or even for performing variable selection to find biomarkers for a given situation {[}12{]}. There is however one point where they underperform other approaches, that is, the difficulty in interpreting results from a biological point of view. This is relatively reasonable, because the most of these methods work by creating new variables that are some type of linear combination from the original ones. While this is useful, for example, for removing redundancy, this does not provide any clues on what these new dimensions may mean from a biological point of view.
+
+This problem has been known since the beginning of using multivariate methods with omics data, but only a few approaches have been taken to deal with this. The first attempts to introduce biological information in the analyses consisted of using the most well-known database of biological functions, the Gene Ontology (GO) {[}13{]}. Fellenberg {[}14{]} introduces a way to integrate Gene Ontology information with Correspondence Analysis to facilitate the interpretation of microarray data. De Tayrac et al.~{[}15{]} applies multiple factor analysis to the integrative analysis of microarray and DNA copy number data. They apply GO Terms on data visualizations by treating these terms as supplemental information. In recent years the representation of biological knowledge has shifted from Gene Ontology to using Gene Sets {[}16{]}. Meng and Culhane {[}10{]} have introduced the Integrative Clustering with Gene Set Analysis where gene set expression analysis is performed based on multiple omics data; and Tyekucheva et al.~{[}17{]}, go one step further and use the results of Gene Set Expression Analysis (GSEA) to integrate different omics data.
+
+Altogether, the previous approaches show several things: Although the idea that integrating quantitative data with biological knowledge may increase interpretability, the number of successful attempts to do this is still small. In this thesis, the use of either classical GO Terms or more flexible annotations (Gene Sets or custom annotations), will be combined with different approaches, and combinations of them if needed, to guide integrative analysis and to improve its biological interpretability from the point of view of the biomedical researchers.
+
+\hypertarget{content-from-template}{%
+\section*{Content from template}\label{content-from-template}}
+\addcontentsline{toc}{section}{Content from template}
+
 Welcome to \texttt{oxforddown} (\protect\hyperlink{ref-lyngsOxforddown2019}{Lyngs, 2019}), a thesis template for R Markdown that I created when writing \href{https://ulyngs.github.io/phd-thesis/}{my own PhD thesis} at the University of Oxford.
 This template allows you to write in R Markdown, while formatting the PDF output with the beautiful and time-tested \href{https://github.com/mcmanigle/OxThesis}{OxThesis LaTeX template}.
 The sample content is partly adapted from \href{https://github.com/ismayc/thesisdown}{\texttt{thesisdown}} .
 
 Hopefully, writing your thesis in R Markdown will provide a nicer interface to the OxThesis template if you haven't used TeX or LaTeX before.
 More importantly, \emph{R Markdown} allows you to embed chunks of code within your thesis and generate plots and tables directly from the underlying data, avoiding copy-paste steps.
-This gets you into the habit of doing reproducible research, which will benefit you long-term as a researcher, and also help anyone that is trying to reproduce or build upon your results down the road.'
-
-(\protect\hyperlink{ref-adcockRewardMotivatedLearningMesolimbic2006}{Adcock et al., 2006}) (\protect\hyperlink{ref-aagaardMultitaskingDistractionConceptual2019}{Aagaard, 2019}) (\protect\hyperlink{ref-acohenRowersHighBehavioural2010}{a Cohen et al., 2010}; \protect\hyperlink{ref-a.westSixteenCommonMisconceptions2011}{a. West et al., 2011}; \protect\hyperlink{ref-aagaardRhetoricTechAddiction2021}{Aagaard, 2021a}, \protect\hyperlink{ref-aagaardSmallClickEntire2021}{2021b}; \protect\hyperlink{ref-adamicRatingFriendsMaking2011}{Adamic et al., 2011}; \protect\hyperlink{ref-adcockRewardMotivatedLearningMesolimbic2006}{Adcock et al., 2006})
+This gets you into the habit of doing reproducible research, which will benefit you long-term as a researcher, and also help anyone that is trying to reproduce or build upon your results down the road.
 
 \hypertarget{why-use-it}{%
 \section*{Why use it?}\label{why-use-it}}
@@ -516,18 +546,18 @@ Also set filepath(s) to your abstract, acknowledgements, abbreviations, and bibl
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{abstract}\KeywordTok{: }\CharTok{|}
+\NormalTok{abstract: |}
 \NormalTok{  \textasciigrave{}r paste(readLines("front{-}and{-}back{-}matter/\_abstract.Rmd"), collapse = \textquotesingle{}\textbackslash{}n  \textquotesingle{})\textasciigrave{}}
-\FunctionTok{acknowledgements}\KeywordTok{: }\CharTok{|}
+\NormalTok{acknowledgements: |}
 \NormalTok{  \textasciigrave{}r paste(readLines("front{-}and{-}back{-}matter/\_acknowledgements.Rmd"), collapse = \textquotesingle{}\textbackslash{}n  \textquotesingle{})\textasciigrave{}}
-\FunctionTok{dedication}\KeywordTok{:}\AttributeTok{ For Yihui Xie}
-\FunctionTok{abbreviations}\KeywordTok{: }\CharTok{|}
+\NormalTok{dedication: For Yihui Xie}
+\NormalTok{abbreviations: |}
 \NormalTok{  \textasciigrave{}r paste(readLines("front{-}and{-}back{-}matter/\_abbreviations.Rmd"), collapse = \textquotesingle{}\textbackslash{}n  \textquotesingle{})\textasciigrave{}}
 
-\CommentTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
-\CommentTok{\#\# bibliography path \#\#}
-\CommentTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
-\FunctionTok{bibliography}\KeywordTok{:}\AttributeTok{ }\KeywordTok{[}\AttributeTok{bibliography/references.bib}\KeywordTok{,}\AttributeTok{ bibliography/additional{-}references.bib}\KeywordTok{]}
+\NormalTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\NormalTok{\#\# bibliography path \#\#}
+\NormalTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\NormalTok{bibliography: [bibliography/references.bib, bibliography/additional{-}references.bib]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -562,6 +592,7 @@ In HTML output, what CSS files should be used for styling?
 \subsection{\texorpdfstring{other \textbf{.Rmd} files in root folder: thesis chapters}{other .Rmd files in root folder: thesis chapters}}\label{other-.rmd-files-in-root-folder-thesis-chapters}}
 
 \begin{itemize}
+\tightlist
 \item
   each chapter of your thesis should have its own \textbf{.Rmd} file in the root directory
 \item
@@ -572,6 +603,7 @@ In HTML output, what CSS files should be used for styling?
 \subsection{\texorpdfstring{\textbf{front-and-back-matter/}}{front-and-back-matter/}}\label{front-and-back-matter}}
 
 \begin{itemize}
+\tightlist
 \item
   this folder holds the front and back matter of your thesis
 \item
@@ -588,6 +620,7 @@ In HTML output, what CSS files should be used for styling?
 \subsection{\texorpdfstring{\textbf{\_bookdown.yml}: build options}{\_bookdown.yml: build options}}\label{bookdown.yml-build-options}}
 
 \begin{itemize}
+\tightlist
 \item
   Set output directory for your thesis files (\textbf{docs/} is the default, as it makes it easy to publish HTML output on GitHub pages)
 \item
@@ -599,6 +632,7 @@ In HTML output, what CSS files should be used for styling?
 \subsection{\texorpdfstring{\textbf{scripts-and-filters}}{scripts-and-filters}}\label{scripts-and-filters}}
 
 \begin{itemize}
+\tightlist
 \item
   \textbf{knit-function.R} has the functions that are used when you build the entire thesis by knitting \textbf{index.Rmd}
 \item
@@ -611,6 +645,7 @@ In HTML output, what CSS files should be used for styling?
 \subsection{\texorpdfstring{\textbf{templates}}{templates}}\label{templates}}
 
 \begin{itemize}
+\tightlist
 \item
   \textbf{template.tex} is the LaTeX template used to build the entire thesis to PDF in the OxThesis layout (relies on \textbf{ociamthesis.cls})
 \item
@@ -2745,27 +2780,6 @@ This first appendix includes an R chunk that was hidden in the document (using \
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-acohenRowersHighBehavioural2010}{}}%
-a Cohen, E. E., Ejsmond-Frey, R., Knight, N., Dunbar, R. I. M., Cohen, E. E. a, Ejsmond-Frey, R., Knight, N., \& Dunbar, R. I. M. (2010). Rowers' high: Behavioural synchrony is correlated with elevated pain thresholds. \emph{Biology Letters}, \emph{6}(1), 106--108. \url{https://doi.org/10.1098/rsbl.2009.0670}
-
-\leavevmode\vadjust pre{\hypertarget{ref-a.westSixteenCommonMisconceptions2011}{}}%
-a. West, S., El Mouden, C., Gardner, A., West, S. a., El Mouden, C., \& Gardner, A. (2011). Sixteen common misconceptions about the evolution of cooperation in humans. \emph{Evolution and Human Behavior}, \emph{32}(4), 231--262. \url{https://doi.org/10.1016/j.evolhumbehav.2010.08.001}
-
-\leavevmode\vadjust pre{\hypertarget{ref-aagaardMultitaskingDistractionConceptual2019}{}}%
-Aagaard, J. (2019). Multitasking as distraction: {A} conceptual analysis of media multitasking research. \emph{Theory \& Psychology}, \emph{29}(1), 87--99. \url{https://doi.org/10.1177/0959354318815766}
-
-\leavevmode\vadjust pre{\hypertarget{ref-aagaardRhetoricTechAddiction2021}{}}%
-Aagaard, J. (2021a). Beyond the rhetoric of tech addiction: Why we should be discussing tech habits instead (and how). \emph{Phenomenology and the Cognitive Sciences}, \emph{20}(3), 559--572. \url{https://doi.org/10.1007/s11097-020-09669-z}
-
-\leavevmode\vadjust pre{\hypertarget{ref-aagaardSmallClickEntire2021}{}}%
-Aagaard, J. (2021b). {``{From} a small click to an entire action''}: Exploring students' anti-distraction strategies. \emph{Learning, Media and Technology}, \emph{46}(3), 355--365. \url{https://doi.org/10.1080/17439884.2021.1896540}
-
-\leavevmode\vadjust pre{\hypertarget{ref-adamicRatingFriendsMaking2011}{}}%
-Adamic, L. A., Lauterbach, D., Teng, C. C.-Y., \& Ackerman, M. S. (2011). Rating friends without making enemies. \emph{Proceedings of the {Fifth International AAAI Conference} on {Weblogs} and {Social Media}}, 8.
-
-\leavevmode\vadjust pre{\hypertarget{ref-adcockRewardMotivatedLearningMesolimbic2006}{}}%
-Adcock, R. A., Thangavel, A., Whitfield-Gabrieli, S., Knutson, B., \& Gabrieli, J. D. E. (2006). Reward-{Motivated Learning}: {Mesolimbic Activation Precedes Memory Formation}. \emph{Neuron}, \emph{50}(3), 507--517. \url{https://doi.org/10.1016/j.neuron.2006.03.036}
-
 \leavevmode\vadjust pre{\hypertarget{ref-Darwin1859}{}}%
 Darwin, C. (1859). \emph{{On the Origin of Species by Means of Natural Selection or the Preservation of Favoured Races in the Struggle for Life}}. John Murray.
 
