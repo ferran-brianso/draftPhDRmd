@@ -248,11 +248,12 @@
 
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
-\title{\texttt{oxforddown}:\\
-An Oxford University Thesis\\
-Template for R Markdown}
-\author{Author Name}
-\college{Your College}
+\title{Integrative Analysis of Omics\\
+Data with Biological Knowledge in\\
+Translational Medicine}
+\author{Ferran Briansó}
+\college{Facultat de Biologia\\
+Departament de Genètica, Microbiologia i Estadística}
 
 % Master's candidates who require the alternate title page (with candidate number and word count)
 % must also un-comment and complete the following three lines:
@@ -263,7 +264,7 @@ Template for R Markdown}
 \degree{Doctor of Philosophy}
 
 % Term and year of submission, or date if your board requires (eg most masters)
-\degreedate{Michaelmas 2018}
+\degreedate{XXXX XX 2023}
 
 
 %%%%% YOUR OWN PERSONAL MACROS
@@ -298,8 +299,8 @@ Template for R Markdown}
 %
 % Customise title page
 %
-\def\crest{{\includegraphics[width=5cm]{templates/beltcrest.pdf}}}
-\renewcommand{\university}{University of Oxford}
+\def\crest{{\includegraphics[width=8cm]{templates/logo\_UBblanc.png}}}
+\renewcommand{\university}{Universitat de Barcelona}
 \renewcommand{\submittedtext}{A thesis submitted for the degree of}
 \renewcommand{\thesistitlesize}{\fontsize{22pt}{28pt}\selectfont}
 \renewcommand{\gapbeforecrest}{25mm}
@@ -336,14 +337,16 @@ Template for R Markdown}
 
 %%%%% DEDICATION
 \begin{dedication}
-  For Yihui Xie
+  For XXXXX XXXXXX
 \end{dedication}
 
 %%%%% ACKNOWLEDGEMENTS
 
 
 \begin{acknowledgements}
- 	This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.
+ 	\textbf{Content from the template (WIP)}
+
+  This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.
 
   We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
 
@@ -352,9 +355,9 @@ Template for R Markdown}
   Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
 
   \begin{flushright}
-  Ulrik Lyngs \\
-  Linacre College, Oxford \\
-  2 December 2018
+  Ferran Brianso \\
+  Mataro, BCN \\
+  XX XXXXXX 2023
   \end{flushright}
 \end{acknowledgements}
 
@@ -2733,6 +2736,30 @@ what is necessary is only to try to think them again.
 \addcontentsline{toc}{chapter}{Conclusion}
 
 If we don't want Conclusion to have a chapter number next to it, we can add the \texttt{\{-\}} attribute.
+
+\hypertarget{conclusion-1}{%
+\section*{Conclusion 1}\label{conclusion-1}}
+\addcontentsline{toc}{section}{Conclusion 1}
+
+The need for a better biological interpretation of multi-omics integrative methods let us to consider the inclusion of biological information during (not after) the analysis process
+
+\hypertarget{conclusion-2}{%
+\section*{Conclusion 2}\label{conclusion-2}}
+\addcontentsline{toc}{section}{Conclusion 2}
+
+We propose a method focused on the expansion of the starting omics datasets, by adding new annotation-derived features to those matrices, before applying the integrative analysis
+
+\hypertarget{conclusion-3}{%
+\section*{Conclusion 3}\label{conclusion-3}}
+\addcontentsline{toc}{section}{Conclusion 3}
+
+This approach allows the inclusion of relevant information from the main biological annotation tools, as well as any custom annotation, combined with the use our preferred Dimension Reduction techniques
+
+\hypertarget{conclusion-4}{%
+\section*{Conclusion 4}\label{conclusion-4}}
+\addcontentsline{toc}{section}{Conclusion 4}
+
+We have implemented a pipeline for reproducible and easy-to-use execution, that facilitates the control of each step, the visualization of results and their reporting to PDF/HTML formats.
 
 \hypertarget{more-info}{%
 \section*{More info}\label{more-info}}

@@ -25,6 +25,18 @@ what is necessary is only to try to think them again.
 # Conclusion {-}
 If we don't want Conclusion to have a chapter number next to it, we can add the `{-}` attribute.
 
+## Conclusion 1 {-}
+The need for a better biological interpretation of multi-omics integrative methods let us to consider the inclusion of biological information during (not after) the analysis process
+
+## Conclusion 2 {-}
+We propose a method focused on the expansion of the starting omics datasets, by adding new annotation-derived features to those matrices, before applying the integrative analysis
+
+## Conclusion 3 {-}
+This approach allows the inclusion of relevant information from the main biological annotation tools, as well as any custom annotation, combined with the use our preferred Dimension Reduction techniques
+
+## Conclusion 4 {-}
+We have implemented a pipeline for reproducible and easy-to-use execution, that facilitates the control of each step, the visualization of results and their reporting to PDF/HTML formats.
+
 ## More info {-}
 And here's some other random info: 
 the first paragraph after a chapter title or section head _shouldn't be_ indented, because indents are to tell the reader that you're starting a new paragraph. 

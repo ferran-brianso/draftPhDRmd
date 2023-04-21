@@ -17,18 +17,20 @@ knit: (function(input, ...) {
 ## thesis metadata ##
 #####################
 title: |
-  `oxforddown`: \
-  An Oxford University Thesis \
-  Template for R Markdown
-author: Author Name
-college: Your College
-university: University of Oxford
-university-logo: templates/beltcrest.pdf
-university-logo-width: 5cm
+  Integrative Analysis of Omics \
+  Data with Biological Knowledge in \
+  Translational Medicine
+author: Ferran Briansó
+college: |
+  Facultat de Biologia \
+  Departament de Genètica, Microbiologia i Estadística
+university: Universitat de Barcelona
+university-logo: templates/logo_UBblanc.png
+university-logo-width: 8cm
 submitted-text: A thesis submitted for the degree of
 degree: Doctor of Philosophy
-degreedate: Michaelmas 2018
-dedication: For Yihui Xie
+degreedate: XXXX XX 2023
+dedication: For XXXXX XXXXXX
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
 show-acknowledgements-in-toc: false
