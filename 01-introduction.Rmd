@@ -11,16 +11,19 @@ documentclass: book
 #bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
-# Introduction {.unnumbered}
+# Introduction 
+\chaptermark{Introduction}
+\minitoc <!-- this will include a mini table of contents-->
 
+<!-- For PDF output, include these two LaTeX commands after unnumbered chapter headings, otherwise the mini table of contents 
 ```{=tex}
 \adjustmtc
 \markboth{Introduction}{}
 ```
-<!-- For PDF output, include these two LaTeX commands after unnumbered chapter headings, otherwise the mini table of contents and the running header will show the previous chapter -->
+ and the running header will show the previous chapter -->
 
 
-## Content of the introductory text (WIP) {.unnumbered}
+## Content of the introductory text (WIP)
 
 The general concept of Data Integration can be defined as the combination of data residing in different sources in order to provide the users with a unified view of these data [1]. However, the practical meaning of the term Integration may vary from, for instance, the computational combination of data, to the combination of studies performed independently, the simultaneous analysis of multiple variables on multiple datasets, or any possible approach for homogeneously querying heterogeneous data sources. Therefore, in many cases, an integrative analysis may be preferable than a simple combination of data from distinct sources. Integrative analysis allows not only for the combination of heterogeneous data, but also for the combined use of these data in order to get the most relevant information and, what is better, to be able to extract some information that could not be unveiled by the separated analysis of each of the original data types.
 
@@ -35,7 +38,7 @@ This problem has been known since the beginning of using multivariate methods wi
 Altogether, the previous approaches show several things: Although the idea that integrating quantitative data with biological knowledge may increase interpretability, the number of successful attempts to do this is still small. In this thesis, the use of either classical GO Terms or more flexible annotations (Gene Sets or custom annotations), will be combined with different approaches, and combinations of them if needed, to guide integrative analysis and to improve its biological interpretability from the point of view of the biomedical researchers.
 
 
-## Content from template {.unnumbered}
+## Content from template
 
 Welcome to `oxforddown` [@lyngsOxforddown2019], a thesis template for R Markdown that I created when writing [my own PhD thesis](https://ulyngs.github.io/phd-thesis/) at the University of Oxford.
 This template allows you to write in R Markdown, while formatting the PDF output with the beautiful and time-tested [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis).
@@ -45,7 +48,7 @@ Hopefully, writing your thesis in R Markdown will provide a nicer interface to t
 More importantly, *R Markdown* allows you to embed chunks of code within your thesis and generate plots and tables directly from the underlying data, avoiding copy-paste steps.
 This gets you into the habit of doing reproducible research, which will benefit you long-term as a researcher, and also help anyone that is trying to reproduce or build upon your results down the road.
 
-## Why use it? {.unnumbered}
+## Why use it?
 
 *R Markdown* creates a simple and straightforward way to interface with the beauty of LaTeX.
 Packages have been written in **R** to work directly with LaTeX to produce nicely formatting tables and paragraphs.

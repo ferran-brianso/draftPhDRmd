@@ -1,167 +1,128 @@
 ---
-#########################################
-# options for knitting a single chapter #
-#########################################
 output:
+  #bookdown::html_document2: default
+  #bookdown::word_document2: default
   bookdown::pdf_document2:
     template: templates/template.tex
-  bookdown::html_document2: default
-  bookdown::word_document2: default
+    keep_tex: true
 documentclass: book
 #bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
-```{block type='savequote', quote_author='(ref:cicero-quote)', include=knitr::is_latex_output()}
-Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-
-There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
-```
-(ref:cicero-quote) --- Cicero's *de Finibus Bonorum et Malorum*.
-
-<!-- 
-Notes for adding an opening quote in PDF output:
-i) add the reference for the quote with the chunk option quote_author="my author name",
-ii) include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' means that these quotes are only included when output is latex (in HTML output, it would appear by the end of the previous page)
-iii) You can't use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the quote reference use a 'text reference': Create a named piece of text with '(ref:label-name) My text', then link to this in the chunk option with quote_author='(ref:label-name)'
--->
-
-# R Markdown basics {#rmd-basics}
+# Discussion {#tables} 
 \minitoc <!-- this will include a mini table of contents-->
 
-<!-- LaTeX normally does not indent the first line after a heading - however, it does so after the mini table of contents. You can manually tell it not to with \noindent -->
-\noindent Here is a brief introduction to using *R Markdown*. 
-*Markdown* is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more. 
-*R Markdown* provides the flexibility of *Markdown* with the implementation of **R** input and output.  For more details on using *R Markdown* see <http://rmarkdown.rstudio.com>.
+## Making LaTeX tables play nice
+Dealing with tables in LaTeX can be painful.
+This section explains the main tricks you need to make the pain go away.
 
+(Note: if you are looking at the ebook version, you will not see much difference in this section, as it is only relevant for PDF output!)
 
-## Basic markdown syntax
-### Whitespace
-Be careful with your spacing. 
-While whitespace largely is ignored, it does at times give markdown signals as to how to proceed. 
-As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph. 
-In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).
+### Making your table pretty
+When you use `kable` to create tables, you will almost certainly want to set the option `booktabs = TRUE`.
+This makes your table look a million times better:
 
-### Italics and bold
-- *Italics* are done like \*this\* or \_this\_
-- **Bold** is done like \*\*this\*\* or \_\_this\_\_
-- **_Bold and italics_** is done like \*\*\*this\*\*\*, \_\_\_this\_\_\_, or (the most transparent solution, in my opinion) \*\*\_this\_\*\*
+```{r, message=FALSE}
+library(knitr)
+library(tidyverse)
 
-### Inline code
-- `Inline code` is created with backticks like `` `this` ``
-
-### Sub and superscript 
-Sub~2~ and super^2^ script is created like this\~2\~ and this\^2\^
-
-### Strikethrough
-- ~~Strikethrough~~ is done \~\~like this\~\~
-
-### 'Escaping' (aka "What if I need an actual asterisk?")
-- To include an actual \*, \_ or \\, add another \\ in front of them: \\\*, \\\_, \\\\
-
-### Endash (--), emdash (---)
-- -- and --- with \-\- and \-\-\-
-
-### Blockquotes
-Do like this:
-
-> Put a \> in front of the line.
-
-### Headings
-Section headers are created with \#'s of increasing number, i.e. 
-  
-- \# First-level heading
-- \#\# Second-level heading
-- \#\#\# Etc.
-
-In PDF output, a level-five heading will turn into a paragraph heading, i.e. `\paragraph{My level-five heading}`, which appears as bold text on the same line as the subsequent paragraph.
-
-
-### Lists
-Unordered list by starting a line with an \* or a \-:
-
-* Item 1
-* Item 2
-
-Ordered lists by starting a line with a number.
-Notice that you can mislabel the numbers and *Markdown* will still make the order right in the output:
-
-1. Item 1
-4. Item 2
-
-
-To create a sublist, indent the values a bit (at least four spaces or a tab):
-
-1. Item 1
-1. Item 2
-1. Item 3
-    - Item 3a
-    - Item 3b
-
-### Line breaks
-
-The official *Markdown* way to create line breaks is by ending a line with more than two spaces.
-
-Roses are red.
-Violets are blue.
-
-This appears on the same line in the output, because we didn't add spaces after red.
-
-Roses are red.   
-Violets are blue.
-
-This appears with a line break because I added spaces after red.
-
-I find this is confusing, so I recommend the alternative way: Ending a line with a backslash will also create a linebreak:
-
-Roses are red.\
-Violets are blue.
-
-To create a new paragraph, you put a blank line.
-
-Therefore, this line starts its own paragraph.
-
-### Hyperlinks
-- [This is a hyperlink](https://www.google.com) created by writing the text you want turned into a clickable link in `[square brackets followed by a](https://hyperlink-in-parentheses)`
-
-### Footnotes
-- Are created^[my footnote text] by writing either \^[my footnote text] for supplying the footnote content inline, or something like `[^a-random-footnote-label]` and supplying the text elsewhere in the format shown below [^test-footnote]:
-
-`[^a-random-footnote-label]: This is a random test.`
-
-[^test-footnote]: This is a random test.
-
-### Comments
-To write comments within your text that won't actually be included in the output, use the same syntax as for writing comments in HTML. That is, \<!\-\- this will not be included in the output \-\->.
-
-<!-- It is super useful to use comments! -->
-
-### Math
-The syntax for writing math is stolen from LaTeX. To write a math expression that will be shown **inline**, enclose it in dollar signs.
-  - This: \$A = \\pi*r^{2}\$  Becomes: $A = \pi*r^{2}$
-  
-To write a math expression that will be shown in a block, enclose it in two dollar signs.\
-This: `r ifelse(knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', "\\$\\$A = \\\\pi*r^{2}\\$\\$", "<span>&#36;</span>\\$A = \\\\pi*r^{2}\\$\\$")`
-
-Becomes: 
-$$A = \pi*r^{2}$$
-
-To create numbered equations, put them in an 'equation' environment and give them a label with the syntax `(\#eq:label)`, like this:
-
-```latex
-\begin{equation} 
-  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
-  (\#eq:binom)
-\end{equation} 
+head(mtcars) %>% 
+  kable(booktabs = TRUE)
 ```
 
-Becomes:
-\begin{equation}
-f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
-(\#eq:binom)
-\end{equation}
+\vspace{4mm}
+
+Compare this to the default style, which looks terrible:
 
 
-For more (e.g. how to theorems), see e.g. the documentation on [bookdown.org](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#equations)
+```{r}
+head(mtcars) %>% 
+  kable()
+```
+
+
+### If your table is too wide
+You might find that your table expands into the margins of the page, like the tables above.
+Fix this with the `kable_styling` function from the [`kableExtra`](https://haozhu233.github.io/kableExtra/) package:
+
+```{r, message=FALSE}
+library(kableExtra)
+
+head(mtcars) %>% 
+  kable(booktabs = TRUE) %>% 
+  kable_styling(latex_options = "scale_down")
+```
+
+This scales down the table to fit the page width.
+
+
+### If your table is too long
+If your table is too long to fit on a single page, set `longtable = TRUE` in the `kable` function to split the table across multiple pages.
+
+```{r}
+a_long_table <- rbind(mtcars, mtcars)
+
+a_long_table %>% 
+  select(1:8) %>% 
+  kable(booktabs = TRUE, longtable = TRUE)
+```
+
+When you do this, you'll probably want to make the header repeat on new pages.
+Do this with the `kable_styling` function from `kableExtra`:
+
+```{r}
+a_long_table %>% 
+  kable(booktabs = TRUE, longtable = TRUE) %>% 
+  kable_styling(latex_options = "repeat_header")
+```
+
+Unfortunately, we cannot use the `scale_down` option with a `longtable`. 
+So if a `longtable` is too wide, you can either manually adjust the font size, or show the table in landscape layout. 
+To adjust the font size, use kableExtra's `font_size` option:
+
+```{r}
+a_long_table %>% 
+  kable(booktabs = TRUE, longtable = TRUE) %>% 
+  kable_styling(font_size = 9, latex_options = "repeat_header")
+```
+
+To put the table in landscape mode, use kableExtra's `landscape` function:
+
+```{r}
+a_long_table %>% 
+  kable(booktabs = TRUE, longtable = TRUE) %>% 
+  kable_styling(latex_options = "repeat_header") %>% 
+  landscape()
+```
+
+### Max power: manually adjust the raw LaTeX output {#max-power}
+For total flexibility, you can adjust the raw LaTeX output from `kable`/`kableExtra` that generates the table.
+Let us consider how we would do this for the example of adjusting the font size if our table is too wide:
+Latex has a bunch of standard commands that set an approximate font size, as shown below in Figure \@ref(fig:latex-font-sizing).
+
+```{r latex-font-sizing, echo=FALSE, out.width='50%', fig.cap="Font sizes in LaTeX", fig.pos="H", fig.align='center'}
+knitr::include_graphics("figures/sample-content/latex_font_sizes.png")
+```
+
+You could use these to manually adjust the font size in your longtable in two steps:
+
+1. Wrap the longtable environment in, e.g., a `scriptsize` environment, by doing a string replacement in the output from `kable`/`kableExtra`
+2. Add the attributes that make R Markdown understand that the table is a table (it seems R drops these when we do the string replacement)
+
+```{r}
+our_adjusted_table <- a_long_table %>% 
+  kable(booktabs = TRUE, longtable = TRUE) %>% 
+  kable_styling(latex_options = "repeat_header") %>% 
+  # wrap the longtable in a tiny environment
+  str_replace('\\\\begin\\{longtable\\}', 
+              '\\\\begin\\{scriptsize\\}\n\\\\begin\\{longtable\\}') %>%
+  str_replace('\\\\end\\{longtable\\}', 
+              '\\\\end\\{longtable\\}\n\\\\end\\{scriptsize\\}')
+
+#add attributes to make R Markdown treat this as a kable LaTeX table again
+our_adjusted_table %>% 
+  structure(format = "latex", class = "knitr_kable")
+```
 
 
 ## Executable code chunks {#code}
@@ -191,14 +152,6 @@ An R Markdown document usually begins with a chunk that is used to **load librar
 
 In your thesis, this will probably happen in **index.Rmd** and/or as opening chunks in each of your chapters.
 
-````
-`r ''````{r setup, include=FALSE}
-# don't show code unless we explicitly set echo = TRUE
-knitr::opts_chunk$set(echo = FALSE)
-
-library(tidyverse)
-```
-````
 
 ### Including images
 Code chunks are also used for including images, with `include_graphics` from the `knitr` package, as in Figure \@ref(fig:oxford-logo)

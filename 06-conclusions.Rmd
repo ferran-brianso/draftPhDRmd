@@ -1,28 +1,22 @@
 ---
-#########################################
-# options for knitting a single chapter #
-#########################################
 output:
   #bookdown::html_document2: default
   #bookdown::word_document2: default
-  bookdown::pdf_document2:
+  bookdown::pdf_document2: 
     template: templates/template.tex
 documentclass: book
 #bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
-```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', quote_author='(ref:goethe-quote)'}
-Alles Gescheite ist schon gedacht worden.\
-Man muss nur versuchen, es noch einmal zu denken.
-
-All intelligent thoughts have already been thought;\
-what is necessary is only to try to think them again.
-
-<!-- ending a line with a lonely backslash inserts a linebreak -->
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:darwin-quote)'}
+There is grandeur in this view of life, with its several powers, having been originally breathed into a few forms or into one; and that, whilst this planet has gone cycling on according to the fixed law of gravity, from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved.
 ```
-(ref:goethe-quote) --- Johann Wolfgang von Goethe [@von_goethe_wilhelm_1829]
+(ref:darwin-quote) --- Charles Darwin [@Darwin1859]
+<!-- note that the quote author won't show up when you knit just a single chapter -->
+  
+# Conclusions
+<!-- \minitoc <!-- this will include a mini table of contents-->
 
-# Conclusion {-}
 If we don't want Conclusion to have a chapter number next to it, we can add the `{-}` attribute.
 
 ## Conclusion 1 {-}
@@ -37,7 +31,7 @@ This approach allows the inclusion of relevant information from the main biologi
 ## Conclusion 4 {-}
 We have implemented a pipeline for reproducible and easy-to-use execution, that facilitates the control of each step, the visualization of results and their reporting to PDF/HTML formats.
 
-## More info {-}
+## Text from Template: More info {-}
 And here's some other random info: 
 the first paragraph after a chapter title or section head _shouldn't be_ indented, because indents are to tell the reader that you're starting a new paragraph. 
 Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
