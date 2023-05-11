@@ -431,8 +431,8 @@ Quite a nice prickly friend.
 \flushbottom
 
 % all your chapters and appendices will appear here
-\hypertarget{introduction}{%
-\chapter{Introduction}\label{introduction}}
+\hypertarget{intro}{%
+\chapter{Introduction}\label{intro}}
 
 \chaptermark{Introduction}
 
@@ -452,6 +452,43 @@ Dimension reduction methods, especially those that are able to deal with situati
 This problem has been known since the beginning of using multivariate methods with omics data, but only a few approaches have been taken to deal with this. The first attempts to introduce biological information in the analyses consisted of using the most well-known database of biological functions, the Gene Ontology (GO) {[}13{]}. Fellenberg {[}14{]} introduces a way to integrate Gene Ontology information with Correspondence Analysis to facilitate the interpretation of microarray data. De Tayrac et al.~{[}15{]} applies multiple factor analysis to the integrative analysis of microarray and DNA copy number data. They apply GO Terms on data visualizations by treating these terms as supplemental information. In recent years the representation of biological knowledge has shifted from Gene Ontology to using Gene Sets {[}16{]}. Meng and Culhane {[}10{]} have introduced the Integrative Clustering with Gene Set Analysis where gene set expression analysis is performed based on multiple omics data; and Tyekucheva et al.~{[}17{]}, go one step further and use the results of Gene Set Expression Analysis (GSEA) to integrate different omics data.
 
 Altogether, the previous approaches show several things: Although the idea that integrating quantitative data with biological knowledge may increase interpretability, the number of successful attempts to do this is still small. In this thesis, the use of either classical GO Terms or more flexible annotations (Gene Sets or custom annotations), will be combined with different approaches, and combinations of them if needed, to guide integrative analysis and to improve its biological interpretability from the point of view of the biomedical researchers.
+
+\hypertarget{backgroundstate-of-the-art}{%
+\section{Background/State of the Art}\label{backgroundstate-of-the-art}}
+
+Falta desenvolupar punts
+
+\hypertarget{omics-data-analyses}{%
+\subsection{Omics data analyses}\label{omics-data-analyses}}
+
+3 problemes esencials (veure projecte recerca Alex):
+
+\begin{itemize}
+\item
+  Omics data may be partly incomplete, especially in multiomics studies, where not all types of data are usually available for all individuals.
+\item
+  The results of these analyses are difficult to interpret. If we agree that the ultimate goal of many analyzes is a better understanding of the underlying biological processes, for example, in a disease study context, it should be possible to establish a clear relationship between the outcome of an analysis and what this means biologically. And this is not always so.
+\item
+  These kind of data analytics are difficult to standardize, as it is not easy to make complex pipelines of multi-omics analyses, which integrate multiple processes with multiple sources, easy to reproduce or communicate.
+\end{itemize}
+
+Més el problema de la p\textgreater\textgreater n (Dimensionallity Reduction Techniques; The p\textgreater\textgreater n situation)
+
+\hypertarget{integrative-analyses}{%
+\subsection{Integrative analyses}\label{integrative-analyses}}
+
+Allows the combination of distinct omics data.
+
+The blind men and the elephant \url{https://en.wikipedia.org/wiki/Blind_men_and_an_elephant}
+
+Interpretability is a weak point of most multi omics approaches.
+
+Methods focus much more on feature selection discovery and interaction highlighting measurement than on clinical or biological interpretability.
+
+\hypertarget{review-of-existing-approaches-for-multi-omics-data-integration}{%
+\subsection{Review of existing approaches for multi-omics data integration}\label{review-of-existing-approaches-for-multi-omics-data-integration}}
+
+MCIA, RGCCA, MFA\ldots{} Cavill, 2016; Culhane 2003\ldots{}
 
 \hypertarget{content-from-template}{%
 \section{Content from template}\label{content-from-template}}
@@ -521,7 +558,7 @@ have it, simply because it is pain\ldots{}
 \hypertarget{methods}{%
 \chapter{Methodology}\label{methods}}
 
-\chaptermark{Methods}
+\chaptermark{Methodology}
 
 \minitoc 
 
@@ -582,11 +619,11 @@ For each input data set, if annotations are not already provided, two distinct b
   {[}afegir aquí la opció d'afegir les anotacions com a individus suplementaris enlloc de variables{]}
 \end{enumerate}
 
-Figure \ref{fig:fig3-1} is \protect\hyperlink{fig:fig3-1}{this image}.
+Figure \ref{fig:fig3-1} is an example.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.95\linewidth]{figures/chapter1/addition_of_GO_terms} 
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter3/3-1_addition_of_GO_terms} 
 
 }
 
@@ -601,348 +638,146 @@ Other annotation methods can be implemented, as functions to be used by the main
 
 Once the annotations are already computed, mapping each feature of the input data set to the corresponding biological entity, they can be used to generate new features (as new rows), computing the average value {[}punt de millora: ¿funció de ponderació?{]} of the expression/intensity values from all original features being mapped to the annotated biological entities.
 
-\hypertarget{building-your-entire-thesis}{%
-\section{Building your entire thesis}\label{building-your-entire-thesis}}
-
-\begin{itemize}
-\tightlist
-\item
-  Build the entire thesis by opening \textbf{index.Rmd} and clicking the `knit' button.
-\item
-  The generated thesis files are saved in the \textbf{docs/} folder
-\item
-  To choose output formats, go to the top of \textbf{index.Rmd}'s YAML header and edit the line \texttt{thesis\_formats\ \textless{}-\ "pdf";} to the format(s) you want (options are ``pdf'', ``bs4'', ``gitbook'', and ``word'')
-\item
-  You can build to multiple formats simultaneously with, e.g., \texttt{thesis\_formats\ \textless{}-\ c("pdf",\ "bs4",\ "word")}
-\item
-  If you want to customise the build function, edit \textbf{scripts\_and\_filters/knit-functions.R}
-\end{itemize}
-
-\hypertarget{pdf-output}{%
-\subsubsection{PDF output}\label{pdf-output}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{knit}\KeywordTok{:}\AttributeTok{ (function(input, ...) \{}
-\AttributeTok{    thesis\_formats \textless{}{-} "pdf";}
-\AttributeTok{    ...}
-\end{Highlighting}
-\end{Shaded}
-
-When you build the entire thesis to PDF, Latex generates a whole bunch of auxillary files - these are automatically removed after the build process end by the custom knit function that is used when you knit \textbf{index.Rmd}.
-
-To change how this removal is done, edit \textbf{scripts\_and\_filters/knit-functions.R}.
-The line \texttt{file.remove(list.files(pattern\ =\ "*\textbackslash{}\textbackslash{}.(log\textbar{}mtc\textbackslash{}\textbackslash{}d*\textbar{}maf\textbar{}aux\textbar{}bcf\textbar{}lof\textbar{}lot\textbar{}out\textbar{}toc)\$"))} within \texttt{if\ ("pdf"\ \%in\%\ output\_format)\{} is the one that removes files after PDF output is generated.
-
-\hypertarget{bs4-book-output-html}{%
-\subsubsection{BS4 book output (HTML)}\label{bs4-book-output-html}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{knit}\KeywordTok{:}\AttributeTok{ (function(input, ...) \{}
-\AttributeTok{    thesis\_formats \textless{}{-} "bs4";}
-\AttributeTok{    ...}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{itemize}
-\tightlist
-\item
-  NOTE: the \href{https://pkgs.rstudio.com/bookdown/reference/bs4_book.html}{bs4 book output} requires the \texttt{downlit} and \texttt{bslib} R packages (install them with \texttt{install.packages})
-\item
-  Note also that to deploy a BS4 book on GitHub Pages, there must be a \textbf{.nojekyll} file in the \textbf{docs/} folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by \texttt{oxforddown}s knitting function.
-\end{itemize}
-
-\hypertarget{gitbook-output-html}{%
-\subsubsection{Gitbook output (HTML)}\label{gitbook-output-html}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{knit}\KeywordTok{:}\AttributeTok{ (function(input, ...) \{}
-\AttributeTok{    thesis\_formats \textless{}{-} "gitbook";}
-\AttributeTok{    ...}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{itemize}
-\tightlist
-\item
-  Note that to deploy a gitbook on GitHub Pages, there must be a \textbf{.nojekyll} file in the \textbf{docs/} folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by \texttt{oxforddown}s knitting function.
-\end{itemize}
-
-\hypertarget{word-output}{%
-\subsubsection{Word output}\label{word-output}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{knit}\KeywordTok{:}\AttributeTok{ (function(input, ...) \{}
-\AttributeTok{    thesis\_formats \textless{}{-} "word";}
-\AttributeTok{    ...}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{itemize}
-\tightlist
-\item
-  Note that the Word output has no templates behind it, and many things do not work (e.g.~image rotation, highlighting corrections). \textbf{I encourage pull requests that optimise the Word output, e.g.~by using tools from the \href{https://github.com/davidgohel/officer}{\texttt{officer}} package.}
-\end{itemize}
-
-\hypertarget{building-a-single-chapter}{%
-\section{Building a single chapter}\label{building-a-single-chapter}}
-
-To knit an individual chapter without compiling the entire thesis you:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  open the \textbf{.Rmd} file of a chapter
-\item
-  add a YAML header specifying the output format(s) (e.g.~\texttt{bookdown::word\_document2} for a word document you might want to upload to Google Docs for feedback from collaborators)
-\item
-  click the \texttt{knit} button (the output file is then saved in the root folder)
-\end{enumerate}
-
-As shown in the sample chapters' YAML headers, to output a single chapter to PDF, use e.g.:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{output}\KeywordTok{:}
-\AttributeTok{  bookdown:}\FunctionTok{:pdf\_document2}\KeywordTok{:}
-\AttributeTok{    }\FunctionTok{template}\KeywordTok{:}\AttributeTok{ templates/brief\_template.tex}
-\AttributeTok{    }\FunctionTok{citation\_package}\KeywordTok{:}\AttributeTok{ biblatex}
-\FunctionTok{documentclass}\KeywordTok{:}\AttributeTok{ book}
-\FunctionTok{bibliography}\KeywordTok{:}\AttributeTok{ references.bib}
-\end{Highlighting}
-\end{Shaded}
-
-The file \textbf{templates/brief\_template.tex} formats the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc).
-
-Here is a brief introduction to using \emph{R Markdown}.
-\emph{Markdown} is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more.
-\emph{R Markdown} provides the flexibility of \emph{Markdown} with the implementation of \textbf{R} input and output. For more details on using \emph{R Markdown} see \url{http://rmarkdown.rstudio.com}.
-
-\hypertarget{basic-markdown-syntax}{%
-\section{Basic markdown syntax}\label{basic-markdown-syntax}}
-
-\hypertarget{whitespace}{%
-\subsection{Whitespace}\label{whitespace}}
-
-Be careful with your spacing.
-While whitespace largely is ignored, it does at times give markdown signals as to how to proceed.
-As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph.
-In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).
-
-\hypertarget{italics-and-bold}{%
-\subsection{Italics and bold}\label{italics-and-bold}}
-
-\begin{itemize}
-\tightlist
-\item
-  \emph{Italics} are done like *this* or \_this\_
-\item
-  \textbf{Bold} is done like **this** or \_\_this\_\_
-\item
-  \textbf{\emph{Bold and italics}} is done like ***this***, \_\_\_this\_\_\_, or (the most transparent solution, in my opinion) **\_this\_**
-\end{itemize}
-
-\hypertarget{inline-code}{%
-\subsection{Inline code}\label{inline-code}}
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{Inline\ code} is created with backticks like \texttt{\textasciigrave{}this\textasciigrave{}}
-\end{itemize}
-
-\hypertarget{sub-and-superscript}{%
-\subsection{Sub and superscript}\label{sub-and-superscript}}
-
-Sub\textsubscript{2} and super\textsuperscript{2} script is created like this\textasciitilde2\textasciitilde{} and this\^{}2\^{}
-
-\hypertarget{strikethrough}{%
-\subsection{Strikethrough}\label{strikethrough}}
-
-\begin{itemize}
-\tightlist
-\item
-  \sout{Strikethrough} is done \textasciitilde\textasciitilde like this\textasciitilde\textasciitilde{}
-\end{itemize}
-
-\hypertarget{escaping-aka-what-if-i-need-an-actual-asterisk}{%
-\subsection{`Escaping' (aka ``What if I need an actual asterisk?'')}\label{escaping-aka-what-if-i-need-an-actual-asterisk}}
-
-\begin{itemize}
-\tightlist
-\item
-  To include an actual *, \_ or \textbackslash, add another \textbackslash{} in front of them: \textbackslash*, \textbackslash\_, \textbackslash\textbackslash{}
-\end{itemize}
-
-\hypertarget{endash-emdash}{%
-\subsection{Endash (--), emdash (---)}\label{endash-emdash}}
-
-\begin{itemize}
-\tightlist
-\item
-  -- and --- with -\/- and -\/-\/-
-\end{itemize}
-
-\hypertarget{blockquotes}{%
-\subsection{Blockquotes}\label{blockquotes}}
-
-Do like this:
-
-\begin{quote}
-Put a \textgreater{} in front of the line.
-\end{quote}
-
-\hypertarget{headings}{%
-\subsection{Headings}\label{headings}}
-
-Section headers are created with \#'s of increasing number, i.e.~
-
-\begin{itemize}
-\tightlist
-\item
-  \# First-level heading
-\item
-  \#\# Second-level heading
-\item
-  \#\#\# Etc.
-\end{itemize}
-
-In PDF output, a level-five heading will turn into a paragraph heading, i.e.~\texttt{\textbackslash{}paragraph\{My\ level-five\ heading\}}, which appears as bold text on the same line as the subsequent paragraph.
+\begin{figure}
 
-\hypertarget{lists}{%
-\subsection{Lists}\label{lists}}
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter3/3-2_addition_of_new_feats} 
 
-Unordered list by starting a line with an * or a -:
+}
 
-\begin{itemize}
-\tightlist
-\item
-  Item 1
-\item
-  Item 2
-\end{itemize}
+\caption{Addition of news feats}\label{fig:fig3-2}
+\end{figure}
 
-Ordered lists by starting a line with a number.
-Notice that you can mislabel the numbers and \emph{Markdown} will still make the order right in the output:
+\begin{figure}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Item 1
-\item
-  Item 2
-\end{enumerate}
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter3/3-3_gene_enrichment_diagram} 
 
-To create a sublist, indent the values a bit (at least four spaces or a tab):
+}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Item 1
-\item
-  Item 2
-\item
-  Item 3
+\caption{Gene enrichment diagram}\label{fig:fig3-3}
+\end{figure}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Item 3a
-  \item
-    Item 3b
-  \end{itemize}
-\end{enumerate}
+\begin{figure}
 
-\hypertarget{line-breaks}{%
-\subsection{Line breaks}\label{line-breaks}}
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter3/3-4_matrix_expansion_diagram} 
 
-The official \emph{Markdown} way to create line breaks is by ending a line with more than two spaces.
+}
 
-Roses are red.
-Violets are blue.
+\caption{Matrix expansion diagram}\label{fig:fig3-4}
+\end{figure}
 
-This appears on the same line in the output, because we didn't add spaces after red.
+(Traduir) Una vez tenemos las matrices anotadas (Figura \ref{fig:fig3-4}, parte azul) pasamos a generar las matrices Expandidas (en verde) numerizando estas anotaciones, o sea, calculando la media de las expresiones numéricas de cada individuo para las variables anotadas a cada categoría. Esto se realiza con el producto matricial de los valores numéricos iniciales (expresion, proteinas\ldots) con las matrices traspuestas de sus anotaciones, y luego con la matriz inversa de una matriz diagonal del conteo de cuantas anotaciones ha tenido cada categoría o entidad anotada.
 
-Roses are red.\\
-Violets are blue.
+\begin{figure}
 
-This appears with a line break because I added spaces after red.
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter3/3-5_addition_of_new_feats_2} 
 
-I find this is confusing, so I recommend the alternative way: Ending a line with a backslash will also create a linebreak:
+}
 
-Roses are red.\\
-Violets are blue.
+\caption{Addition of new feats (2)}\label{fig:fig3-5}
+\end{figure}
 
-To create a new paragraph, you put a blank line.
+\begin{figure}
 
-Therefore, this line starts its own paragraph.
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter3/3-6_matrix_expansion_diagram_2} 
 
-\hypertarget{hyperlinks}{%
-\subsection{Hyperlinks}\label{hyperlinks}}
+}
 
-\begin{itemize}
-\tightlist
-\item
-  \href{https://www.google.com}{This is a hyperlink} created by writing the text you want turned into a clickable link in \texttt{{[}square\ brackets\ followed\ by\ a{]}(https://hyperlink-in-parentheses)}
-\end{itemize}
+\caption{Matrix expansion diagram (2)}\label{fig:fig3-6}
+\end{figure}
 
-\hypertarget{footnotes}{%
-\subsection{Footnotes}\label{footnotes}}
+\hypertarget{detail-of-the-integrative-data-analyses-applied}{%
+\subsection{Detail of the integrative data analyses applied\ldots{}}\label{detail-of-the-integrative-data-analyses-applied}}
 
-\begin{itemize}
-\tightlist
-\item
-  Are created\footnote{my footnote text} by writing either \^{}{[}my footnote text{]} for supplying the footnote content inline, or something like \texttt{{[}\^{}a-random-footnote-label{]}} and supplying the text elsewhere in the format shown below \footnote{This is a random test.}:
-\end{itemize}
+Mètodes:
 
-\texttt{{[}\^{}a-random-footnote-label{]}:\ This\ is\ a\ random\ test.}
+1- Significació biològica, com faig les anotacions
+2- Expansió de les matrius (creació de noves vars a partir de les anotacions)
+3- Anàlisi factorial en detall, + MCIA + RGCCA
+4- TFM sobre workflows i automatització -\textgreater{} Paquet targets en general
 
-\hypertarget{comments}{%
-\subsection{Comments}\label{comments}}
+\hypertarget{targets-pipeline-concept}{%
+\subsection{Targets PIPELINE concept:}\label{targets-pipeline-concept}}
 
-To write comments within your text that won't actually be included in the output, use the same syntax as for writing comments in HTML. That is, \textless!-\/- this will not be included in the output -\/-\textgreater.
+\begin{figure}
 
-\hypertarget{math}{%
-\subsection{Math}\label{math}}
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter3/3-7_workflow_overview} 
 
-The syntax for writing math is stolen from LaTeX. To write a math expression that will be shown \textbf{inline}, enclose it in dollar signs.
-- This: \$A = \textbackslash pi*r\^{}\{2\}\$ Becomes: \(A = \pi*r^{2}\)
+}
 
-To write a math expression that will be shown in a block, enclose it in two dollar signs.\\
-This: \$\$A = \textbackslash pi*r\^{}\{2\}\$\$
+\caption{Workflow overview}\label{fig:fig3-7}
+\end{figure}
 
-Becomes:
-\[A = \pi*r^{2}\]
+Targets workflow diagram (Figure \ref{fig:fig3-7}) showing the steps corresponding with the complete process: The pipeline starts from (A) a couple of 'omics-derived input data sets (e.g.~pre-processed gene expression and protein abundance matrices). These are converted to R data frames with features in rows and samples in columns. Then, a data frame containing related annotations (B) is created, or loaded, for each given input matrix, and used to expand these original data, in order to end up with a pair of data frames (C) containing the original values plus the average expression/abundance values of the features related to each annotation as new features in additional rows. After that, distinct Dimension Reduction Methods are applied to perform the integrative analysis (D), and finally, an R markdown report (E) is rendered to show steps and main results of the full process.
 
-To create numbered equations, put them in an `equation' environment and give them a label with the syntax \texttt{(\textbackslash{}\#eq:label)}, like this:
+\hypertarget{comparison-of-oda-results}{%
+\subsection{Comparison of ODA results}\label{comparison-of-oda-results}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{\textbackslash{}begin}\NormalTok{\{}\ExtensionTok{equation}\NormalTok{\}}\SpecialStringTok{ }
-\SpecialStringTok{  f}\SpecialCharTok{\textbackslash{}left}\SpecialStringTok{(k}\SpecialCharTok{\textbackslash{}right}\SpecialStringTok{) = }\SpecialCharTok{\textbackslash{}binom}\SpecialStringTok{\{n\}\{k\} p\^{}k}\SpecialCharTok{\textbackslash{}left}\SpecialStringTok{(1{-}p}\SpecialCharTok{\textbackslash{}right}\SpecialStringTok{)\^{}\{n{-}k\}}
-\SpecialStringTok{  (}\SpecialCharTok{\textbackslash{}\#}\SpecialStringTok{eq:binom)}
-\KeywordTok{\textbackslash{}end}\NormalTok{\{}\ExtensionTok{equation}\NormalTok{\} }
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{numeric-measurement}{%
+\subsection{Numeric measurement}\label{numeric-measurement}}
 
-Becomes:
-\begin{equation}
-f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
-\label{eq:binom}
-\end{equation}
+\% variabilitat explicat segons la estructura de la intersecció de les 2 taules
 
-For more (e.g.~how to theorems), see e.g.~the documentation on \href{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html\#equations}{bookdown.org}
+\hypertarget{biological-interpretation}{%
+\subsection{Biological interpretation}\label{biological-interpretation}}
 
-\hypertarget{cites-and-refs}{%
-\chapter{Results}\label{cites-and-refs}}
+\hypertarget{r-package-creation}{%
+\subsection{R package creation}\label{r-package-creation}}
+
+\hypertarget{results}{%
+\chapter{Results}\label{results}}
+
+\chaptermark{Results}
 
 \minitoc 
+
+Text de presentacio dels resultats\ldots{}
+
+\hypertarget{results-from-the-analysis-of-human-brain-tissue-samples}{%
+\section{Results from the analysis of human brain tissue samples}\label{results-from-the-analysis-of-human-brain-tissue-samples}}
+
+\hypertarget{results-from-the-expansion-of-omics-data-with-biological-annotations}{%
+\section{Results from the expansion of omics data with biological annotations}\label{results-from-the-expansion-of-omics-data-with-biological-annotations}}
+
+Figure \ref{fig:fig4-1} is an snapshot (F) of one of the heat maps created to show the expanded matrices obtained in (Figures \ref{fig:fig3-4} i \ref{fig:fig3-5} prèvies, de Methods).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter4/4-1_heatmap_expanded} 
+
+}
+
+\caption{Heapmap of an expanded matrix}\label{fig:fig4-1}
+\end{figure}
+
+\hypertarget{results-from-the-analysis-of-150-tcga-brca-samples}{%
+\section{Results from the analysis of 150 TCGA-BRCA samples}\label{results-from-the-analysis-of-150-tcga-brca-samples}}
+
+Figure \ref{fig:fig4-2} contains some of the graphical results of the analysis of the 150 samples from TCGA-BRCA: Heat maps (A, C) and association networks (B, D) resulting from the integration by Regularized Canonical Correlations Analysis with mixomics R package. Performed with the original data sets (A, B) or using data expanded with biological annotations to Gene Ontology (C, D), so adding some GO terms to the features from each source, where the outputs contain higher level of information (higher density in both type of plots).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter4/4-2_BRCA_results_overview} 
+
+}
+
+\caption{BRCA results overview}\label{fig:fig4-2}
+\end{figure}
+
+\hypertarget{results-from-the-application-of-mfa-on-tcga-brca-data-with-and-without-expanded-data}{%
+\section{Results from the application of MFA on TCGA-BRCA data with, and without, expanded data}\label{results-from-the-application-of-mfa-on-tcga-brca-data-with-and-without-expanded-data}}
+
+Figure \ref{fig:fig4-3} includes a Correlation Circle (left), with most relevant genes, proteins and added GO annotations. Distribution of samples (right) along the first two plotted dimensions. Both results coming from the application of Multiple Factor Analysis (FactoMineR and factoextra R packages) performed on the same 150 samples (Basal, Her2 and LuminalA conditions) from TCGA-BRCA.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter4/4-3_BRCA_results_withMFA} 
+
+}
+
+\caption{BRCA results with MFA}\label{fig:fig4-3}
+\end{figure}
+
+\clearpage
 
 \hypertarget{citations}{%
 \section{Citations}\label{citations}}
@@ -1422,333 +1257,30 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 
 \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/sample-content/pdf_embed_example/split/_000000000000001.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/sample-content/pdf_embed_example/split/_000000000000011.pdf}} \end{center}
 
-\hypertarget{embed-rmd}{%
-\section{Including another paper in your thesis - R Markdown child document}\label{embed-rmd}}
+\hypertarget{discussion}{%
+\chapter{Discussion}\label{discussion}}
 
-Sometimes you want to include another paper you are currently writing as a chapter in your thesis.
-Above \ref{embed-pdf}, we described the simplest way to do this: include the other paper as a pdf.
-However, in some cases you instead want to include the R Markdown source from this paper, and have it compiled within your thesis.
-This is a little bit more tricky, because you need to keep careful track of your file paths, but it is possible by \href{https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html}{including the paper as a child document}.
-There are four main steps:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Include the paper as a child document
-\item
-  Make file paths compatible with knitting the article on its own, as well as when it's include in your thesis
-\item
-  Make header levels correct
-\item
-  Make figure widths correct
-\end{enumerate}
-
-\hypertarget{an-example-paper-in-another-folder}{%
-\subsection{An example paper in another folder}\label{an-example-paper-in-another-folder}}
-
-Take this simple example (files for this are in \href{https://github.com/ulyngs/oxforddown-external-article}{this GitHub repository}):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{|{-}{-}paper\_to\_include}
-\NormalTok{|  |{-}{-}my\_paper.Rmd}
-\NormalTok{|  |{-}{-}data}
-\NormalTok{|  |  |{-}{-}cat\_salt.csv}
-\NormalTok{|  |{-}{-}figures}
-\NormalTok{|  |  |{-}{-}cat.jpg}
-\NormalTok{|}
-\NormalTok{|{-}{-}thesis}
-\end{Highlighting}
-\end{Shaded}
-
-As the chart suggests, you have another folder, \textbf{paper\_to\_include/} living in the same containing folder as your thesis folder.
-In the \textbf{paper\_to\_include} folder, the file \textbf{my\_paper.Rmd} is where you write the paper.
-In \textbf{my\_paper.Rmd}, you read in a CSV file found in the subfolder \textbf{data/cats.csv}, and also an image from the subfolder \textbf{figures/cat.jpg}.
-
-\hypertarget{step-1-include-paper-as-a-child-document}{%
-\subsection{Step 1: Include paper as a child document}\label{step-1-include-paper-as-a-child-document}}
-
-In your thesis folder, create an Rmd file for the chapter where you want to include another paper.
-Add one or more code chunks that include R Markdown files from that paper as child documents:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{\# Including an external chapter }
-
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r child = "../paper\_to\_include/my\_paper.Rmd"\}}
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{step-2-make-file-paths-compatible}{%
-\subsection{Step 2: Make file paths compatible}\label{step-2-make-file-paths-compatible}}
-
-Use \href{https://rmarkdown.rstudio.com/lesson-6.html}{parameters} to adjust the file path of images based on values you set in the YAML header of an R Markdown file.
-In \textbf{my\_paper.Rmd}, create a parameter called \texttt{other\_path} and set it to an empty string:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{{-}{-}{-}}
-\FunctionTok{title}\KeywordTok{:}\AttributeTok{ }\StringTok{"A fabulous article in a different folder"}
-\FunctionTok{params}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{other\_path}\KeywordTok{:}\AttributeTok{ }\StringTok{""}
-\PreprocessorTok{{-}{-}{-}}
-\end{Highlighting}
-\end{Shaded}
-
-In \textbf{my\_paper.Rmd}, put this at the start of the filepath when you read in data or include images:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(tidyverse)}
-\FunctionTok{library}\NormalTok{(knitr)}
-
-\NormalTok{cat\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\FunctionTok{str\_c}\NormalTok{(params}\SpecialCharTok{$}\NormalTok{other\_path, }\StringTok{"data/cats.csv"}\NormalTok{))}
-\FunctionTok{include\_graphics}\NormalTok{(}\FunctionTok{str\_c}\NormalTok{(params}\SpecialCharTok{$}\NormalTok{other\_path, }\StringTok{"figures/cat.jpg"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-Finally, in your thesis folder's \textbf{index.Rmd} file, also create the parameter \texttt{other\_path}.
-But here, set it to where the \textbf{paper\_to\_include/} folder is relative to your thesis folder:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{params}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{other\_path}\KeywordTok{:}\AttributeTok{ }\StringTok{"../paper\_to\_include/"}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{note-on-html-output}{%
-\subsubsection{Note on HTML output}\label{note-on-html-output}}
-
-Note that if you want to host an HTML version on your thesis online, you will need to include graphics in the content that you host online - the internet obviously won't be able to see filepaths that are just referring to stuff in another folder on your computer!
-
-\hypertarget{step-3-make-sure-header-levels-are-correct}{%
-\subsection{Step 3: Make sure header levels are correct}\label{step-3-make-sure-header-levels-are-correct}}
-
-Unless the paper you want to include is also written as a book, your header levels are probably going to be off.
-That is, the level 1 headers (\# Some header) you use for main sections in the other paper turns into chaper titles when included in your thesis.
-
-To avoid this, first \emph{increment all heading levels by one in \textbf{paper\_to\_include/my\_paper.Rmd}} (\# Some header -\textgreater{} \#\# Some header).
-Then in \textbf{paper\_to\_include/} create a \href{https://bookdown.org/yihui/rmarkdown-cookbook/lua-filters.html\#lua-filters}{lua filter} that decrements header levels by one: Create a text file, save it as \textbf{reduce\_header\_level.lua}, and give it the content below.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{function}\NormalTok{ Header}\OperatorTok{(}\NormalTok{el}\OperatorTok{)}
-  \ControlFlowTok{if} \OperatorTok{(}\NormalTok{el}\OperatorTok{.}\NormalTok{level }\OperatorTok{\textless{}=} \DecValTok{1}\OperatorTok{)} \ControlFlowTok{then}
-    \FunctionTok{error}\OperatorTok{(}\StringTok{"I don\textquotesingle{}t know how to decrease the level of h1"}\OperatorTok{)}
-  \ControlFlowTok{end}
-\NormalTok{  el}\OperatorTok{.}\NormalTok{level }\OperatorTok{=}\NormalTok{ el}\OperatorTok{.}\NormalTok{level }\OperatorTok{{-}} \DecValTok{1}
-  \ControlFlowTok{return}\NormalTok{ el}
-\KeywordTok{end}
-\end{Highlighting}
-\end{Shaded}
-
-In the YAML header of \textbf{paper\_to\_include/my\_paper.Rmd}, use this filter:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{{-}{-}{-}}
-\FunctionTok{title}\KeywordTok{:}\AttributeTok{ }\StringTok{"A fabulous article in a different folder"}
-\FunctionTok{params}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{other\_path}\KeywordTok{:}\AttributeTok{ }\StringTok{""}
-\FunctionTok{output}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{pdf\_document}\KeywordTok{:}\AttributeTok{ }
-\AttributeTok{    }\FunctionTok{pandoc\_args}\KeywordTok{:}\AttributeTok{ }\KeywordTok{[}\StringTok{"{-}{-}lua{-}filter=reduce\_header\_level.lua"}\KeywordTok{]}
-\PreprocessorTok{{-}{-}{-}}
-\end{Highlighting}
-\end{Shaded}
-
-Now, your header levels will be correct both when you knit the paper on its own and when its included in your thesis.
-
-NOTE: There might be no need to use a lua filter to shift heading - it seems you could simply use \texttt{pandoc\_args:\ {[}"-\/-shift-heading-level-by=-1"{]}} (see \url{https://pandoc.org/MANUAL.html\#reader-options})
-
-\hypertarget{step-4.-make-sure-figure-widths-are-correct}{%
-\subsection{Step 4. Make sure figure widths are correct}\label{step-4.-make-sure-figure-widths-are-correct}}
-
-It might be that your figure widths when knitting your paper on its own, and when including it in your thesis, need to be different.
-You can again use parameters to set figure widths.
-
-Imagine you want figure width to be 80\% of the page width when knitting your paper on its own, but 100\% in your thesis.
-In \textbf{paper\_to\_include/my\_paper.Rmd}, first add a parameter we could call \texttt{out\_width} and set it to the string ``80\%'':
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\PreprocessorTok{{-}{-}{-}}
-\FunctionTok{title}\KeywordTok{:}\AttributeTok{ }\StringTok{"A fabulous article in a different folder"}
-\FunctionTok{params}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{other\_path}\KeywordTok{:}\AttributeTok{ }\StringTok{""}
-\AttributeTok{  }\FunctionTok{out\_width}\KeywordTok{:}\AttributeTok{ }\StringTok{"80\%"}
-\FunctionTok{output}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{pdf\_document}\KeywordTok{:}\AttributeTok{ }
-\AttributeTok{    }\FunctionTok{pandoc\_args}\KeywordTok{:}\AttributeTok{ }\KeywordTok{[}\StringTok{"{-}{-}lua{-}filter=reduce\_header\_level.lua"}\KeywordTok{]}
-\PreprocessorTok{{-}{-}{-}}
-\end{Highlighting}
-\end{Shaded}
-
-Then, make sure use that parameter to set the output width when you include figures in \textbf{paper\_to\_include/my\_paper.Rmd}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, out.width=params$out\_width, fig.cap="A very funny cat"\}}
-\InformationTok{include\_graphics(str\_c(params$other\_path, "figures/cat.jpg"))}
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
-\end{Highlighting}
-\end{Shaded}
-
-Finally, create the parameter \texttt{out\_width} in your thesis' \textbf{index.Rmd} file:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{params}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{other\_path}\KeywordTok{:}\AttributeTok{ }\StringTok{"../paper\_to\_include/"}
-\AttributeTok{  }\FunctionTok{out\_width}\KeywordTok{:}\AttributeTok{ }\StringTok{"80\%"}
-\end{Highlighting}
-\end{Shaded}
-
-Now, the output width of your figure will be 80\% when knitting your paper on its own, and 100\% when knitting it as child document of your thesis.
-
-\hypertarget{customising-citations}{%
-\section{Customizing citations and referencing}\label{customising-citations}}
-
-\hypertarget{using-a-.csl-file-with-pandoc}{%
-\subsection{Using a .csl file with pandoc}\label{using-a-.csl-file-with-pandoc}}
-
-See section \ref{citation-appearance}.
-
-The only drawbacks to letting pandoc handle citations is that (i) it does not support chapter bibliographies, (ii) if you're a LaTeX veteran, you might be more comfortable with \texttt{biblatex} or \texttt{natbib}.
-
-\hypertarget{biblatex-custom}{%
-\subsection{\texorpdfstring{Using \texttt{biblatex}}{Using biblatex}}\label{biblatex-custom}}
-
-To use \href{https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex}{biblatex} to handle citations, first uncomment this in \textbf{index.Rmd}, YAML header:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\AnnotationTok{use{-}biblatex:}\CommentTok{ true}
-\AnnotationTok{bib{-}latex{-}options:}\CommentTok{ "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"}
-\end{Highlighting}
-\end{Shaded}
-
-Then tell R Markdown to use \texttt{biblatex} when inserting citations, by setting \texttt{citation\_package:\ biblatex}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\AnnotationTok{output:}
-\NormalTok{  bookdown::pdf\_book:}
-\NormalTok{    citation\_package: biblatex}
-\end{Highlighting}
-\end{Shaded}
-
-To customise the appearance of citations, change \texttt{bib-latex-options}. For example, to get \textbf{numerical citations}, with references in order of their appearance in the text, set it to
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\AnnotationTok{bib{-}latex{-}options:}\CommentTok{ "style=numeric{-}comp, sorting=none, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{adding-chapter-bibliographies}{%
-\subsubsection{Adding chapter bibliographies}\label{adding-chapter-bibliographies}}
-
-If you would like chapter bibliographies, first add ``refsection=chapter'' to the biblatex options, for example like this:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\AnnotationTok{bib{-}latex{-}options:}\CommentTok{ "refsection=chapter, style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"}
-\end{Highlighting}
-\end{Shaded}
-
-Second, set the parameter \texttt{insertHeadingInPDF:\ false} in \textbf{index.Rmd}, to suppress the inclusion of a `References' heading at the end of the thesis.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\AnnotationTok{params:}
-\NormalTok{  insertHeadingInPDF: false}
-\end{Highlighting}
-\end{Shaded}
-
-Finally insert this line at the end of each chapter, to print the bibliographies there:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{\textbackslash{}printbibliography}\NormalTok{[segment=}\FunctionTok{\textbackslash{}therefsection}\NormalTok{,heading=subbibliography]}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{natbib-custom}{%
-\subsection{\texorpdfstring{Using \texttt{natbib}}{Using natbib}}\label{natbib-custom}}
-
-To use \href{https://www.overleaf.com/learn/latex/Bibliography_management_with_natbib}{natbib} to handle citations, first uncomment this in \textbf{index.Rmd}, YAML header:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\AnnotationTok{use{-}natbib:}\CommentTok{ true}
-\AnnotationTok{natbib{-}citation{-}style:}\CommentTok{ authoryear \#for science, you might want numbers,square}
-\AnnotationTok{natbib{-}bibliography{-}style:}\CommentTok{ templates/ACM{-}Reference{-}Format.bst \#e.g. "plainnat", unsrtnat, or path to a .bst file}
-\end{Highlighting}
-\end{Shaded}
-
-Then tell R Markdown to use \texttt{natbib} when inserting citations, by setting \texttt{citation\_package:\ natbib}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\AnnotationTok{output:}
-\NormalTok{  bookdown::pdf\_book:}
-\NormalTok{    citation\_package: natbib}
-\end{Highlighting}
-\end{Shaded}
-
-To customise the appearance of citations, change what \textbf{.bst} file you point to in \texttt{natbib-bibliography-style}.
-
-\hypertarget{customizing-the-page-headers-and-footers-pdf}{%
-\section{Customizing the page headers and footers (PDF)}\label{customizing-the-page-headers-and-footers-pdf}}
-
-This can now be done directly in \textbf{index.Rmd}'s YAML header.
-If you are a LaTeX expert and need further customisation that what's currently provided, you can tweak the relevant sections of \textbf{templates/template.tex} - the relevant code is beneath the line that begins \texttt{\textbackslash{}usepackage\{fancyhdr\}}.
-
-\hypertarget{diving-in-to-the-oxthesis-latex-template-pdf}{%
-\section{Diving in to the OxThesis LaTeX template (PDF)}\label{diving-in-to-the-oxthesis-latex-template-pdf}}
-
-For LaTeX minded people, you can read through \textbf{templates/template.tex} to see which additional customisation options are available as well as \textbf{templates/ociamthesis.cls} which supplies the base class.
-For example, \textbf{template.tex} provides an option for master's degree submissions, which changes identifying information to candidate number and includes a word count.
-At the time of writing, you must set this directly in \textbf{template.tex} rather than from the YAML header in \textbf{index.Rmd}.
-
-\hypertarget{customising-to-a-different-university}{%
-\section{Customising to a different university}\label{customising-to-a-different-university}}
-
-\hypertarget{the-minimal-route}{%
-\subsection{The minimal route}\label{the-minimal-route}}
-
-If the front matter in the OxThesis LaTeX template is suitable to your university, customising \texttt{oxforddown} to your needs could be as simple as putting the name of your institution and the path to your university's logo in \textbf{index.Rmd}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{university}\KeywordTok{:}\AttributeTok{ University of You}
-\FunctionTok{university{-}logo}\KeywordTok{:}\AttributeTok{ figures/your{-}logo{-}here.pdf}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{replacing-the-entire-title-page-with-your-required-content}{%
-\subsection{Replacing the entire title page with your required content}\label{replacing-the-entire-title-page-with-your-required-content}}
-
-If you have a \textbf{.tex} file with some required front matter from your university that you want to replace the OxThesis template's title page altogether, you can provide a filepath to this file in \textbf{index.Rmd}.
-\texttt{oxforddown}'s sample content includes and example of this --- if you use the YAML below, your front matter will look like this:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{alternative{-}title{-}page}\KeywordTok{:}\AttributeTok{ front{-}and{-}back{-}matter/alt{-}title{-}page{-}example.tex}
-\end{Highlighting}
-\end{Shaded}
-
-\noindent
-\fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000001.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000002.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000003.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000004.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000005.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000006.pdf}}
-
-\hypertarget{tables}{%
-\chapter{Discussion}\label{tables}}
+\chaptermark{Discussion}
 
 \minitoc 
+
+Potser no cal posar la TOC aqui¿?
+
+Resum de l'article. Apuntant a les conclusions. Comentant problemes i limitacions (emprar combinacions lineals de variables per crear-ne de noves).
+
+Possibles extensions {[}punts de millora{]} Comentar i descriure cadascun d'ells:
+
+\begin{itemize}
+\tightlist
+\item
+  Poder fer servir 3 o més conjunts de dades
+\item
+  Poder ponderar els pesos de les anotacions, segons tipus, data set d'origen, etc.
+\item
+  Permetre treballar amb dades faltants o, fins i tot, blocs de dades faltants.
+\item
+  Millorar les opcions del paquet: mètodes d'anotació bio, mètodes d'integració, tipus de gràfics resultants\ldots{}
+\end{itemize}
 
 \hypertarget{making-latex-tables-play-nice}{%
 \section{Making LaTeX tables play nice}\label{making-latex-tables-play-nice}}
@@ -2636,6 +2168,8 @@ wonderful have been, and are being, evolved.
 
 \hypertarget{conclusions}{%
 \chapter{Conclusions}\label{conclusions}}
+
+\chaptermark{Conclusions}
 
 If we don't want Conclusion to have a chapter number next to it, we can add the \texttt{\{-\}} attribute.
 

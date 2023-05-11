@@ -14,7 +14,8 @@ There is grandeur in this view of life, with its several powers, having been ori
 (ref:darwin-quote) --- Charles Darwin [@Darwin1859]
 <!-- note that the quote author won't show up when you knit just a single chapter -->
   
-# Conclusions
+# Conclusions {#conclusions}
+\chaptermark{Conclusions}
 <!-- \minitoc <!-- this will include a mini table of contents-->
 
 If we don't want Conclusion to have a chapter number next to it, we can add the `{-}` attribute.

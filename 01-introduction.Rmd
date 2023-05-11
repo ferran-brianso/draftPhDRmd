@@ -11,7 +11,7 @@ documentclass: book
 #bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
-# Introduction 
+# Introduction {#intro}
 \chaptermark{Introduction}
 \minitoc <!-- this will include a mini table of contents-->
 
@@ -36,6 +36,38 @@ Dimension reduction methods, especially those that are able to deal with situati
 This problem has been known since the beginning of using multivariate methods with omics data, but only a few approaches have been taken to deal with this. The first attempts to introduce biological information in the analyses consisted of using the most well-known database of biological functions, the Gene Ontology (GO) [13]. Fellenberg [14] introduces a way to integrate Gene Ontology information with Correspondence Analysis to facilitate the interpretation of microarray data. De Tayrac et al. [15] applies multiple factor analysis to the integrative analysis of microarray and DNA copy number data. They apply GO Terms on data visualizations by treating these terms as supplemental information. In recent years the representation of biological knowledge has shifted from Gene Ontology to using Gene Sets [16]. Meng and Culhane [10] have introduced the Integrative Clustering with Gene Set Analysis where gene set expression analysis is performed based on multiple omics data; and Tyekucheva et al. [17], go one step further and use the results of Gene Set Expression Analysis (GSEA) to integrate different omics data.
 
 Altogether, the previous approaches show several things: Although the idea that integrating quantitative data with biological knowledge may increase interpretability, the number of successful attempts to do this is still small. In this thesis, the use of either classical GO Terms or more flexible annotations (Gene Sets or custom annotations), will be combined with different approaches, and combinations of them if needed, to guide integrative analysis and to improve its biological interpretability from the point of view of the biomedical researchers.
+
+
+## Background/State of the Art
+Falta desenvolupar punts
+
+### Omics data analyses
+
+3 problemes esencials (veure projecte recerca Alex):
+
+ * Omics data may be partly incomplete, especially in multiomics studies, where not all types of data are usually available for all individuals.
+
+* The results of these analyses are difficult to interpret. If we agree that the ultimate goal of many analyzes is a better understanding of the underlying biological processes, for example, in a disease study context, it should be possible to establish a clear relationship between the outcome of an analysis and what this means biologically. And this is not always so.
+
+* These kind of data analytics are difficult to standardize, as it is not easy to make complex pipelines of multi-omics analyses, which integrate multiple processes with multiple sources, easy to reproduce or communicate.
+
+Més el problema de la p>>n (Dimensionallity Reduction Techniques; The p>>n situation)
+
+
+### Integrative analyses
+
+Allows the combination of distinct omics data.
+
+The blind men and the elephant [https://en.wikipedia.org/wiki/Blind_men_and_an_elephant](https://en.wikipedia.org/wiki/Blind_men_and_an_elephant)
+
+Interpretability is a weak point of most multi omics approaches.
+
+Methods focus much more on feature selection discovery and interaction highlighting measurement than on clinical or biological interpretability.
+
+### Review of existing approaches for multi-omics data integration
+
+MCIA, RGCCA, MFA... Cavill, 2016; Culhane 2003...
+
 
 
 ## Content from template

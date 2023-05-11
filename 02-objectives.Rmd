@@ -11,7 +11,7 @@ documentclass: book
 bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
-# Objectives
+# Objectives {#objectives}
 \chaptermark{Objectives}
 \minitoc <!-- this will include a mini table of contents-->
 

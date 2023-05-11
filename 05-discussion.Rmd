@@ -9,8 +9,22 @@ documentclass: book
 #bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
-# Discussion {#tables} 
+# Discussion {#discussion} 
+\chaptermark{Discussion}
 \minitoc <!-- this will include a mini table of contents-->
+
+Potser no cal posar la TOC aqui¿?
+
+
+Resum de l'article. Apuntant a les conclusions. Comentant problemes i limitacions (emprar combinacions lineals de variables per crear-ne de noves).
+
+Possibles extensions [punts de millora] Comentar i descriure cadascun d'ells:
+
+* Poder fer servir 3 o més conjunts de dades
+* Poder ponderar els pesos de les anotacions, segons tipus, data set d'origen, etc.
+* Permetre treballar amb dades faltants o, fins i tot, blocs de dades faltants.
+* Millorar les opcions del paquet: mètodes d'anotació bio, mètodes d'integració, tipus de gràfics resultants...
+
 
 ## Making LaTeX tables play nice
 Dealing with tables in LaTeX can be painful.
