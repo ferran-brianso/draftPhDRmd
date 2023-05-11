@@ -124,14 +124,6 @@ Mètodes:
 4- TFM sobre workflows i automatització -> Paquet targets en general
 
 
-### Targets PIPELINE concept:
-
-```{r fig3-7, fig.align='center', fig.cap="Workflow overview", out.width="95%", echo=FALSE}
-knitr::include_graphics("figures/chapter3/3-7_workflow_overview.png")
-```
-
-Targets workflow diagram (Figure \@ref(fig:fig3-7)) showing the steps corresponding with the complete process: The pipeline starts from (A) a couple of ‘omics-derived input data sets (e.g. pre-processed gene expression and protein abundance matrices). These are converted to R data frames with features in rows and samples in columns. Then, a data frame containing related annotations (B) is created, or loaded, for each given input matrix, and used to expand these original data, in order to end up with a pair of data frames (C) containing the original values plus the average expression/abundance values of the features related to each annotation as new features in additional rows. After that, distinct Dimension Reduction Methods are applied to perform the integrative analysis (D), and finally, an R markdown report (E) is rendered to show steps and main results of the full process.
-
 ### Comparison of ODA results
 
 ### Numeric measurement
@@ -142,6 +134,14 @@ Targets workflow diagram (Figure \@ref(fig:fig3-7)) showing the steps correspond
 ### Biological interpretation
 
 
-### R package creation
+### Targets PIPELINE concept 
 
+R package creation...
 
+Sistema que hem aplicat per crear el pipeline amb Targets...
+
+```{r fig3-7, fig.align='center', fig.cap="Workflow overview", out.width="95%", echo=FALSE}
+knitr::include_graphics("figures/chapter3/3-7_workflow_overview.png")
+```
+
+Targets workflow diagram (Figure \@ref(fig:fig3-7)) showing the steps corresponding with the complete process: The pipeline starts from (A) a couple of ‘omics-derived input data sets (e.g. pre-processed gene expression and protein abundance matrices). These are converted to R data frames with features in rows and samples in columns. Then, a data frame containing related annotations (B) is created, or loaded, for each given input matrix, and used to expand these original data, in order to end up with a pair of data frames (C) containing the original values plus the average expression/abundance values of the features related to each annotation as new features in additional rows. After that, distinct Dimension Reduction Methods are applied to perform the integrative analysis (D), and finally, an R markdown report (E) is rendered to show steps and main results of the full process.

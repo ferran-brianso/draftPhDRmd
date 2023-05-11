@@ -13,7 +13,7 @@ bibliography: [bibliography/references.bib, bibliography/additional-references.b
 
 # Objectives {#objectives}
 \chaptermark{Objectives}
-\minitoc <!-- this will include a mini table of contents-->
+<!-- \minitoc <!-- this will include a mini table of contents-->
 
 <!-- LaTeX normally does not indent the first line after a heading - however, it does so after the mini table of contents. You can manually tell it not to with \noindent -->
 \noindent The main objectives of this work are the following:
