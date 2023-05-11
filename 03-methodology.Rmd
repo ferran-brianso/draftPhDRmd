@@ -11,12 +11,17 @@ documentclass: book
 #bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
-```{block type='savequote', quote_author='(ref:cicero-quote)', include=knitr::is_latex_output()}
-Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+```{block type='savequote', quote_author='(ref:faust-quote)', include=knitr::is_latex_output()}
+Ein Mann, der recht zu wirken denkt,
 
-There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
+Mu\ss\enspace auf das beste Werkzeug halten
+
+
+_The man who seeks to be approved,_
+
+_must stick to the best tools for it_
 ```
-(ref:cicero-quote) --- Cicero's *de Finibus Bonorum et Malorum*.
+(ref:faust-quote) --- Goethe's *Faust. Eine Tragödie* (1808).
 
 <!-- 
 Notes for adding an opening quote in PDF output:
