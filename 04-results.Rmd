@@ -14,6 +14,18 @@ documentclass: book
 
 Text de presentacio dels resultats...
 
+Fer que 4.1 sigui l'actual 4.2 (tota la info d'aplicar el mètode)
+
+
+ESTRUCTURA DELS RESULTATS:
+
+4.1 Resultats del nou mètode
+
+4.2 Resultats d'implementació en paquet R amb targets
+
+4.3 Exemples i aplicacions
+
+
 ## Results from the analysis of human brain tissue samples
 
 ## Results from the expansion of omics data with biological annotations

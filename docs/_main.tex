@@ -593,31 +593,87 @@ Here follows a brief description of these main five activities, the methods in w
   Implementation of the methods resulting from 4) as a new R package to be submitted to Bioconductor repository {[}27{]}, and, finally, to complete objective 4 of this thesis plan, as a web application {[}28{]} to be used in further steps of the current biomedical research projects in which our collaborators are implied, as well as in future studies.
 \end{enumerate}
 
-\hypertarget{explanation-of-the-methods}{%
-\section{Explanation of the methods}\label{explanation-of-the-methods}}
+\hypertarget{methodology}{%
+\section{Methodology}\label{methodology}}
 
-The addition of biological annotations to the data sets being integrated, prior to the integrative analysis itself, can be useful to improve the integration/analysis outcomes as well as their biological interpretability.
+In the context of multi-omics data integration, our proposal relies on the idea that incorporating biological annotations into data sets before integrative analysis enriches outcomes and enhances their biological interpretability. So, augmenting quantitative omics data with contextual biological knowledge deepens our understanding of complex biological phenomena. To do that, we begin with meticulous data quality assessment and standardization, laying the foundation for reliable analyses. We then infuse biological knowledge using standard biological annotations, creating ``Expanded Datasets'' that provide context for comprehensive analysis. Advanced dimension reduction techniques can be applied then in illuminating hidden patterns and relationships between data sources or blocks and, finally, the semi-automation capabilities of the Targets R package let us to build an easy-to-use implementation of the process.
 
-Passos principals explicats aqui:
+\hypertarget{data-quality-assessment-and-format-review}{%
+\subsection{Data Quality Assessment and Format Review}\label{data-quality-assessment-and-format-review}}
 
-A. Pre process omics datasets in order to include biological information before the joint analysis --\textgreater{} Expanded datasets
+Prior to commencing the integrative analysis, a rigorous data quality assessment and format review were conducted to ensure the reliability and compatibility of the input datasets. This critical step aimed to identify and rectify any discrepancies, inconsistencies, or errors that might affect the subsequent analyses. The following procedures were employed:
 
-B. Analysis of the expanded datasets by the use of contrasted joint Dimensionallity Reduction techniques
+\begin{itemize}
+\item
+  Data Source Selection: Datasets from distinct omics technologies, including genomics, transcriptomics, proteomics, and metabolomics, were obtained from reliable sources and repositories. It is essential to note that data sources were carefully selected to ensure consistency and adherence to standardized formats.
+\item
+  Data Preprocessing: Raw omics data underwent preprocessing to address issues such as missing values, outliers, and data normalization. This preprocessing step was essential to enhance data quality and comparability.
+\item
+  Data Format Standardization: Datasets were reviewed for consistency in data formats, including file types, column naming conventions, and units of measurement. Non-standardized data were transformed to a common format to facilitate downstream integration.
+\item
+  Quality Control: Quality control checks were performed to assess the reliability of data sources. This included evaluating data reproducibility, assessing batch effects, and conducting statistical tests to identify data points or samples requiring further investigation.
+\end{itemize}
 
-C. Process semi automation in ease to use tools
+\hypertarget{pre-processing-for-integration-of-biological-knowledge-generating-the-expanded-datasets}{%
+\subsection{Pre-processing for Integration of Biological Knowledge: Generating the ``Expanded Datasets''}\label{pre-processing-for-integration-of-biological-knowledge-generating-the-expanded-datasets}}
 
-Start the process already having a couple {[}punt de millora: admetre 3 o + inputs{]} of data sets from distinct 'omics sources, mapped to gene ids (if GO annotation has to be performed), containing the results from a selection of differentially expressed genes or most relevant proteins analysis, or similar. {[}explicar aquí els requeriments de format dels data sets d'entrada!!{]}
+The integration of biological knowledge into the omics datasets was achieved through a pre-processing step aimed at expanding the data matrices with annotations accessed from specialized R libraries, which provided direct access to curated biological databases such as Gene Ontology (GO) and pathway information (e.g., KEGG). This process resulted in what we term ``Expanded Data Sets'', which include the original biological features (e.g.~gene expressions) as well as new variables coming from the annotation of biological terms. The following steps detail the pre-processing procedure:
+
+\begin{itemize}
+\item
+  Selected biological annotations: Specialized R libraries, dedicated to biological knowledge integration, were employed to access and retrieve up-to-date annotations from databases such as GO and KEGG.
+\item
+  Data-Annotation Mapping: Each omics dataset was mapped to the retrieved biological annotations based on identifiers (e.g., gene or protein names) using the capabilities of the R libraries. This step facilitated the linking of omics data with biological knowledge.
+\item
+  Annotation Integration: The annotated information accessed through the specialized R libraries was integrated into the original omics datasets, resulting in expanded data matrices that combined the original quantitative omics measurements with new quantified features associated with the given biological annotations.
+\end{itemize}
+
+PENDENT DE DETALLAR:
+
+\begin{itemize}
+\item
+  Significació biològica, com faig les anotacions
+\item
+  incloure aquí Biological Interpretation
+\item
+  Expansió de les matrius (numeritzar anotacions, creació de noves vars a partir de les anotacions)
+\end{itemize}
+
+Start the process already having a couple {[}punt de millora: admetre 3 o + inputs{]} of data sets from distinct 'omics sources, mapped to gene ids (if GO annotation has to be performed), containing the results from a selection of differentially expressed genes or most relevant proteins analysis, or similar.
+
+{[}explicar aquí els requeriments de format dels data sets d'entrada!!{]}
 
 For each input data set, if annotations are not already provided, two distinct basic annotation methods can be performed:
 
 \begin{enumerate}
 \def\labelenumi{(\roman{enumi})}
+\tightlist
 \item
-  a basic GO mapping, returning annotations to those GO entities for which we find more than a certain number of features (gene ids coming from our data set) annotated to them, {[}mostrar formula{]} {[}mostrar exemple{]}
-\item
-  a Gene Enrichment Analysis (based on Hypergeometric tests against all GO categories, with FDR correction{[}ref clusterProfiler{]}) is performed in order to retrieve the most relevant annotations to that set of genes/features. {[}mostrar exemple{]}
-  {[}afegir aquí la opció d'afegir les anotacions com a individus suplementaris enlloc de variables{]}
+  a basic GO mapping, returning annotations to those GO entities for which we find more than a certain number of features (gene ids coming from our data set) annotated to them,
 \end{enumerate}
+
+{[}mostrar formula{]} {[}mostrar exemple{]}
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  a Gene Enrichment Analysis (based on Hypergeometric tests against all GO categories, with FDR correction{[}ref clusterProfiler{]}) is performed in order to retrieve the most relevant annotations to that set of genes/features.
+\end{enumerate}
+
+{[}mostrar exemple de llista de gens{]}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{figures/chapter3/3-8_gene_list} 
+
+}
+
+\caption{List of gene symbols used as example}\label{fig:fig3-8}
+\end{figure}
+
+{[}afegir aquí la opció d'afegir les anotacions com a individus suplementaris enlloc de variables{]}
 
 Figure \ref{fig:fig3-1} is an example.
 
@@ -630,13 +686,15 @@ Figure \ref{fig:fig3-1} is an example.
 \caption{Addition of GO terms}\label{fig:fig3-1}
 \end{figure}
 
-Alternatively, manual annotations can be provided (eg. GO terms, canonical pathways, or even annotation to custom entities) as an optional input file. {[}mostrar el format requerit{]}.
+Alternatively, manual annotations can be provided (eg. GO terms, canonical pathways, or even annotation to custom entities) as an optional input file.
+
+{[}mostrar el format requerit{]}.
 
 Other annotation methods can be implemented, as functions to be used by the main pipeline, if more complex methods for biological information addition are required.
 
 {[}Mostrar el format final de les anotacions, com a matrius dels data sets amb anotacions binàries 1/0 com a columnes extra{]}
 
-Once the annotations are already computed, mapping each feature of the input data set to the corresponding biological entity, they can be used to generate new features (as new rows), computing the average value {[}punt de millora: ¿funció de ponderació?{]} of the expression/intensity values from all original features being mapped to the annotated biological entities.
+Once the annotations are already computed, mapping each feature of the input data set to the corresponding biological entity, they can be used to generate new features (as new rows), computing the average value {[}punt de millora: funció de ponderació{]} of the expression/intensity values from all original features being mapped to the annotated biological entities.
 
 \begin{figure}
 
@@ -665,7 +723,7 @@ Once the annotations are already computed, mapping each feature of the input dat
 \caption{Matrix expansion diagram}\label{fig:fig3-4}
 \end{figure}
 
-(Traduir) Una vez tenemos las matrices anotadas (Figura \ref{fig:fig3-4}, parte azul) pasamos a generar las matrices Expandidas (en verde) numerizando estas anotaciones, o sea, calculando la media de las expresiones numéricas de cada individuo para las variables anotadas a cada categoría. Esto se realiza con el producto matricial de los valores numéricos iniciales (expresion, proteinas\ldots) con las matrices traspuestas de sus anotaciones, y luego con la matriz inversa de una matriz diagonal del conteo de cuantas anotaciones ha tenido cada categoría o entidad anotada.
+Once we have the annotated matrices (Figure \ref{fig:fig3-4}, highlighted in blue) we proceed to generate the Expanded matrices (in green) by casting these annotations as numerical values, that is, calculating the average of the numerical expressions of each individual for the variables annotated to each category. This is done with the matrix product of the initial numerical values (expression, proteins\ldots) with the transposed matrices of their annotations, and then with the inverse matrix of a diagonal matrix of the count of how many annotations each category or entity annotated has had.
 
 \begin{figure}
 
@@ -685,33 +743,82 @@ Once the annotations are already computed, mapping each feature of the input dat
 \caption{Matrix expansion diagram (2)}\label{fig:fig3-6}
 \end{figure}
 
-\hypertarget{detail-of-the-integrative-data-analyses-applied}{%
-\subsection{Detail of the integrative data analyses applied\ldots{}}\label{detail-of-the-integrative-data-analyses-applied}}
+\hypertarget{integrative-analysis-with-joint-dimension-reduction-techniques}{%
+\subsection{Integrative Analysis with Joint Dimension Reduction Techniques}\label{integrative-analysis-with-joint-dimension-reduction-techniques}}
 
-Mètodes:
+To uncover meaningful insights from the expanded data sets and extract relevant information from the integrated omics and biological knowledge, contrasted joint dimension reduction techniques were employed. These techniques enable the simultaneous analysis of multiple data types and facilitate the identification of key patterns and relationships. The following methods were applied:
 
-1- Significació biològica, com faig les anotacions
-2- Expansió de les matrius (creació de noves vars a partir de les anotacions)
-3- Anàlisi factorial en detall, + MCIA + RGCCA
-4- TFM sobre workflows i automatització -\textgreater{} Paquet targets en general
+\begin{itemize}
+\item
+  Multiple Factor Analysis (MFA): MFA, adapted for multi-omics data, was utilized to identify sources of variability in the integrated dataset while considering both quantitative omics data and biological annotations. MFA aims to maximize relevant information within the data while accounting for the hierarchical structure of the biological knowledge.
+\item
+  Multiple Co-Inertia Analysis (MCIA): MCIA, a technique that aligns the covariance structures of multiple datasets, was employed to explore relationships between omics measurements and biological annotations. MCIA seeks to identify common patterns and associations between these data sources.
+\item
+  Regularized Generalized Canonical Correlation Analysis (RGCCA): RGCCA was used to identify latent variables that capture joint information from omics data and biological annotations. RGCCA extends canonical correlation analysis to handle multi-view data integration and helps reveal correlated features across datasets.
+\end{itemize}
 
-\hypertarget{comparison-of-oda-results}{%
-\subsection{Comparison of ODA results}\label{comparison-of-oda-results}}
+PUNTS A INCLOURE:
 
-\hypertarget{numeric-measurement}{%
-\subsection{Numeric measurement}\label{numeric-measurement}}
+\begin{itemize}
+\item
+  Reducció de dimensió. Anàlisi factorial en detall (MFA), + MCIA + RGCCA
+\item
+  incloure aquí \% variabilitat explicat segons la estructura de la intersecció de les 2 taules (article Lovino 2022)
+\item
+  avantatge del MFA és que podem definir blocs de variables!
+\item
+  no mirem unicament si guanyem variabilitat, sino tambe si millorem interpretabilitat biologica
+\end{itemize}
 
-\% variabilitat explicat segons la estructura de la intersecció de les 2 taules
+\hypertarget{semi-automation-using-the-targets-r-package}{%
+\subsection{Semi-Automation using the Targets R Package}\label{semi-automation-using-the-targets-r-package}}
 
-\hypertarget{biological-interpretation}{%
-\subsection{Biological interpretation}\label{biological-interpretation}}
+The semi-automation of the integrative analysis process was facilitated by leveraging the Targets R package, which provides an efficient and user-friendly framework for building and managing complex analysis pipelines. In the development of the Targets pipeline, careful management of functions and parameters was essential to ensure a systematic and reproducible workflow. The following principles were applied:
 
-\hypertarget{targets-pipeline-concept}{%
-\subsection{Targets PIPELINE concept}\label{targets-pipeline-concept}}
+\begin{itemize}
+\item
+  Function Modularity: Functions within the Targets pipeline were designed to be modular, focusing on specific tasks or analyses. This modularity enhanced code readability and maintainability.
+\item
+  Parameterization: Parameters for each function and analysis step were carefully defined, allowing for flexibility and adaptability in the pipeline. This parameterization enabled the adjustment of analysis settings without modifying the underlying code.
+\item
+  Dependency Management: Dependencies between different analysis steps were explicitly defined within the pipeline. This ensured that each step was executed in the correct order, and dependencies were automatically managed by the Targets package.
+\item
+  Error Handling: Error handling procedures were implemented to capture and address potential issues during pipeline execution. This included the ability to handle errors, retries, and reporting of errors for troubleshooting. (NO APLICAT ARA PER ARA!)
+\end{itemize}
 
-R package creation\ldots{}
+PENDENT A AMPLIAR:
 
-Sistema que hem aplicat per crear el pipeline amb Targets\ldots{}
+\begin{itemize}
+\tightlist
+\item
+  Introduccio al paquet Targets en general i de les seves caracteristiques\ldots{}
+\end{itemize}
+
+The R `targets' package is a powerful tool for building and managing data science and data analysis pipelines. It is primarily designed for workflow automation, dependency management, and parallel processing in R projects. This package is useful for the following purposes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Define and Manage Workflows: You can create a directed acyclic graph (DAG) that represents the workflow of your data analysis or machine learning project. Each node in the graph corresponds to a target, which can be a data file, an R script, or any other computational task.
+\item
+  Manage Dependencies: `targets' allows you to specify dependencies between targets, ensuring that tasks are executed in the correct order. If a target depends on another target, it won't be executed until its dependencies are up-to-date.
+\item
+  Parallel Processing: One of the strengths of `targets' is its ability to parallelize tasks. It can automatically determine which targets can be executed concurrently, improving the efficiency of your workflows, especially when working with large datasets or computationally intensive tasks.
+\item
+  Incremental Builds: When you make changes to your code or data, `targets' can identify the minimal set of targets that need to be recomputed, saving time and computational resources. This is particularly useful for iterative development and experimentation.
+\item
+  Reports and Logging: `targets' provides tools for generating reports and logging the progress of your workflow, making it easier to track and document your work.
+\item
+  Integration: It can be seamlessly integrated with other R packages and tools, such as `drake' for more advanced data workflow management.
+\end{enumerate}
+
+So, the `targets' package is especially valuable for projects where data processing is a significant component, and you need a structured way to manage the various steps of your analysis or modeling pipeline. It helps ensure that your analyses are reproducible, efficient, and well-documented.
+
+\begin{itemize}
+\tightlist
+\item
+  Sistema que hem aplicat per crear el pipeline amb Targets\ldots{}
+\end{itemize}
 
 \begin{figure}
 
@@ -732,6 +839,16 @@ Targets workflow diagram (Figure \ref{fig:fig3-7}) showing the steps correspondi
 \minitoc 
 
 Text de presentacio dels resultats\ldots{}
+
+Fer que 4.1 sigui l'actual 4.2 (tota la info d'aplicar el mètode)
+
+ESTRUCTURA DELS RESULTATS:
+
+4.1 Resultats del nou mètode
+
+4.2 Resultats d'implementació en paquet R amb targets
+
+4.3 Exemples i aplicacions
 
 \hypertarget{results-from-the-analysis-of-human-brain-tissue-samples}{%
 \section{Results from the analysis of human brain tissue samples}\label{results-from-the-analysis-of-human-brain-tissue-samples}}
