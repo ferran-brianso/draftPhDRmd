@@ -29,12 +29,12 @@ university-logo: templates/logo_UBblanc.png
 university-logo-width: 8cm
 submitted-text: A thesis submitted for the degree of
 degree: Doctor of Philosophy
-degreedate: XXXX XX 2023
+degreedate: XXXX XX 2024
 dedication: For XXXXX XXXXXX
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
 show-acknowledgements-in-toc: false
-abstract-heading: "Abstract"
+abstract-heading: "Abstract (WIP)"
 abstract: |
   `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = "\n  ")`
 show-abstract-in-toc: false

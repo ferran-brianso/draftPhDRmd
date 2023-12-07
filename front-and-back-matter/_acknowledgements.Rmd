@@ -1,7 +1,7 @@
 ... ... ... ...
 
 \begin{flushright}
-Ferran Brianso \\
+Ferran Brians\'o \\
 Mataro, BCN \\
-XX XXXXXX 2023
+XX XXXXXX 2024
 \end{flushright}
