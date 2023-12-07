@@ -11,7 +11,8 @@ documentclass: book
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:darwin-quote)'}
 There is grandeur in this view of life, with its several powers, having been originally breathed into a few forms or into one; and that, whilst this planet has gone cycling on according to the fixed law of gravity, from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved.
 ```
-(ref:darwin-quote) --- Charles Darwin [@Darwin1859]
+(ref:darwin-quote) --- Darwin's *On the Origin of Species* (1859).
+
 <!-- note that the quote author won't show up when you knit just a single chapter -->
   
 # Conclusions {#conclusions}

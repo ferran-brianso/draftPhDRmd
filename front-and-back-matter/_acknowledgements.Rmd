@@ -2,6 +2,6 @@
 
 \begin{flushright}
 Ferran Brians\'o \\
-Mataro, BCN \\
+Matar\'o, BCN \\
 XX XXXXXX 2024
 \end{flushright}
