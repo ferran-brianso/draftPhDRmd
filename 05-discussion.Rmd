@@ -13,14 +13,19 @@ documentclass: book
 \chaptermark{Discussion}
 \minitoc <!-- this will include a mini table of contents-->
 
-Potser no cal posar la TOC aqui¿?
-
+Potser no cal posar la TOC aqui?
 
 Resum de l'article. Apuntant a les conclusions. Comentant problemes i limitacions (emprar combinacions lineals de variables per crear-ne de noves).
 
-Possibles extensions [punts de millora] Comentar i descriure cadascun d'ells:
+Principals problemes i limitacions de la nostra proposta:
+* Pendent d'apuntar...
+* ...
 
-* Poder fer servir 3 o més conjunts de dades
+Possibles extensions i punts de millora. Comentar i descriure cadascun d'ells:
+
+* Poder fer servir 3 o més conjunts de dades òmiques
+* que l'anotacio basica pugui ser tb a KEGG i no sols a GO
+* opció d'afegir les anotacions com a individus suplementaris enlloc de variables
 * Poder ponderar els pesos de les anotacions, segons tipus, data set d'origen, etc.
 * Permetre treballar amb dades faltants o, fins i tot, blocs de dades faltants.
 * Millorar les opcions del paquet: mètodes d'anotació bio, mètodes d'integració, tipus de gràfics resultants...

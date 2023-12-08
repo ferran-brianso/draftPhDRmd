@@ -55,7 +55,7 @@ bibliography: [bibliography/references.bib, bibliography/additional-references.b
 # candidate number and word count
 masters-submission: false
 candidate-number: 123456
-word-count: "10,052"
+word-count: "pending"
 
 # if you want to use a different title page altogether, provide a path to a 
 # .tex file here and it will override the default Oxford one
