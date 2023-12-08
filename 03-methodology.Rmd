@@ -36,7 +36,7 @@ iii) You can't use markdown syntax inside chunk options, so if you want to e.g. 
 
 ## Working phases {#work-phases}
 Working phases, with the corresponding steps, followed in order to achieve the above objectives:
-
+SHA DE SEPARAR ENTRE AQUI I ELS RESULTATS
 
 1. Application of integrative multi-omics methods to (I) the analysis of specific data sets provided by research units from our former affiliation center, VHIR, and other research institutions that we collaborate with [@rodriguez-hernandez_cinacalcet_2016], [@rodriguez-fernandez_phosphatidylserine-liposomes_2018], [@simats_mouse_2020] and (II) to the integrative analysis of larger data sets from public data bases, such as Breast Cancer samples from the TCGA project [TCGA Research Network: http://cancergenome.nih.gov/], [TCGA-BRCA Project: https://portal.gdc.cancer.gov/projects/TCGA-BRCA].
 
