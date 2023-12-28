@@ -1,5 +1,8 @@
 ... ... ... ...
 
+
+Thanks to Ulrik Lyngs for providing the Oxford University Markdown template that I used for writing this thesis [@lyngsOxforddown2019]
+
 \begin{flushright}
 Ferran Brians\'o \\
 Matar\'o, BCN \\
