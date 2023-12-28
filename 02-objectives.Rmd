@@ -13,25 +13,14 @@ bibliography: [bibliography/references.bib, bibliography/additional-references.b
 
 # Objectives {#objectives}
 \chaptermark{Objectives}
-<!-- \minitoc <!-- this will include a mini table of contents-->
+\minitoc <!-- this will include a mini table of contents-->
 
-<!-- LaTeX normally does not indent the first line after a heading - however, it does so after the mini table of contents. You can manually tell it not to with \noindent -->
-\noindent The main objectives of this work are the following:
-
-1. To make an empirical comparison of some of the currently available dimension reduction techniques applied for the integration of omics data, focused on their ability to include biological annotations,
-
-2. To develop methods and workflows able to apply these techniques, focusing on the matching of distinct omics datasets relying on biological knowledge,
-
-3. To apply these methods to specific translational biomedical research cases, such as an integrative analysis of transcriptomics and proteomics data to study ischemic stroke, as well as to public datasets, which can be easily shared and are not as restricted by sample sizes as other projects.
-
-4. To implement the knowledge acquired with this work into the appropriate bioinformatics tools, e.g. R packages or web-based tools, that will be used in future biomedical research projects for providing a better interpretation of this kind of studies.
-
-\begin{small}All these objectives are in agreement with the tasks defined within a project partially supported by Grant MTM2015-64465-C2-1-R (MINECO/FEDER) from the Ministerio de Economía y Competitividad (Spain), to which the PhD Thesis proposed here is related.\end{small}
-
+<!-- LaTeX normally does not indent the first line after a heading - however, it does so after the mini table of contents. You can manually tell it not to with \noindent 
+\noindent The main objectives of this work are the following:-->
 
 ## Working phases (modificar titols)
 
-Working phases, with the corresponding steps, followed in order to achieve the above objectives:
+The motivation for this thesis stems from my work and research experience at Vall d'Hebron Research Institute in Barcelona, where, with the aim of providing a useful tool for the interpretation of omics data in the field of biomedical research, the following phases of work were proposed:
 
 1. Application of integrative multi-omics methods to (I) the analysis of specific data sets provided by research units from our former affiliation center, VHIR, and other research institutions that we collaborate with [@rodriguez-hernandez_cinacalcet_2016], [@rodriguez-fernandez_phosphatidyl_2018], [@simats_mouse_2020] and (II) to the integrative analysis of larger data sets from public data bases, such as Breast Cancer samples from the TCGA project [TCGA Research Network: http://cancergenome.nih.gov/], [TCGA-BRCA Project: https://portal.gdc.cancer.gov/projects/TCGA-BRCA].
 
@@ -39,8 +28,9 @@ Working phases, with the corresponding steps, followed in order to achieve the a
 
 3. Implementation of the methods developed for this study in the appropriate bioinformatics tools, such as an R package or a web-based application, to facilitate their use in the context of biomedical research projects.
 
-Here follows a brief description of these main five activities, the methods in which they are initially based, the objectives that they are related to, and the corresponding results:
+REVISAR i POTSER REESCRIURE AQUESTS PUNTS COM A UN SOL BLOC?
 
+Here is a brief description of the main activities that derived from the initially proposed phases, the methods on which they were based, the objectives with which they were related, as well as some of their results, which will be discussed in more detail in subsequent chapters.
 
 1. Application of some state-of-the-art methods for integrative multi-omics data analysis to the study of human brain tissue samples, collected by the Neurovascular Diseases Laboratory at Vall d’Hebron Research Institute. This part is already finished, and led to publications in 2018 and 2021 [@simats_mouse_2020], [@ramiro_integrative_2021]. Researchers obtained different omics data from necropsies, which had been processed to obtain mRNA, microRNA and protein expression values. Each dataset had been first analyzed independently using standard bioinformatics protocols [R Development Core Team. 2008]. These analyses allowed selecting subsets of relevant features, for each type of data, to be used in the integrative analysis. Among all available options, we decided to use two distinct and complementary approaches: (I) Multiple Co-inertia Analysis implemented in Bioconductor packages made4 [@culhane_made4_2005] and mogsa [@singh_diablo_2016], and (II) Regularized Canonical Correlation Analysis with Sparse Partial Least Squares regression (sPLS), provided by mixomics R package [@rohart_mixomics_2017]. This work had been presented at some meetings [@brianso_ibc_2016], [@brianso_eccb_2016], [@garcia-berrocoso_scb_2016], [@garcia-berrocoso_scbf_2017] and in an already published extended abstract’s series book [@brianso_integrative_2017]. This step had been obviously useful for the achievement of the objective number 3 explained in the previous section, which aims on the study of the regulome’s response to ischemic stroke, but also useful for detecting the advantages and drawbacks of the methods applied, thus setting the basis for the work regarding to objective number 2.
 
@@ -52,6 +42,20 @@ Here follows a brief description of these main five activities, the methods in w
 
 5. Implementation of the methods resulting from 4) as a new R package to be submitted to Bioconductor repository [@huber_orchestrating_2015], and, finally, to complete objective 4 of this thesis plan, as a web application [@shiny_2021] to be used in further steps of the current biomedical research projects in which our collaborators are implied, as well as in future studies.
 
+
+## Main objectives of this work
+
+In light of the challenges presented in the previous point, the main objectives of this thesis were established as follows:
+
+1. To make an empirical comparison of some of the currently available dimension reduction techniques applied for the integration of omics data, focused on their ability to include biological annotations,
+
+2. To develop methods and workflows able to apply these techniques, focusing on the matching of distinct omics datasets relying on biological knowledge,
+
+3. To apply these methods to specific translational biomedical research cases, such as an integrative analysis of transcriptomics and proteomics data to study ischemic stroke, as well as to public datasets, which can be easily shared and are not as restricted by sample sizes as other projects.
+
+4. To implement the knowledge acquired with this work into the appropriate bioinformatics tools, e.g. R packages or web-based tools, that will be used in future biomedical research projects for providing a better interpretation of this kind of studies.
+
+\begin{small}All these objectives are in agreement with the tasks defined within a project partially supported by Grant MTM2015-64465-C2-1-R (MINECO/FEDER) from the Ministerio de Economía y Competitividad (Spain), to which the PhD Thesis proposed here is related.\end{small}
 
 
 

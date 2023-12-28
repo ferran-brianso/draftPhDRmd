@@ -43,10 +43,11 @@ Before initiating the integrative analysis, a meticulous evaluation of data qual
 
 
 \bigskip
-FALTA DETALLAR AQUI COM SHAN VALIDAT ELS DATASETS DE TCGA (ELS DE STROKE ANIRAN A BANDA)
+FALTA DETALLAR AQUI COM SHAN VALIDAT ELS DATASETS DE TCGA (ELS DE STROKE ANIRAN A BANDA, pero fer-hi mencio breu).
+
 Explicar aquí els requeriments de format dels data sets d'entrada
 
-Mostrar Figure \@ref(fig:fig3-10) i Figure \@ref(fig:fig3-9) PERO AQUESTES MILLOR COM A TAULES INTEGRADES a markdown
+Mostrar Figure \@ref(fig:fig3-10) i Figure \@ref(fig:fig3-9) PERO POTSER MILLOR COM A TAULES INTEGRADES AMB MARKDOWN?
 
 
 ```{r fig3-10, fig.align='center', fig.scap="Example of gene and protein data loaded in R", fig.cap="Example of gene expression and protein quantification data as loaded in R", out.width="95%", echo=FALSE}

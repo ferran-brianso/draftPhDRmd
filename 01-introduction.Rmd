@@ -23,7 +23,7 @@ documentclass: book
  and the running header will show the previous chapter -->
 
 
-## Content of the introductory text (wip)
+## Content of the introductory text
 
 The general concept of Data Integration can be defined as the combination of data from different sources to provide users with a unified view of the data [@lenzerini_data_2002]. However, the practical meaning of the term Integration may vary from, for instance, the computational combination of data to the combination of studies performed independently, the simultaneous analysis of multiple variables on multiple datasets, or any possible approach for homogeneously querying heterogeneous data sources. Therefore, in many cases, integrative analysis may be preferable to a simple combination of data from distinct sources. Integrative analysis allows not only the combination of heterogeneous data but also the combined use of these data to obtain the most relevant information and, what is better, to be able to extract some information that could not be unveiled by the separate analysis of each of the original data types.
 
@@ -38,10 +38,10 @@ This problem has been known since the introduction of multivariate methods with 
 Altogether, the previous approaches show several things: Although the idea that integrating quantitative data with biological knowledge may increase interpretability, the number of successful attempts to do this is still small. In this thesis, the use of either classical GO Terms or more flexible annotations (Gene Sets or custom annotations) will be combined with different approaches, and combinations of them, if needed, to guide integrative analysis and improve its biological interpretability from the point of view of biomedical researchers.
 
 
-## Background/State of the Art (wip)
-Falta desenvolupar punts
+## Background/State of the Art
+FALTA DESENVOLUPAR PUNTS
 
-### Omics data analyses (wip)
+### Omics data analyses
 
 Omics data encompasses comprehensive information about a biological system, encompassing its entirety. The term "omics" originates from the Greek word "oma," meaning "a collection" or "a mass." Omics data is generated through high-throughput analysis technologies that enable the measurement of gene expression, protein composition, DNA structure, metabolism, and more.
 
@@ -55,7 +55,7 @@ Among the primary omics data types one can highlight the following:
 
 Omics data integration stands as a complex endeavor requiring advanced statistical and computational methods. It is employed for a range of biomedical applications, such as identifying novel genes and proteins linked to diseases, developing new drugs, and enhancing diagnostic accuracy.
 
-3 problemes esencials (veure projecte recerca Alex):
+3 PROBLEMES ESENCIALS (veure projecte recerca Alex):
 
  * **Omics data may be partly incomplete**, especially in multiomics studies, where not all types of data are usually available for all individuals.
 
@@ -63,7 +63,7 @@ Omics data integration stands as a complex endeavor requiring advanced statistic
 
 * **These kind of data analytics are difficult to standardize**, as it is not easy to make complex pipelines of multi-omics analyses, which integrate multiple processes with multiple sources, easy to reproduce or communicate.
 
-Més el problema de la p>>n (Dimensionallity Reduction Techniques; The p>>n situation)
+MES EL TEMA DE LA p>>n (Dimensionallity Reduction Techniques; The p>>n situation)
 
 ### The problem of having partly incomplete data
 
@@ -81,6 +81,7 @@ Having partly incomplete data is a common challenge in biomedical multi-omics da
 
 Addressing the issue of incomplete data in multi-omics analyses is crucial to avoid biased or misleading results. By utilizing appropriate imputation methods and understanding the missing data mechanisms, researchers can mitigate the impact of missing data and enhance the accuracy and reliability of their analyses.
 
+PENDENT REVISAR TOT
 
 ### Results interpretation in the context of integrative multi-omics data analyses
 
@@ -98,6 +99,8 @@ Interpretation of results in integrative multi-omics data analyses is a critical
 
 In summary, the problem of result interpretation in integrative multi-omics data analyses stems from the challenges of data integration, high dimensionality, contextual understanding, validation, and visual exploration. Addressing these challenges requires a combination of statistical methods, biological knowledge, and interactive tools to extract meaningful insights from the integrated data.
 
+PENDENT REVISAR REFS ANTERIORS
+
 ### Approaches for the biological and clinical interpretation
 
 The biological and clinical interpretation of multi-omics data analysis results is crucial for gaining insights into the underlying molecular mechanisms, identifying biomarkers, and understanding disease processes.
@@ -114,6 +117,9 @@ The biological and clinical interpretation of multi-omics data analysis results 
 
 These methods, among others, contribute to the biological and clinical interpretation of multi-omics data analysis results, providing insights into disease mechanisms, biomarker discovery, and potential therapeutic targets.
 
+PENDENT REVISAR REFS ANTERIORS
+
+
 ### Data processing and standarization
 
 Data processing and standardization are critical steps in biomedical multi-omics data analyses to ensure data quality, comparability, and compatibility across different omics layers and studies. In this context, I will explain the problem of data processing and standardization and provide relevant bibliographic references.
@@ -129,6 +135,9 @@ Data processing and standardization are critical steps in biomedical multi-omics
 **Quality Control**: Implementing quality control measures is essential to identify and remove low-quality or unreliable data points. Quality control procedures can include outlier detection, sample exclusion criteria, and identifying technical artifacts or batch effects. Reference: Leek, J. T., et al. (2010). Tackling the widespread and critical impact of batch effects in high-throughput data. Nature Reviews Genetics, 11(10), 733-739.
 
 Effective data processing and standardization in multi-omics analyses are crucial for accurate and meaningful interpretations. These steps ensure data quality, comparability, and compatibility, enabling integrative analyses and cross-study comparisons.
+
+PENDENT REVISAR REFS ANTERIORS
+
 
 ### Tools for the development of bioinformatics pipelines in biomedical multi-omics data integration
 
