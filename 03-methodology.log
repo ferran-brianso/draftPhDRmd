@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  28 DEC 2023 12:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.16)  28 DEC 2023 13:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1347,24 +1347,25 @@ pt>
 File: figures/chapter3/3-10_input_data_R_example.png Graphic file (type png)
 <use figures/chapter3/3-10_input_data_R_example.png>
 Package pdftex.def Info: figures/chapter3/3-10_input_data_R_example.png  used o
-n input line 311.
+n input line 315.
 (pdftex.def)             Requested size: 400.04414pt x 409.07207pt.
 <figures/chapter3/3-9_protein_data_example.png, id=42, 566.86781pt x 655.69969p
 t>
 File: figures/chapter3/3-9_protein_data_example.png Graphic file (type png)
 <use figures/chapter3/3-9_protein_data_example.png>
 Package pdftex.def Info: figures/chapter3/3-9_protein_data_example.png  used on
- input line 320.
+ input line 324.
 (pdftex.def)             Requested size: 400.04414pt x 462.7486pt.
-[2] [3 <./figures/chapter3/3-10_input_data_R_example.png>] [4 <./figures/chapte
-r3/3-9_protein_data_example.png>]
-Overfull \hbox (32.6799pt too wide) in paragraph at lines 330--330
-\T1/lmr/bx/n/17.28 (-20) Knowl-edge: Gen-er-at-ing the ``Ex-panded Datasets''| 
 
+Overfull \hbox (6.72592pt too wide) in paragraph at lines 331--332
+[]\T1/lmr/m/n/12 (-20) COMENTAR TAMBE RE-QUER-I-MENTS DE FOR-MAT (head-ers, val
+ue types...) 
  []
 
+[2] [3 <./figures/chapter3/3-10_input_data_R_example.png>] [4 <./figures/chapte
+r3/3-9_protein_data_example.png>]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-36.
+44.
 (c:/texlive/2022/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [5
@@ -1374,86 +1375,87 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: figures/chapter3/3-8_gene_list.png Graphic file (type png)
 <use figures/chapter3/3-8_gene_list.png>
 Package pdftex.def Info: figures/chapter3/3-8_gene_list.png  used on input line
- 372.
+ 393.
 (pdftex.def)             Requested size: 400.04414pt x 110.82011pt.
 <figures/chapter3/3-11_basicGO_example.png, id=75, 634.62094pt x 549.55313pt>
 File: figures/chapter3/3-11_basicGO_example.png Graphic file (type png)
 <use figures/chapter3/3-11_basicGO_example.png>
 Package pdftex.def Info: figures/chapter3/3-11_basicGO_example.png  used on inp
-ut line 387.
+ut line 408.
 (pdftex.def)             Requested size: 400.04414pt x 346.42995pt.
-<figures/chapter3/3-12_clusterprofiler_results.png, id=77, 717.43031pt x 432.11
+[7
+
+ <./figures/chapter3/3-8_gene_list.png>]
+<figures/chapter3/3-12_clusterprofiler_results.png, id=90, 717.43031pt x 432.11
 438pt>
 File: figures/chapter3/3-12_clusterprofiler_results.png Graphic file (type png)
 
 <use figures/chapter3/3-12_clusterprofiler_results.png>
 Package pdftex.def Info: figures/chapter3/3-12_clusterprofiler_results.png  use
-d on input line 398.
+d on input line 419.
 (pdftex.def)             Requested size: 400.04414pt x 240.9538pt.
-[7
-
- <./figures/chapter3/3-8_gene_list.png>] [8 <./figures/chapter3/3-11_basicGO_ex
-ample.png>] [9 <./figures/chapter3/3-12_clusterprofiler_results.png>]
-<figures/chapter3/3-1_addition_of_GO_terms.png, id=102, 956.82469pt x 517.935pt
+[8 <./figures/chapter3/3-11_basicGO_example.png>] [9 <./figures/chapter3/3-12_c
+lusterprofiler_results.png>]
+<figures/chapter3/3-1_addition_of_GO_terms.png, id=104, 956.82469pt x 517.935pt
 >
 File: figures/chapter3/3-1_addition_of_GO_terms.png Graphic file (type png)
 <use figures/chapter3/3-1_addition_of_GO_terms.png>
 Package pdftex.def Info: figures/chapter3/3-1_addition_of_GO_terms.png  used on
- input line 409.
+ input line 430.
 (pdftex.def)             Requested size: 400.04414pt x 216.54332pt.
 [10
 
  <./figures/chapter3/3-1_addition_of_GO_terms.png>]
-<figures/chapter3/3-2_addition_of_new_feats.png, id=108, 657.2053pt x 378.66469
+<figures/chapter3/3-2_addition_of_new_feats.png, id=110, 657.2053pt x 378.66469
 pt>
 File: figures/chapter3/3-2_addition_of_new_feats.png Graphic file (type png)
 <use figures/chapter3/3-2_addition_of_new_feats.png>
 Package pdftex.def Info: figures/chapter3/3-2_addition_of_new_feats.png  used o
-n input line 437.
+n input line 458.
 (pdftex.def)             Requested size: 400.04414pt x 230.49977pt.
-<figures/chapter3/3-3_gene_enrichment_diagram.png, id=109, 801.74532pt x 318.43
+<figures/chapter3/3-3_gene_enrichment_diagram.png, id=111, 801.74532pt x 318.43
 968pt>
 File: figures/chapter3/3-3_gene_enrichment_diagram.png Graphic file (type png)
 <use figures/chapter3/3-3_gene_enrichment_diagram.png>
 Package pdftex.def Info: figures/chapter3/3-3_gene_enrichment_diagram.png  used
- on input line 446.
+ on input line 467.
 (pdftex.def)             Requested size: 400.04414pt x 158.89389pt.
-<figures/chapter3/3-4_matrix_expansion_diagram.png, id=110, 386.94562pt x 334.2
+<figures/chapter3/3-4_matrix_expansion_diagram.png, id=112, 386.94562pt x 334.2
 4875pt>
 File: figures/chapter3/3-4_matrix_expansion_diagram.png Graphic file (type png)
 
 <use figures/chapter3/3-4_matrix_expansion_diagram.png>
 Package pdftex.def Info: figures/chapter3/3-4_matrix_expansion_diagram.png  use
-d on input line 455.
+d on input line 476.
 (pdftex.def)             Requested size: 400.04414pt x 345.5653pt.
 [11
 
  <./figures/chapter3/3-2_addition_of_new_feats.png> <./figures/chapter3/3-3_gen
 e_enrichment_diagram.png>]
-<figures/chapter3/3-5_addition_of_new_feats_2.png, id=123, 299.61937pt x 388.45
+<figures/chapter3/3-5_addition_of_new_feats_2.png, id=125, 299.61937pt x 388.45
 125pt>
 File: figures/chapter3/3-5_addition_of_new_feats_2.png Graphic file (type png)
 <use figures/chapter3/3-5_addition_of_new_feats_2.png>
 Package pdftex.def Info: figures/chapter3/3-5_addition_of_new_feats_2.png  used
- on input line 466.
+ on input line 487.
 (pdftex.def)             Requested size: 400.04414pt x 518.69043pt.
-<figures/chapter3/3-6_matrix_expansion_diagram_2.png, id=124, 821.31844pt x 372
+<figures/chapter3/3-6_matrix_expansion_diagram_2.png, id=126, 821.31844pt x 372
 .64218pt>
 File: figures/chapter3/3-6_matrix_expansion_diagram_2.png Graphic file (type pn
 g)
 <use figures/chapter3/3-6_matrix_expansion_diagram_2.png>
 Package pdftex.def Info: figures/chapter3/3-6_matrix_expansion_diagram_2.png  u
-sed on input line 475.
+sed on input line 496.
 (pdftex.def)             Requested size: 400.04414pt x 181.50453pt.
 [12 <./figures/chapter3/3-4_matrix_expansion_diagram.png>] [13 <./figures/chapt
 er3/3-5_addition_of_new_feats_2.png>] [14 <./figures/chapter3/3-6_matrix_expans
 ion_diagram_2.png>] [15] [16]
-<figures/chapter3/3-7_workflow_overview.png, id=159, 816.04875pt x 359.84438pt>
+<figures/chapter3/3-7_workflow_overview.png, id=161, 816.04875pt x 359.84438pt>
 
 File: figures/chapter3/3-7_workflow_overview.png Graphic file (type png)
 <use figures/chapter3/3-7_workflow_overview.png>
 Package pdftex.def Info: figures/chapter3/3-7_workflow_overview.png  used on in
-put line 561.
+put line 582.
 (pdftex.def)             Requested size: 400.04414pt x 176.40215pt.
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
@@ -1462,14 +1464,14 @@ Package minitoc Info: I0009
 
 [17 <./figures/chapter3/3-7_workflow_overview.png>] (./03-methodology.aux)
 Package rerunfilecheck Info: File `03-methodology.out' has not changed.
-(rerunfilecheck)             Checksum: 1C1232CB489D39F238EB8870DFC90BEB;1574.
+(rerunfilecheck)             Checksum: 197AFE7C6E2F9012C3F4E086A75DAD68;1372.
  ) 
 Here is how much of TeX's memory you used:
- 24829 strings out of 476024
- 420120 string characters out of 5794016
+ 24824 strings out of 476024
+ 420074 string characters out of 5794016
  1861382 words of memory out of 5000000
- 44506 multiletter control sequences out of 15000+600000
- 563928 words of font info for 110 fonts, out of 8000000 for 9000
+ 44507 multiletter control sequences out of 15000+600000
+ 563569 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,77p,1359b,712s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{c:/texlive/2022/te
@@ -1481,10 +1483,10 @@ public/lm/lmr12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr17.pfb
 ><c:/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/texlive/2022/
 texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2022/texmf-dist/fonts/t
 ype1/adobe/utopia/putb8a.pfb>
-Output written on 03-methodology.pdf (17 pages, 1310359 bytes).
+Output written on 03-methodology.pdf (17 pages, 1311303 bytes).
 PDF statistics:
- 222 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
- 54 named destinations out of 1000 (max. 500000)
+ 225 PDF objects out of 1000 (max. 8388607)
+ 163 compressed objects within 2 object streams
+ 56 named destinations out of 1000 (max. 500000)
  25701 words of extra memory for PDF output out of 29859 (max. 10000000)
 

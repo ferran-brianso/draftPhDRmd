@@ -658,13 +658,19 @@ Mu\ss\enspace auf das beste Werkzeug halten
 In the context of multi-omics data integration, our proposal relies on the idea that incorporating biological annotations into datasets before integrative analysis enriches outcomes and enhances their biological interpretability. Therefore, augmenting quantitative omics data with contextual biological knowledge will deepen our understanding of complex biological phenomena. To do so, we begin with meticulous data quality assessment and standardization, laying the foundation for reliable analyses. We then infuse biological knowledge using standard biological annotations, creating ``Expanded Datasets'' that provide context for comprehensive analysis. Advanced dimension-reduction techniques can be applied to illuminate hidden patterns and relationships between data sources or blocks, and the semi-automation capabilities of the Targets R package allow us to build an easy-to-use implementation of the process.
 
 \hypertarget{qa}{%
-\section{Data Quality Assessment and Format Review}\label{qa}}
+\section{Data Format Review and Quality Assessment}\label{qa}}
 
 Before initiating the integrative analysis, a meticulous evaluation of data quality and format compatibility was conducted to ensure the reliability of the input datasets. This crucial step aimed to identify and rectify discrepancies, inconsistencies, or errors that could potentially impact subsequent analyses. During this process, datasets spanning various omics technologies, including transcriptomics and proteomics, are selectively acquired from reputable sources and repositories. Emphasis was placed on meticulous source selection to guarantee consistency and adherence to standardized formats. Subsequently, the raw omics data underwent a comprehensive preprocessing phase, addressing issues such as missing values, outliers, and normalization. This preprocessing step was indispensable for enhancing data quality and enabling comparability across diverse datasets. Additionally, a thorough review of data formats encompassing file types, column naming conventions, and units of measurement was conducted. Non-standardized data were systematically transformed into a uniform format to streamline the downstream integration processes. Through these procedures, a robust foundation was established for subsequent integrative omics analysis, ensuring coherence and validity of the synthesized biomedical insights.
 
+\bigskip
+
 FALTA DETALLAR AQUI COM SHAN VALIDAT ELS DATASETS DE TCGA (ELS DE STROKE ANIRAN A BANDA, pero fer-hi mencio breu).
 
-Explicar aquí els requeriments de format dels data sets d'entrada
+Explicar aquí els requeriments de format dels data sets d'entrada.
+
+Files vs Columnes.
+
+Coincidencia de SAMPLES pero diferencia de FEATURES
 
 Mostrar Figure \ref{fig:fig3-10} i Figure \ref{fig:fig3-9} PERO POTSER MILLOR COM A TAULES INTEGRADES AMB MARKDOWN?
 
@@ -674,7 +680,7 @@ Mostrar Figure \ref{fig:fig3-10} i Figure \ref{fig:fig3-9} PERO POTSER MILLOR CO
 
 }
 
-\caption[Example of gene and protein data loaded in R]{Example of gene expression and protein quantification data as loaded in R}\label{fig:fig3-10}
+\caption[Example of gene and protein data loaded in R]{Example of gene expression and protein quantification data, viewed as loaded arrays in R}\label{fig:fig3-10}
 \end{figure}
 
 \begin{figure}
@@ -683,36 +689,53 @@ Mostrar Figure \ref{fig:fig3-10} i Figure \ref{fig:fig3-9} PERO POTSER MILLOR CO
 
 }
 
-\caption{Example of proteomics input data}\label{fig:fig3-9}
+\caption[Example of proteomics input data]{Example of proteomics input data, viewed as a table in RStudio}\label{fig:fig3-9}
 \end{figure}
+
+COMENTAR TAMBE REQUERIMENTS DE FORMAT (headers, value types\ldots)
+
+EXPLICAR QUALITY CHECKS APLICATS (grafiques per deteccio d'outliers, data centering\ldots)
 
 \clearpage
 
 \hypertarget{preprocess}{%
-\section{Preprocessing for Integration of Biological Knowledge: Generating the ``Expanded Datasets''}\label{preprocess}}
+\section{Preprocessing for Integration of Biological Knowledge}\label{preprocess}}
 
 The integration of biological knowledge into omics datasets can be achieved through a preprocessing step aimed at expanding the original data matrices with annotations accessed from specialized R libraries, which provided direct access to curated biological databases such as Gene Ontology (GO(\protect\hyperlink{ref-ashburner_gene_2000}{Ashburner et al., 2000})) and biochemical pathways information (e.g., KEGG(\protect\hyperlink{ref-kanehisa_kegg_2000}{Kanehisa \& Goto, 2000})). This process, that combines the annotation of the most significant biological entities with the quantification and integration of their annotation values to the data matrices, ends up with what we term ``Expanded Data Sets'', which include the original biological features (e.g., gene expression or protein quantification values) as well as new variables coming from the annotation of biological terms. The following steps explain this preprocessing procedure in more detail:
 
 \begin{itemize}
 \item
-  Selected biological annotations: Specialized R libraries, dedicated to biological knowledge integration, are employed to access and retrieve up-to-date annotations from databases such as GO and KEGG.
+  Selection of biological knowledge sources to feed annotations. Starting from the most commonly used biological knowledge databases in tasks of omics data analysis and interpretation, the goal is to access those that are most complete and applicable to the different types of data that must be annotated. GO and KEGG are excellent choices for that purpose.
 \item
-  Data-Annotation Mapping: Each omics dataset are mapped to the retrieved biological annotations based on identifiers (e.g., gene or protein names) using the capabilities of the R libraries. This step facilitates the linking of omics data to biological knowledge.
+  Selection of R packages specialized in the integration of biological information. The choice of the appropriate packages for the integration of biological information will depend on the specific needs of the project. In general, it is important to consider factors such as the type of data that will be integrated, the sources of the data, the integration methods that will be used and the desired level of complexity. In this case, it is appropriate to use R libraries that can work gene and protein identifiers reliably and completely, without adding too much complexity to the process.
 \item
-  Annotation Integration: The annotated information is integrated, implementing new R functions, into the starting omics datasets, resulting in expanded data matrices that combined the original quantitative omics measurements with new quantified features associated with the given biological annotations.
+  Data-Annotation Mapping. Each omics dataset is mapped to the biological information collected based on its identifiers (for example, gene or protein names) using the capabilities of the selected R packages. This step facilitates the relationship of each of the elements of the omics data with the biological knowledge entities, creating certain temporary objects that collect the information of these links. So this step allows to relate the elements of omics data with biological knowledge entities, such as genes, proteins, metabolic pathways, etc. The mapping is performed using the identifiers of the elements of the omics data. For example, genes can be identified by their name, their symbol, or their Ensembl ID. Proteins can be identified by their name, their sequence, or their UniProt ID.
+\item
+  Annotation Integration. The most relevant annotation elements resulting from the previous step can be integrated into the matrix structure of the original omics dataset that has been used for its biological annotation, resulting in an expanded data matrix that combines the initial quantitative omics measurements with new values associated with the biological annotations obtained in the process. This step is implemented by executing new R functions specifically developed for this purpose. The resulting data matrices (which contain the integration of the most relevant biological annotations) are called `Expanded Matrices', and will be the basis for the subsequent application of integrative analysis methods of the different omics analyzed.
 \end{itemize}
 
 \hypertarget{biosources}{%
-\subsection{Selecció de les fonts d'anotacions biològiques}\label{biosources}}
+\subsection{Selection of the sources for biological annotation}\label{biosources}}
 
 PENDENT DE DETALLAR com escullo les fonts de les anotacions per defecte.
+
 Apuntar que es poden facilitar ja anotacions disponibles prèviament, sempre que compleixin amb el format que s'explica al següent apartat.
+
 Aquestes poden ser estàndard o bé personalitzades a mida de l'usuari (tot i que si es aixi hi ha certes funcionalitats posteriors que no es podran aprofitar).
 
 \clearpage
 
+\hypertarget{biopackages}{%
+\subsection{Selection of the annotation packages}\label{biopackages}}
+
+PAS QUE ES FA PRACTICAMENT AL MATEIX TEMPS QUE L'ANTERIOR
+
+Destacar criteris de fiabilitat i senzillesa
+
+Apuntar llista o referencia principal important
+
 \hypertarget{bioannotation}{%
-\subsection{Anotació de la info biològica}\label{bioannotation}}
+\subsection{Biological annotations mapping}\label{bioannotation}}
 
 COM VAM PLANTEJAR fer l'anotació biologica. Quines opcions i amb quins metodes estadístics/bioinformatics\ldots{}
 DUBTO SI LO QUE SEGUEIX NO ANIRIA A RESULTATS
