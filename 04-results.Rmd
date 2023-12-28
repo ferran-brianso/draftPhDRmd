@@ -19,12 +19,16 @@ Fer que 4.1 sigui l'actual 4.2 (tota la info d'aplicar el mètode)
 
 ESTRUCTURA DELS RESULTATS:
 
-4.1 Resultats del nou mètode
+4.1 Implementació dels algos i les funcions en R
 
-4.2 Resultats d'implementació en paquet R amb targets
+4.2 Pipeline d'anàlisi en amb el paquet 'targets'
 
 4.3 Exemples i aplicacions
-
+4.3.1 Results from the analysis of human brain tissue samples
+4.3.2 Results from the expansion of omics data with biological annotations
+4.3.3 Results from the analysis of 150 TCGA-BRCA samples
+4.3.4 Results from the application of MFA on TCGA-BRCA data with, and without, expanded data
+4.3.5 ...
 
 ## Results from the analysis of human brain tissue samples
 

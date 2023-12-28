@@ -393,13 +393,33 @@ This problem has been known since the introduction of multivariate methods with 
 
 Altogether, the previous approaches show several things: Although the idea that integrating quantitative data with biological knowledge may increase interpretability, the number of successful attempts to do this is still small. In this thesis, the use of either classical GO Terms or more flexible annotations (Gene Sets or custom annotations) will be combined with different approaches, and combinations of them, if needed, to guide integrative analysis and improve its biological interpretability from the point of view of biomedical researchers.
 
-\hypertarget{backgroundstate-of-the-art}{%
-\section{Background/State of the Art}\label{backgroundstate-of-the-art}}
+\hypertarget{backgroundstate-of-the-art-wip}{%
+\section{Background/State of the Art (wip)}\label{backgroundstate-of-the-art-wip}}
 
 Falta desenvolupar punts
 
-\hypertarget{omics-data-analyses}{%
-\subsection{Omics data analyses}\label{omics-data-analyses}}
+\hypertarget{omics-data-analyses-wip}{%
+\subsection{Omics data analyses (wip)}\label{omics-data-analyses-wip}}
+
+Omics data encompasses comprehensive information about a biological system, encompassing its entirety. The term ``omics'' originates from the Greek word ``oma,'' meaning ``a collection'' or ``a mass.'' Omics data is generated through high-throughput analysis technologies that enable the measurement of gene expression, protein composition, DNA structure, metabolism, and more.
+
+Among the primary omics data types one can highlight the following:
+
+\begin{itemize}
+\tightlist
+\item
+  Genomics: The study of the genome, which comprises the complete set of genes within an organism.
+\item
+  Transcriptomics: The investigation of gene expression, focusing on the amount of messenger RNA (mRNA) produced from each gene.
+\item
+  Proteomics: The examination of proteins, the molecules that carry out the majority of biological functions.
+\item
+  Metabolomics: The study of metabolism, the ensemble of chemical reactions occurring within an organism.
+\item
+  Epigenomics: The exploration of changes in gene expression that are not attributed to alterations in DNA sequence.
+\end{itemize}
+
+Omics data integration stands as a complex endeavor requiring advanced statistical and computational methods. It is employed for a range of biomedical applications, such as identifying novel genes and proteins linked to diseases, developing new drugs, and enhancing diagnostic accuracy.
 
 3 problemes esencials (veure projecte recerca Alex):
 
@@ -489,6 +509,8 @@ Effective data processing and standardization in multi-omics analyses are crucia
 \hypertarget{tools-for-the-development-of-bioinformatics-pipelines-in-biomedical-multi-omics-data-integration}{%
 \subsection{Tools for the development of bioinformatics pipelines in biomedical multi-omics data integration}\label{tools-for-the-development-of-bioinformatics-pipelines-in-biomedical-multi-omics-data-integration}}
 
+PENDENT DE PRIMERES NOTES
+
 \hypertarget{motivation-for-integrative-analysis}{%
 \subsection{Motivation for Integrative analysis}\label{motivation-for-integrative-analysis}}
 
@@ -524,15 +546,26 @@ In conclusion, the fable of the blind men and the elephant serves as an analogy 
 
 \textbf{Interpretability is a weak point of most multi omics approaches}
 
+La reducció ve més motivada per la necessitat de destacar els aspectes més rellevants i de que aquests siguin més fàcilment interpretables
+
 \textbf{Methods focus much more on feature selection discovery and interaction highlighting measurement than on clinical or biological interpretability.}
 
-\hypertarget{application-of-existing-approaches-for-multi-omics-data-integration}{%
-\subsection{Application of existing approaches for multi-omics data integration}\label{application-of-existing-approaches-for-multi-omics-data-integration}}
+\hypertarget{existing-approaches-for-multi-omics-data-integration}{%
+\subsection{Existing approaches for multi-omics data integration}\label{existing-approaches-for-multi-omics-data-integration}}
 
-MCIA, RGCCA, MFA\ldots{} Cavill, 2016; Culhane 2003\ldots{}
+Maneres de reduir dimensió amb finalitat integració òmiques
+
+MCIA, RGCCA, MFA\ldots{}
+\ldots{}(\protect\hyperlink{ref-culhane_cross-platform_2003}{Culhane et al., 2003})
+\ldots{}(\protect\hyperlink{ref-cavill_transcriptomic_2016}{Cavill et al., 2016})
+\ldots{}(\protect\hyperlink{ref-vahabi_unsupervised_2022}{Vahabi \& Michailidis, 2022})
+\ldots{}(\protect\hyperlink{ref-wekesa_review_2023}{Wekesa \& Kimwele, 2023})
+\ldots{}(\protect\hyperlink{ref-athieniti_guide_2023}{Athieniti \& Spyrou, 2023})
 
 \hypertarget{revisiuxf3-de-metodes-de-creacio-pipelines}{%
 \subsection{Revisió de metodes de creacio pipelines}\label{revisiuxf3-de-metodes-de-creacio-pipelines}}
+
+PENDENT INCLOURE PRIMERES NOTES
 
 \hypertarget{objectives}{%
 \chapter{Objectives}\label{objectives}}
@@ -555,6 +588,37 @@ MCIA, RGCCA, MFA\ldots{} Cavill, 2016; Culhane 2003\ldots{}
 
 \begin{small}All these objectives are in agreement with the tasks defined within a project partially supported by Grant MTM2015-64465-C2-1-R (MINECO/FEDER) from the Ministerio de Economía y Competitividad (Spain), to which the PhD Thesis proposed here is related.\end{small}
 
+\hypertarget{working-phases-modificar-titols}{%
+\section{Working phases (modificar titols)}\label{working-phases-modificar-titols}}
+
+Working phases, with the corresponding steps, followed in order to achieve the above objectives:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Application of integrative multi-omics methods to (I) the analysis of specific data sets provided by research units from our former affiliation center, VHIR, and other research institutions that we collaborate with (\protect\hyperlink{ref-rodriguez-hernandez_cinacalcet_2016}{Rodríguez-Hernández et al., 2016}), (\protect\hyperlink{ref-rodriguez-fernandez_phosphatidyl_2018}{Rodriguez-Fernandez et al., 2018}), (\protect\hyperlink{ref-simats_mouse_2020}{Simats et al., 2020}) and (II) to the integrative analysis of larger data sets from public data bases, such as Breast Cancer samples from the TCGA project {[}TCGA Research Network: \url{http://cancergenome.nih.gov/}{]}, {[}TCGA-BRCA Project: \url{https://portal.gdc.cancer.gov/projects/TCGA-BRCA}{]}.
+\item
+  Development of methods, either in terms of new algorithms or in terms of combinative workflows, which will be able to improve, and facilitate, the analysis and biological interpretation of those data sets to be integrated.
+\item
+  Implementation of the methods developed for this study in the appropriate bioinformatics tools, such as an R package or a web-based application, to facilitate their use in the context of biomedical research projects.
+\end{enumerate}
+
+Here follows a brief description of these main five activities, the methods in which they are initially based, the objectives that they are related to, and the corresponding results:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Application of some state-of-the-art methods for integrative multi-omics data analysis to the study of human brain tissue samples, collected by the Neurovascular Diseases Laboratory at Vall d'Hebron Research Institute. This part is already finished, and led to publications in 2018 and 2021 (\protect\hyperlink{ref-simats_mouse_2020}{Simats et al., 2020}), (\protect\hyperlink{ref-ramiro_integrative_2021}{Ramiro et al., 2021}). Researchers obtained different omics data from necropsies, which had been processed to obtain mRNA, microRNA and protein expression values. Each dataset had been first analyzed independently using standard bioinformatics protocols {[}R Development Core Team. 2008{]}. These analyses allowed selecting subsets of relevant features, for each type of data, to be used in the integrative analysis. Among all available options, we decided to use two distinct and complementary approaches: (I) Multiple Co-inertia Analysis implemented in Bioconductor packages made4 (\protect\hyperlink{ref-culhane_made4_2005}{Culhane et al., 2005}) and mogsa (\protect\hyperlink{ref-singh_diablo_2016}{Singh et al., 2016}), and (II) Regularized Canonical Correlation Analysis with Sparse Partial Least Squares regression (sPLS), provided by mixomics R package (\protect\hyperlink{ref-rohart_mixomics_2017}{Rohart et al., 2017}). This work had been presented at some meetings (\protect\hyperlink{ref-brianso_ibc_2016}{Briansó et al., 2016a}), (\protect\hyperlink{ref-brianso_eccb_2016}{Briansó et al., 2016b}), (\protect\hyperlink{ref-garcia-berrocoso_scb_2016}{García-Berrocoso et al., 2016}), (\protect\hyperlink{ref-garcia-berrocoso_scbf_2017}{García-Berrocoso et al., 2017}) and in an already published extended abstract's series book (\protect\hyperlink{ref-brianso_integrative_2017}{Briansó et al., 2017}). This step had been obviously useful for the achievement of the objective number 3 explained in the previous section, which aims on the study of the regulome's response to ischemic stroke, but also useful for detecting the advantages and drawbacks of the methods applied, thus setting the basis for the work regarding to objective number 2.
+\item
+  Reproduction of the same analyses steps performed in point 1) above with publicly available databases, such as distinct omics data from 150 samples from the TCGA-BRCA collection. This data set contains the expression or abundance of mRNA, miRNA and proteomics for 150 breast cancer samples previously prefiltered, as explained in Rohart et al. (\protect\hyperlink{ref-rohart_mixomics_2017}{Rohart et al., 2017}), and allows identifying a good multi-omics signature to discriminate between Basal, Her2 and Luminal A breast cancer subtypes. This work is already finished, and complies with objectives 3 and 2.
+\item
+  Use of all the data sets analyzed up to this point to make a comparison of results between the main implemented methods, and eventually some others, which is the aim of objective 1. This is based on quantitative and qualitative comparison and visualization methods, such as those explained by Thallinger (\protect\hyperlink{ref-pucher_comparison_2019}{Pucher et al., 2019}) and Martin (\protect\hyperlink{ref-martin_bisogenet_2010}{Martin et al., 2010}), going from simple Venn diagrams to more complex, network analysis, software such as some specific R packages (\protect\hyperlink{ref-r_core_team_2022}{R Core Team, 2022}) or Cytoscape (\protect\hyperlink{ref-cline_integration_2007}{Cline et al., 2007}). The focus here is to use graphical visualization elements to compare the results of the analyses with and without the addition of biological information.
+\item
+  Development of new methods and/or workflows in order to improve and/or combine the benefits from the selected approaches, with focus in those allowing the addition of biological significance to the integration process. Here follows an overview of the methods developed to expand the original datasets (X, Y) with annotations (Ax, Ay) to obtain new blocks of data (Nx, Ny,and Nxy). And the workflow has been implemented adapting the integrative pipelines applied so far to the R targets package (\protect\hyperlink{ref-landau_targets_2021}{Landau, 2021}), a pipeline toolkit that improves reproducibility, skipping unnecessary steps already up to date and showing tangible evidence that the results match the underlying code and data. The development of this targets workflow is intended to comply with the objective number 2 of this working plan.
+\item
+  Implementation of the methods resulting from 4) as a new R package to be submitted to Bioconductor repository (\protect\hyperlink{ref-huber_orchestrating_2015}{Huber et al., 2015}), and, finally, to complete objective 4 of this thesis plan, as a web application (\protect\hyperlink{ref-shiny_2021}{Chang et al., 2021}) to be used in further steps of the current biomedical research projects in which our collaborators are implied, as well as in future studies.
+\end{enumerate}
+
 \begin{savequote}
 Ein Mann, der recht zu wirken denkt,
 
@@ -573,44 +637,6 @@ Mu\ss\enspace auf das beste Werkzeug halten
 \chaptermark{Methodology}
 
 \minitoc 
-
-Working phases, with the corresponding steps, followed in order to achieve the above objectives:
-
-\bigskip
-
-SHA DE SEPARAR ENTRE AQUI I ELS RESULTATS
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Application of integrative multi-omics methods to (I) the analysis of specific data sets provided by research units from our former affiliation center, VHIR, and other research institutions that we collaborate with (\protect\hyperlink{ref-rodriguez-hernandez_cinacalcet_2016}{Rodríguez-Hernández et al., 2016}), (\protect\hyperlink{ref-rodriguez-fernandez_phosphatidyl_2018}{Rodriguez-Fernandez et al., 2018}), (\protect\hyperlink{ref-simats_mouse_2020}{Simats et al., 2020}) and (II) to the integrative analysis of larger data sets from public data bases, such as Breast Cancer samples from the TCGA project {[}TCGA Research Network: \url{http://cancergenome.nih.gov/}{]}, {[}TCGA-BRCA Project: \url{https://portal.gdc.cancer.gov/projects/TCGA-BRCA}{]}.
-\item
-  Development of methods, either in terms of new algorithms or in terms of combinative workflows, which will be able to improve, and facilitate, the analysis and biological interpretation of those data sets to be integrated.
-\item
-  Implementation of the methods developed for this study in the appropriate bioinformatics tools, such as an R package or a web-based application, to facilitate their use in the context of biomedical research projects.
-\end{enumerate}
-
-Here follows a brief description of these main five activities, the methods in which they are initially based, the objectives that they are related to, and the corresponding results:
-
-\bigskip
-
-SEPARAR TAMBE AIXO EN ELS METODES DE CADA FASE (CLINICA NEUROCIENCIES, METODOLOGICA INTEGRACIO, DESENVOLUPAMENT R\ldots)
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Application of some state-of-the-art methods for integrative multi-omics data analysis to the study of human brain tissue samples, collected by the Neurovascular Diseases Laboratory at Vall d'Hebron Research Institute. This part is already finished, and led to publications in 2018 and 2021 (\protect\hyperlink{ref-simats_mouse_2020}{Simats et al., 2020}), (\protect\hyperlink{ref-ramiro_integrative_2021}{Ramiro et al., 2021}). Researchers obtained different omics data from necropsies, which had been processed to obtain mRNA, microRNA and protein expression values. Each dataset had been first analyzed independently using standard bioinformatics protocols {[}R Development Core Team. 2008{]}. These analyses allowed selecting subsets of relevant features, for each type of data, to be used in the integrative analysis. Among all available options, we decided to use two distinct and complementary approaches: (I) Multiple Co-inertia Analysis implemented in Bioconductor packages made4 (\protect\hyperlink{ref-culhane_made4_2005}{Culhane et al., 2005}) and mogsa (\protect\hyperlink{ref-singh_diablo_2016}{Singh et al., 2016}), and (II) Regularized Canonical Correlation Analysis with Sparse Partial Least Squares regression (sPLS), provided by mixomics R package (\protect\hyperlink{ref-rohart_mixomics_2017}{Rohart et al., 2017}). This work had been presented at some meetings (\protect\hyperlink{ref-brianso_ibc_2016}{Briansó et al., 2016a}), (\protect\hyperlink{ref-brianso_eccb_2016}{Briansó et al., 2016b}), (\protect\hyperlink{ref-garcia-berrocoso_scb_2016}{García-Berrocoso et al., 2016}), (\protect\hyperlink{ref-garcia-berrocoso_scbf_2017}{García-Berrocoso et al., 2017}) and in an already published extended abstract's series book (\protect\hyperlink{ref-brianso_integrative_2017}{Briansó et al., 2017}). This step had been obviously useful for the achievement of the objective number 3 explained in the previous section, which aims on the study of the regulome's response to ischemic stroke, but also useful for detecting the advantages and drawbacks of the methods applied, thus setting the basis for the work regarding to objective number 2.
-\item
-  Reproduction of the same analyses steps performed in point 1) above with publicly available databases, such as distinct omics data from 150 samples from the TCGA-BRCA collection. This data set contains the expression or abundance of mRNA, miRNA and proteomics for 150 breast cancer samples previously prefiltered, as explained in Rohart et al. (\protect\hyperlink{ref-rohart_mixomics_2017}{Rohart et al., 2017}), and allows identifying a good multi-omics signature to discriminate between Basal, Her2 and Luminal A breast cancer subtypes. This work is already finished, and complies with objectives 3 and 2.
-\item
-  Use of all the data sets analyzed up to this point to make a comparison of results between the main implemented methods, and eventually some others, which is the aim of objective 1. This is based on quantitative and qualitative comparison and visualization methods, such as those explained by Thallinger (\protect\hyperlink{ref-pucher_comparison_2019}{Pucher et al., 2019}) and Martin (\protect\hyperlink{ref-martin_bisogenet_2010}{Martin et al., 2010}), going from simple Venn diagrams to more complex, network analysis, software such as some specific R packages (\protect\hyperlink{ref-r_core_team_2022}{R Core Team, 2022}) or Cytoscape (\protect\hyperlink{ref-cline_integration_2007}{Cline et al., 2007}). The focus here is to use graphical visualization elements to compare the results of the analyses with and without the addition of biological information.
-\item
-  Development of new methods and/or workflows in order to improve and/or combine the benefits from the selected approaches, with focus in those allowing the addition of biological significance to the integration process. Here follows an overview of the methods developed to expand the original datasets (X, Y) with annotations (Ax, Ay) to obtain new blocks of data (Nx, Ny,and Nxy). And the workflow has been implemented adapting the integrative pipelines applied so far to the R targets package (\protect\hyperlink{ref-landau_targets_2021}{Landau, 2021}), a pipeline toolkit that improves reproducibility, skipping unnecessary steps already up to date and showing tangible evidence that the results match the underlying code and data. The development of this targets workflow is intended to comply with the objective number 2 of this working plan.
-\item
-  Implementation of the methods resulting from 4) as a new R package to be submitted to Bioconductor repository (\protect\hyperlink{ref-huber_orchestrating_2015}{Huber et al., 2015}), and, finally, to complete objective 4 of this thesis plan, as a web application (\protect\hyperlink{ref-shiny_2021}{Chang et al., 2021}) to be used in further steps of the current biomedical research projects in which our collaborators are implied, as well as in future studies.
-\end{enumerate}
-
-AQUI COMENCEN PROPIAMENT ELS METODES
 
 In the context of multi-omics data integration, our proposal relies on the idea that incorporating biological annotations into datasets before integrative analysis enriches outcomes and enhances their biological interpretability. Therefore, augmenting quantitative omics data with contextual biological knowledge will deepen our understanding of complex biological phenomena. To do so, we begin with meticulous data quality assessment and standardization, laying the foundation for reliable analyses. We then infuse biological knowledge using standard biological annotations, creating ``Expanded Datasets'' that provide context for comprehensive analysis. Advanced dimension-reduction techniques can be applied to illuminate hidden patterns and relationships between data sources or blocks, and the semi-automation capabilities of the Targets R package allow us to build an easy-to-use implementation of the process.
 
@@ -900,11 +926,16 @@ Fer que 4.1 sigui l'actual 4.2 (tota la info d'aplicar el mètode)
 
 ESTRUCTURA DELS RESULTATS:
 
-4.1 Resultats del nou mètode
+4.1 Implementació dels algos i les funcions en R
 
-4.2 Resultats d'implementació en paquet R amb targets
+4.2 Pipeline d'anàlisi en amb el paquet `targets'
 
 4.3 Exemples i aplicacions
+4.3.1 Results from the analysis of human brain tissue samples
+4.3.2 Results from the expansion of omics data with biological annotations
+4.3.3 Results from the analysis of 150 TCGA-BRCA samples
+4.3.4 Results from the application of MFA on TCGA-BRCA data with, and without, expanded data
+4.3.5 \ldots{}
 
 \hypertarget{results-from-the-analysis-of-human-brain-tissue-samples}{%
 \section{Results from the analysis of human brain tissue samples}\label{results-from-the-analysis-of-human-brain-tissue-samples}}
@@ -1055,6 +1086,9 @@ This first appendix includes an R chunk that was hidden in the document (using \
 \leavevmode\vadjust pre{\hypertarget{ref-ashburner_gene_2000}{}}%
 Ashburner, M., Ball, C. A., Blake, J. A., Botstein, D., Butler, H., Cherry, J. M., Davis, A. P., Dolinski, K., Dwight, S. S., Eppig, J. T., Harris, M. A., Hill, D. P., Issel-Tarver, L., Kasarskis, A., Lewis, S., Matese, J. C., Richardson, J. E., Ringwald, M., Rubin, G. M., \& Sherlock, G. (2000). Gene {Ontology}: Tool for the unification of biology. \emph{Nature Genetics}, \emph{25}(1), 25--29. \url{https://doi.org/10.1038/75556}
 
+\leavevmode\vadjust pre{\hypertarget{ref-athieniti_guide_2023}{}}%
+Athieniti, E., \& Spyrou, G. M. (2023). A guide to multi-omics data collection and integration for translational medicine. \emph{Computational and Structural Biotechnology Journal}, \emph{21}, 134--149. \url{https://doi.org/10.1016/j.csbj.2022.11.050}
+
 \leavevmode\vadjust pre{\hypertarget{ref-brianso_ibc_2016}{}}%
 Briansó, F., García-Berrocoso, T., Montaner, J., \& Sánchez-Pla, A. (2016a). Integrative analysis of transcriptomics and proteomics data for the characterization of brain tissue after ischemic stroke. \emph{XXVIIIth International Biometric Conference IBC2016}.
 
@@ -1166,6 +1200,9 @@ Tayrac, M. de, Lê, S., Aubry, M., Mosser, J., \& Husson, F. (2009). Simultaneou
 \leavevmode\vadjust pre{\hypertarget{ref-tyekucheva_integrating_2011}{}}%
 Tyekucheva, S., Marchionni, L., Karchin, R., \& Parmigiani, G. (2011). Integrating diverse genomic data using gene sets. \emph{Genome Biology}, \emph{12}(10), R105. \url{https://doi.org/10.1186/gb-2011-12-10-r105}
 
+\leavevmode\vadjust pre{\hypertarget{ref-vahabi_unsupervised_2022}{}}%
+Vahabi, N., \& Michailidis, G. (2022). Unsupervised {Multi}-{Omics} {Data} {Integration} {Methods}: {A} {Comprehensive} {Review}. \emph{Frontiers in Genetics}, \emph{13}. \url{https://www.frontiersin.org/articles/10.3389/fgene.2022.854752}
+
 \leavevmode\vadjust pre{\hypertarget{ref-wang_circulating_2014}{}}%
 Wang, F., Chen, C., \& Wang, D. (2014). Circulating {microRNAs} in cardiovascular diseases: From biomarkers to therapeutic targets. \emph{Frontiers of Medicine}, \emph{8}(4), 404--418. \url{https://doi.org/10.1007/s11684-014-0379-2}
 
@@ -1174,6 +1211,9 @@ Wang, K., Huang, C., \& Nice, E. (2014). Proteomics, genomics and transcriptomic
 
 \leavevmode\vadjust pre{\hypertarget{ref-wanichthanarak_genomic_2015}{}}%
 Wanichthanarak, K., Fahrmann, J. F., \& Grapov, D. (2015). Genomic, {Proteomic}, and {Metabolomic} {Data} {Integration} {Strategies}. \emph{Biomarker Insights}, \emph{10}(Suppl 4), 1--6. \url{https://doi.org/10.4137/BMI.S29511}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wekesa_review_2023}{}}%
+Wekesa, J. S., \& Kimwele, M. (2023). A review of multi-omics data integration through deep learning approaches for disease diagnosis, prognosis, and treatment. \emph{Frontiers in Genetics}, \emph{14}. \url{https://www.frontiersin.org/articles/10.3389/fgene.2023.1199087}
 
 \leavevmode\vadjust pre{\hypertarget{ref-wu_selective_2019}{}}%
 Wu, C., Zhou, F., Ren, J., Li, X., Jiang, Y., \& Ma, S. (2019). A {Selective} {Review} of {Multi}-{Level} {Omics} {Data} {Integration} {Using} {Variable} {Selection}. \emph{High-Throughput}, \emph{8}(1), 4. \url{https://doi.org/10.3390/ht8010004}
