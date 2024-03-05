@@ -62,8 +62,8 @@ word-count: "pending"
 # alternative-title-page: templates/alt-title-page-example.tex
 
 ### abbreviations ###
-abbreviations-width: 3.2cm
-abbreviations-heading: List of Abbreviations
+abbreviations-width: 4.75cm
+abbreviations-heading: List of Abbreviations and Specific Terminology
 
 
 ### citation and bibliography style ###

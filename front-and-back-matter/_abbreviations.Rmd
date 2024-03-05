@@ -1,6 +1,23 @@
-\item[1-D, 2-D] One- or two-dimensional, referring **in this thesis** to spatial dimensions in an image.
+\item[Expanded Datasets] Referring **in this thesis** to the data matrices containing the original expression or quantification omics data as well as those numerical variables coming from the annotation of biological  terms. 
 
-\item[Otter] One of the finest of water mammals.
+\item[GO] Gene Ontology [https://geneontology.org/].
 
-\item[Hedgehog] Quite a nice prickly friend.
+\item[KEGG] Kyoto Encyclopedia of Genes and Genomes [https://www.genome.jp/kegg/]
 
+\item[MCIA] Multiple Co-Inertia Analysis
+
+\item[MFA] Multiple Factor Analysis
+
+\item[microRNA] Micro RiboNucleic Acid
+
+\item[mRNA] Messenger RiboNucleic Acid
+
+\item[TCGA] The Cancer Genome Atlas project [http://cancergenome.nih.gov/].
+
+\item[TCGA-BRCA] The Cancer Genome Atlas - BReast CAncer project [https://portal.gdc.cancer.gov/projects/TCGA-BRCA].
+
+\item[rCCA] Regularized Canonical Correlation Analysis
+
+\item[RGCCA] Regularized Generalized Canonical Correlation Analysis
+
+\item[sPLS] sparse Partial Least Squares regression

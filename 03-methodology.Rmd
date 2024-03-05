@@ -34,7 +34,7 @@ iii) You can't use markdown syntax inside chunk options, so if you want to e.g. 
 \chaptermark{Methodology}
 \minitoc <!-- this will include a mini table of contents-->
 
-In the context of multi-omics data integration, our proposal relies on the idea that incorporating biological annotations into datasets before integrative analysis enriches outcomes and enhances their biological interpretability. Therefore, augmenting quantitative omics data with contextual biological knowledge will deepen our understanding of complex biological phenomena. To do so, we begin with meticulous data quality assessment and standardization, laying the foundation for reliable analyses. We then infuse biological knowledge using standard biological annotations, creating "Expanded Datasets" that provide context for comprehensive analysis. Advanced dimension-reduction techniques can be applied to illuminate hidden patterns and relationships between data sources or blocks, and the semi-automation capabilities of the Targets R package allow us to build an easy-to-use implementation of the process.
+In the context of multi-omics data integration, our proposal relies on the idea that incorporating biological annotations into datasets before integrative analysis enriches outcomes and enhances their biological interpretability. Therefore, augmenting quantitative omics data with contextual biological knowledge will deepen our understanding of complex biological phenomena. To do so, we begin with meticulous data quality assessment and standardization, laying the foundation for reliable analyses. We then infuse biological knowledge using standard biological annotations, creating "Expanded Datasets" that provide context for comprehensive analysis. Advanced dimension-reduction techniques can be applied to illuminate hidden patterns and relationships between data sources or blocks, and the semi-automation capabilities of the Targets R package allow us to build an easy-to-use implementation of the whole process.
 
 
 ## Data Format Review and Quality Assessment {#qa}
@@ -43,37 +43,61 @@ Before initiating the integrative analysis, a meticulous evaluation of data qual
 
 
 \bigskip
-FALTA DETALLAR AQUI COM SHAN VALIDAT ELS DATASETS DE TCGA (ELS DE STROKE ANIRAN A BANDA, pero fer-hi mencio breu).
+FALTA EXPLICAR AQUI ELS PASSOS DE VALIDACIO DELS DATASETS (L'EXEMPLE DEL TCGA, ELS DE STROKE ANIRAN A BANDA, pero fer-hi mencio breu).
 
 Explicar aquí els requeriments de format dels data sets d'entrada. 
 
-Files vs Columnes. 
+
+data source: http://mixomics.org/mixdiablo/diablo-tcga-case-study/
+
+The Cancer Genome Atlas Network (Network et al., 2012)
+veure [@koboldt_comprehensive_2012]
+data original source: https://portal.gdc.cancer.gov/projects/TCGA-BRCA
+
+
+BRCA subtypes main ref: https://www.pnas.org/doi/full/10.1073/pnas.191367098
+veure[@sorlie_gene_2001]
+
+
+Files vs Columnes. Raw data : Samples in rows (200G, 111P); Features in columns (150S). Tenim 200 x 150 i 111(154 originalment) x 150.
+
 
 Coincidencia de SAMPLES pero diferencia de FEATURES
 
 Mostrar Figure \@ref(fig:fig3-10) i Figure \@ref(fig:fig3-9) PERO POTSER MILLOR COM A TAULES INTEGRADES AMB MARKDOWN?
 
-
-```{r fig3-10, fig.align='center', fig.scap="Example of gene and protein data loaded in R", fig.cap="Example of gene expression and protein quantification data, viewed as loaded arrays in R", out.width="95%", echo=FALSE}
-knitr::include_graphics("figures/chapter3/3-10_input_data_R_example.png")
-```
+\clearpage
 
 
 ```{r fig3-9, fig.align='center', fig.scap="Example of proteomics input data", fig.cap="Example of proteomics input data, viewed as a table in RStudio", out.width="95%", echo=FALSE}
 knitr::include_graphics("figures/chapter3/3-9_protein_data_example.png")
 ```
 
+```{r fig3-10, fig.align='center', fig.scap="Example of gene and protein data loaded in R", fig.cap="Example of gene expression and protein quantification data, viewed as loaded arrays in R", out.width="95%", echo=FALSE}
+knitr::include_graphics("figures/chapter3/3-10_input_data_R_example_2.png")
+```
+
+
+\clearpage
+
 
 COMENTAR TAMBE REQUERIMENTS DE FORMAT (headers, value types...)
 
 EXPLICAR QUALITY CHECKS APLICATS (grafiques per deteccio d'outliers, data centering...)
+
+
+```{r fig3-13, fig.align='center', fig.show='hold', fig.scap="Transcriptomics values before and after centering", fig.cap="Histogram of the gene expression values coming from TCGA-BRCA dataset, before (left) and after (right) data centering", out.width="48%", echo=FALSE}
+knitr::include_graphics(c("figures/chapter3/3-13a_mrna_data_unscaled.png","figures/chapter3/3-13b_mrna_data_scaled.png"))
+```
+
+The same process has to be performed with all the input datasets.
 
 \clearpage
 
 
 ## Preprocessing for Integration of Biological Knowledge {#preprocess}
 
-The integration of biological knowledge into omics datasets can be achieved through a preprocessing step aimed at expanding the original data matrices with annotations accessed from specialized R libraries, which provided direct access to curated biological databases such as Gene Ontology (GO[@ashburner_gene_2000]) and biochemical pathways information (e.g., KEGG[@kanehisa_kegg_2000]). This process, that combines the annotation of the most significant biological entities with the quantification and integration of their annotation values to the data matrices, ends up with what we term "Expanded Data Sets", which include the original biological features (e.g., gene expression or protein quantification values) as well as new variables coming from the annotation of biological  terms. The following steps explain this preprocessing procedure in more detail:
+The integration of biological knowledge into omics datasets can be achieved through a preprocessing step aimed at expanding the original data matrices with annotations accessed from specialized R libraries, which provided direct access to curated biological databases such as Gene Ontology (GO[@ashburner_gene_2000]) and biochemical pathways information (e.g., KEGG[@kanehisa_kegg_2000]). This process, that combines the annotation of the most significant biological entities with the quantification and integration of their annotation values to the data matrices, ends up with what we term "Expanded Datasets", which include the original biological features (e.g., gene expression or protein quantification values) as well as new variables coming from the annotation of biological  terms. The following steps explain this preprocessing procedure in more detail:
 
 
 * Selection of biological knowledge sources to feed annotations. Starting from the most commonly used biological knowledge databases in tasks of omics data analysis and interpretation, the goal is to access those that are most complete and applicable to the different types of data that must be annotated. GO and KEGG are excellent choices for that purpose.
@@ -105,9 +129,9 @@ Apuntar llista o referencia principal important
 COM VAM PLANTEJAR fer l'anotació biologica. Quines opcions i amb quins metodes estadístics/bioinformatics...
 DUBTO SI LO QUE SEGUEIX NO ANIRIA A RESULTATS
 
-For each input data set, if annotations are not already provided, two distinct basic annotation methods can be performed:
+For each input dataset, if annotations are not already provided, two distinct basic annotation methods can be performed:
 
-(i) a basic GO mapping, returning annotations to those GO entities for which we find more than a certain number of features (gene ids coming from our data set, see Figure \@ref(fig:fig3-8) for an example) annotated to them, 
+(i) a basic GO mapping, returning annotations to those GO entities for which we find more than a certain number of features (gene ids coming from our dataset, see Figure \@ref(fig:fig3-8) for an example) annotated to them, 
 
 (ii) a Gene Enrichment Analysis (based on Hypergeometric tests against all GO categories, with FDR correction) is performed in order to retrieve the most relevant annotations to that set of genes/features.[@yu_clusterprofiler_2012]
 
@@ -128,7 +152,9 @@ knitr::include_graphics("figures/chapter3/3-11_basicGO_example.png")
 ```
 
 
-[comentar aquí l'opció d'afegir les anotacions com a individus suplementaris enlloc de variables Figure \@ref(fig:fig3-1) is an example.]
+COMENTAR AQUI l'opció d'afegir les anotacions com a individus suplementaris enlloc de variables
+
+Figure \@ref(fig:fig3-1) is an example.]
 
 
 ```{r fig3-12, fig.align='center', fig.scap="Example of results from GO annotation", fig.cap="Example of results from GO annotation. Results of the biological significance analysis performed with the lists of genes against GO through clusterProfiler", out.width="95%", echo=FALSE}
@@ -149,18 +175,18 @@ Alternatively, manual annotations can be provided (eg. GO terms, canonical pathw
 
 Other annotation methods can be implemented, as functions to be used by the main pipeline, if more complex methods for biological information addition are required.
 
-[Mostrar el format final de les anotacions, com a matrius dels data sets amb anotacions binàries 1/0 com a columnes extra]
+[Mostrar el format final de les anotacions, com a matrius dels datasets amb anotacions binàries 1/0 com a columnes extra]
 
 
 EXPANSIO DE LES MATRIUS (numeritzar anotacions, creació de noves vars a partir de les anotacions)
 
-The process starts already having a couple of data sets from distinct 'omics sources [punt de millora: admetre 3 o + inputs, comentar més tard a Discussion], mapped to gene ids (in the default case, where GO annotation have been performed), containing the results from a selection of differentially expressed genes or most relevant proteins analysis, or similar.
+The process starts already having a couple of datasets from distinct 'omics sources [punt de millora: admetre 3 o + inputs, comentar més tard a Discussion], mapped to gene ids (in the default case, where GO annotation have been performed), containing the results from a selection of differentially expressed genes or most relevant proteins analysis, or similar.
 
 \clearpage
 
 ### Annotation Integration {#biointegration}
 
-Once the annotations are already computed, mapping each feature of the input data set to the corresponding biological entity, they can be used to generate new features (as new rows), computing the average value [punt de millora: funció de ponderació] of the expression/intensity values from all original features being mapped to the annotated biological entities.
+Once the annotations are already computed, mapping each feature of the input dataset to the corresponding biological entity, they can be used to generate new features (as new rows), computing the average value [punt de millora: funció de ponderació] of the expression/intensity values from all original features being mapped to the annotated biological entities.
 
 ```{r fig3-2, fig.align='center', fig.cap="Addition of news feats", out.width="95%", echo=FALSE}
 knitr::include_graphics("figures/chapter3/3-2_addition_of_new_feats.png")
@@ -189,19 +215,19 @@ knitr::include_graphics("figures/chapter3/3-6_matrix_expansion_diagram_2.png")
 
 ## Integrative Analysis with Joint Dimension Reduction Techniques
 
-To uncover meaningful insights from the expanded data sets and extract relevant information from the integrated omics and biological knowledge, contrasted joint dimension reduction techniques were employed. These techniques enable the simultaneous analysis of multiple data types and facilitate the identification of key patterns and relationships. The following methods were applied:
+To uncover meaningful insights from the expanded datasets and extract relevant information from the integrated omics and biological knowledge, contrasted joint dimension reduction techniques were employed. These techniques enable the simultaneous analysis of multiple data types and facilitate the identification of key patterns and relationships. The following methods were applied:
 
 * Multiple Factor Analysis (MFA): MFA, adapted for multi-omics data, was utilized to identify sources of variability in the integrated dataset while considering both quantitative omics data and biological annotations. MFA aims to maximize relevant information within the data while accounting for the hierarchical structure of the biological knowledge.
 
 * Multiple Co-Inertia Analysis (MCIA): MCIA, a technique that aligns the covariance structures of multiple datasets, was employed to explore relationships between omics measurements and biological annotations. MCIA seeks to identify common patterns and associations between these data sources.
 
-* Regularized Generalized Canonical Correlation Analysis (RGCCA): RGCCA was used to identify latent variables that capture joint information from omics data and biological annotations. RGCCA extends canonical correlation analysis to handle multi-view data integration and helps reveal correlated features across datasets.
+* Regularized Generalized Canonical Correlation Analysis (RGCCA): RGCCA was used to identify latent variables that capture joint information from omics data and biological annotations. RGCCA extends canonical correlation analysis to handle multi-view data integration and helps reveal correlated features across data sets.
 
 PUNTS A INCLOURE: 
 
 * Reducció de dimensió. Anàlisi factorial en detall (MFA), + MCIA + RGCCA
 
-* incloure aquí % variabilitat explicat segons la estructura de la intersecció de les 2 taules (article Lovino 2022)
+* incloure aquí % variabilitat explicat segons la estructura de la intersecció de les 2 taules [@lovino_survey_2021]
 
 * avantatge del MFA és que podem definir blocs de variables!
 
@@ -210,7 +236,7 @@ PUNTS A INCLOURE:
 
 ## Semi-Automation using the Targets R Package
 
-The semi-automation of the integrative analysis process was facilitated by leveraging the Targets R package, which provides an efficient and user-friendly framework for building and managing complex analysis pipelines. In the development of the Targets pipeline, careful management of functions and parameters was essential to ensure a systematic and reproducible workflow. The following principles were applied:
+The semi-automation of the integrative analysis process was facilitated by leveraging the *Targets* R package, which provides an efficient and user-friendly framework for building and managing complex analysis pipelines. In the development of the *Targets* pipeline, careful management of functions and parameters was essential to ensure a systematic and reproducible workflow. The following principles were applied:
 
 * Function Modularity: Functions within the Targets pipeline were designed to be modular, focusing on specific tasks or analyses. This modularity enhanced code readability and maintainability.
 
@@ -230,7 +256,7 @@ The R 'targets' package is a powerful tool for building and managing data scienc
 
 2. Manage Dependencies: 'targets' allows you to specify dependencies between targets, ensuring that tasks are executed in the correct order. If a target depends on another target, it won't be executed until its dependencies are up-to-date.
 
-3. Parallel Processing: One of the strengths of 'targets' is its ability to parallelize tasks. It can automatically determine which targets can be executed concurrently, improving the efficiency of your workflows, especially when working with large datasets or computationally intensive tasks.
+3. Parallel Processing: One of the strengths of 'targets' is its ability to parallelize tasks. It can automatically determine which targets can be executed concurrently, improving the efficiency of your workflows, especially when working with large data sets or computationally intensive tasks.
 
 4. Incremental Builds: When you make changes to your code or data, 'targets' can identify the minimal set of targets that need to be recomputed, saving time and computational resources. This is particularly useful for iterative development and experimentation.
 
@@ -246,4 +272,4 @@ So, the 'targets' package is especially valuable for projects where data process
 knitr::include_graphics("figures/chapter3/3-7_workflow_overview.png")
 ```
 
-Targets workflow diagram (Figure \@ref(fig:fig3-7)) showing the steps corresponding with the complete process: The pipeline starts from (A) a couple of ‘omics-derived input data sets (e.g. pre-processed gene expression and protein abundance matrices). These are converted to R data frames with features in rows and samples in columns. Then, a data frame containing related annotations (B) is created, or loaded, for each given input matrix, and used to expand these original data, in order to end up with a pair of data frames (C) containing the original values plus the average expression/abundance values of the features related to each annotation as new features in additional rows. After that, distinct Dimension Reduction Methods are applied to perform the integrative analysis (D), and finally, an R markdown report (E) is rendered to show steps and main results of the full process.
+Targets workflow diagram (Figure \@ref(fig:fig3-7)) showing the steps corresponding with the complete process: The pipeline starts from (A) a couple of ‘omics-derived input datasets (e.g. pre-processed gene expression and protein abundance matrices). These are converted to R data frames with features in rows and samples in columns. Then, a data frame containing related annotations (B) is created, or loaded, for each given input matrix, and used to expand these original data, in order to end up with a pair of data frames (C) containing the original values plus the average expression/abundance values of the features related to each annotation as new features in additional rows. After that, distinct Dimension Reduction Methods are applied to perform the integrative analysis (D), and finally, an R markdown report (E) is rendered to show steps and main results of the full process.
