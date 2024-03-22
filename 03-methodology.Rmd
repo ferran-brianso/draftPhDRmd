@@ -41,30 +41,33 @@ In the context of multi-omics data integration, our proposal relies on the idea 
 
 Before initiating the integrative analysis, a meticulous evaluation of data quality and format compatibility was conducted to ensure the reliability of the input datasets. This crucial step aimed to identify and rectify discrepancies, inconsistencies, or errors that could potentially impact subsequent analyses. During this process, datasets spanning various omics technologies, including transcriptomics and proteomics, are selectively acquired from reputable sources and repositories. Emphasis was placed on meticulous source selection to guarantee consistency and adherence to standardized formats. Subsequently, the raw omics data underwent a comprehensive preprocessing phase, addressing issues such as missing values, outliers, and normalization. This preprocessing step was indispensable for enhancing data quality and enabling comparability across diverse datasets. Additionally, a thorough review of data formats encompassing file types, column naming conventions, and units of measurement was conducted. Non-standardized data were systematically transformed into a uniform format to streamline the downstream integration processes. Through these procedures, a robust foundation was established for subsequent integrative omics analysis, ensuring coherence and validity of the synthesized biomedical insights.
 
-
-\bigskip
-FALTA EXPLICAR AQUI ELS PASSOS DE VALIDACIO DELS DATASETS (L'EXEMPLE DEL TCGA, ELS DE STROKE ANIRAN A BANDA, pero fer-hi mencio breu).
-
-Explicar aquí els requeriments de format dels data sets d'entrada. 
+Data, whether obtained directly from TCGA or from specific data sets used as examples in specific R packages[data source: http://mixomics.org/mixdiablo/diablo-tcga-case-study/], has to be reviewed by performing a basic descriptive analysis, as is customary in single-omics data studies.
 
 
-data source: http://mixomics.org/mixdiablo/diablo-tcga-case-study/
-
+Data source:
 The Cancer Genome Atlas Network (Network et al., 2012)
 veure [@koboldt_comprehensive_2012]
 data original source: https://portal.gdc.cancer.gov/projects/TCGA-BRCA
 
-
 BRCA subtypes main ref: https://www.pnas.org/doi/full/10.1073/pnas.191367098
 veure[@sorlie_gene_2001]
 
+The Cancer Genome Atlas, often abbreviated as TCGA,  is a landmark project  funded by the National Cancer Institute (NCI) and the National Human Genome Research Institute (NHGRI) in the United States. It's a joint effort  to comprehensively understand the molecular basis of cancer by using genome analysis technologies.
 
-Files vs Columnes. Raw data : Samples in rows (200G, 111P); Features in columns (150S). Tenim 200 x 150 i 111(154 originalment) x 150.
+
+In the vast majority of cases, the information is structured directly in tables or matrices (where, for example, the columns contain patient samples or experimental individuals, while the rows represent the values of the measured features). These matrices can be encapsulated in structures such as Expression Set or similar, where information about the omic measurements is accompanied by metadata related to the samples themselves or to the details of the technology used for the analysis.
 
 
-Coincidencia de SAMPLES pero diferencia de FEATURES
+*Samples in rows (200G, 111P); *
+*Features in columns (150S). *
+*Tenim 200 x 150 i 111(154 originalment) x 150.*
 
-Mostrar Figure \@ref(fig:fig3-10) i Figure \@ref(fig:fig3-9) PERO POTSER MILLOR COM A TAULES INTEGRADES AMB MARKDOWN?
+It is relatively frequent that the datasets available for multi-omics studies present information on the same samples, analyzed by means of two or more different technologies (e.g., microarrays or RNA-seq for mRNA gene expression, plus quantification for proteins) while the information related to the omic molecules analyzed is, obviously, different. Not only that, but it is also common that there is no direct mapping between the different types of features, so that, for example, not all genes analyzed in an RNA expression experiment are unambiguously represented by their corresponding proteins.
+
+The task of recognizing the labels of the molecules analyzed in each dataset and consequently determining which ones are suitable for proceeding with the integrative analysis is not a light one. It often requires to implement a semi-automatic general identification of their names or ID codes, followed by a validation and filtering of the resulting non-obvious cases. If, in addition, the integrative analysis aims to map the different omics in some way at the biological process level (e.g., microRNAs against their target genes), then we are faced with an additional challenge of critical importance for the rest of the process.
+
+
+*Mostrar Figure \@ref(fig:fig3-10) i Figure \@ref(fig:fig3-9) PERO POTSER MILLOR COM A TAULES INTEGRADES AMB MARKDOWN?*
 
 \clearpage
 
@@ -81,16 +84,16 @@ knitr::include_graphics("figures/chapter3/3-10_input_data_R_example_2.png")
 \clearpage
 
 
-COMENTAR TAMBE REQUERIMENTS DE FORMAT (headers, value types...)
+*COMENTAR TAMBE REQUERIMENTS DE FORMAT (headers, value types...)*
 
-EXPLICAR QUALITY CHECKS APLICATS (grafiques per deteccio d'outliers, data centering...)
+*EXPLICAR QUALITY CHECKS APLICATS (grafiques per deteccio d'outliers, data centering...)*
 
 
 ```{r fig3-13, fig.align='center', fig.show='hold', fig.scap="Transcriptomics values before and after centering", fig.cap="Histogram of the gene expression values coming from TCGA-BRCA dataset, before (left) and after (right) data centering", out.width="48%", echo=FALSE}
 knitr::include_graphics(c("figures/chapter3/3-13a_mrna_data_unscaled.png","figures/chapter3/3-13b_mrna_data_scaled.png"))
 ```
 
-The same process has to be performed with all the input datasets.
+*El proces s'ha de repetir, obviament, amb tots els input datasets.*
 
 \clearpage
 
@@ -109,20 +112,20 @@ The integration of biological knowledge into omics datasets can be achieved thro
 * Annotation Integration. The most relevant annotation elements resulting from the previous step can be integrated into the matrix structure of the original omics dataset that has been used for its biological annotation, resulting in an expanded data matrix that combines the initial quantitative omics measurements with new values associated with the biological annotations obtained in the process. This step is implemented by executing new R functions specifically developed for this purpose. The resulting data matrices (which contain the integration of the most relevant biological annotations) are called 'Expanded Matrices', and will be the basis for the subsequent application of integrative analysis methods of the different omics analyzed.
 
 ### Selection of the sources for biological annotation {#biosources}
-PENDENT DE DETALLAR com escullo les fonts de les anotacions per defecte. 
+*PENDENT DE DETALLAR com escullo les fonts de les anotacions per defecte.*
 
-Apuntar que es poden facilitar ja anotacions disponibles prèviament, sempre que compleixin amb el format que s'explica al següent apartat. 
+*Apuntar que es poden facilitar ja anotacions disponibles prèviament, sempre que compleixin amb el format que s'explica al següent apartat. *
 
-Aquestes poden ser estàndard o bé personalitzades a mida de l'usuari (tot i que si es aixi hi ha certes funcionalitats posteriors que no es podran aprofitar).
+*Aquestes poden ser estàndard o bé personalitzades a mida de l'usuari (tot i que si es aixi hi ha certes funcionalitats posteriors que no es podran aprofitar).*
 
 \clearpage
 
 ### Selection of the annotation packages {#biopackages}
-PAS QUE ES FA PRACTICAMENT AL MATEIX TEMPS QUE L'ANTERIOR
+*PAS QUE ES FA PRACTICAMENT AL MATEIX TEMPS QUE L'ANTERIOR*
 
-Destacar criteris de fiabilitat i senzillesa
+*Destacar criteris de fiabilitat i senzillesa*
 
-Apuntar llista o referencia principal important
+*Apuntar llista o referencia principal important*
 
 
 ### Biological annotations mapping {#bioannotation}
