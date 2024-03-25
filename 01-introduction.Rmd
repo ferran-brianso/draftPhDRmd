@@ -81,7 +81,10 @@ Having partly incomplete data is a common challenge in biomedical multi-omics da
 
 Addressing the issue of incomplete data in multi-omics analyses is crucial to avoid biased or misleading results. By utilizing appropriate imputation methods and understanding the missing data mechanisms, researchers can mitigate the impact of missing data and enhance the accuracy and reliability of their analyses.
 
-PENDENT REVISAR TOT
+*PENDENT REVISAR TOT*
+
+*AFEGIR MENCIO A LA OMICS CASCADE*
+
 
 ### Results interpretation in the context of integrative multi-omics data analyses
 

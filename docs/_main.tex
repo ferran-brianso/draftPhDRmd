@@ -489,7 +489,9 @@ Having partly incomplete data is a common challenge in biomedical multi-omics da
 
 Addressing the issue of incomplete data in multi-omics analyses is crucial to avoid biased or misleading results. By utilizing appropriate imputation methods and understanding the missing data mechanisms, researchers can mitigate the impact of missing data and enhance the accuracy and reliability of their analyses.
 
-PENDENT REVISAR TOT
+\emph{PENDENT REVISAR TOT}
+
+\emph{AFEGIR MENCIO A LA OMICS CASCADE}
 
 \hypertarget{results-interpretation-in-the-context-of-integrative-multi-omics-data-analyses}{%
 \subsection{Results interpretation in the context of integrative multi-omics data analyses}\label{results-interpretation-in-the-context-of-integrative-multi-omics-data-analyses}}
@@ -691,7 +693,7 @@ Mu\ss\enspace auf das beste Werkzeug halten
 
 \minitoc 
 
-In the context of multi-omics data integration, our proposal relies on the idea that incorporating biological annotations into datasets before integrative analysis enriches outcomes and enhances their biological interpretability. Therefore, augmenting quantitative omics data with contextual biological knowledge will deepen our understanding of complex biological phenomena. To do so, we begin with meticulous data quality assessment and standardization, laying the foundation for reliable analyses. We then infuse biological knowledge using standard biological annotations, creating ``Expanded Datasets'' that provide context for comprehensive analysis. Advanced dimension-reduction techniques can be applied to illuminate hidden patterns and relationships between data sources or blocks, and the semi-automation capabilities of the Targets R package allow us to build an easy-to-use implementation of the whole process.
+In the context of multi-omics data integration, our proposal relies on the idea that incorporating biological annotations into datasets before proceeding with integrative analysis enriches the outcomes and enhances their biological interpretability. Therefore, augmenting quantitative omics data with contextual biological knowledge will deepen our understanding of complex biological phenomena. To do so, we begin with meticulous data quality assessment and standardization, laying the foundation for reliable analyses. We then infuse biological knowledge using standard biological annotations, creating ``Expanded Datasets'' that provide context for comprehensive analysis. Advanced dimension-reduction techniques can be applied to illuminate hidden patterns and relationships between data sources or blocks, and the semi-automation capabilities of the Targets R package allow us to build an easy-to-use implementation of the whole process.
 
 \hypertarget{qa}{%
 \section{Data Format Review and Quality Assessment}\label{qa}}
@@ -708,7 +710,18 @@ data original source: \url{https://portal.gdc.cancer.gov/projects/TCGA-BRCA}
 BRCA subtypes main ref: \url{https://www.pnas.org/doi/full/10.1073/pnas.191367098}
 veure(\protect\hyperlink{ref-sorlie_gene_2001}{Sørlie et al., 2001})
 
-The Cancer Genome Atlas, often abbreviated as TCGA, is a landmark project funded by the National Cancer Institute (NCI) and the National Human Genome Research Institute (NHGRI) in the United States. It's a joint effort to comprehensively understand the molecular basis of cancer by using genome analysis technologies.
+The Cancer Genome Atlas, often abbreviated as TCGA, is a landmark project funded by the National Cancer Institute (NCI) and the National Human Genome Research Institute (NHGRI) in the United States.
+It's a joint effort to comprehensively understand the molecular basis of cancer by using genome analysis technologies.
+TCGA curates a vast collection of real-world data, covering diverse cancer types.
+This data encompasses omics datasets, such as transcriptomics and proteomics, offering researchers a comprehensive perspective on the molecular landscape of tumors.
+Stringent quality control and standardization measures ensure the data within TCGA is compatible and readily integrable with other datasets.
+This facilitates robust multi-omics analyses.
+This meticulous approach ensures data Compatibility, given that standardized formats eliminate inconsistencies between datasets generated using different platforms or technologies.
+This allows for seamless integration of data from various sources, crucial for multi-omics analyses like the one presented in this thesis.
+The integration of transcriptomics and proteomics data, heavily relies on the ability to combine these kind of datasets for a more holistic understanding. Standardized formats within TCGA remove a significant hurdle in this process.
+In addition to that, standardized data collection and processing protocols minimize technical variations that could introduce bias into the data.
+This enhances the reliability and generalizability of findings derived from TCGA records.
+The public availability of TCGA data empowers researchers worldwide to leverage this rich resource in their investigations and, consequently, this fosters open science collaborations and accelerates advancements in cancer research.
 
 In the vast majority of cases, the information is structured directly in tables or matrices (where, for example, the columns contain patient samples or experimental individuals, while the rows represent the values of the measured features). These matrices can be encapsulated in structures such as Expression Set or similar, where information about the omic measurements is accompanied by metadata related to the samples themselves or to the details of the technology used for the analysis.
 
@@ -764,7 +777,7 @@ The task of recognizing the labels of the molecules analyzed in each dataset and
 \hypertarget{preprocess}{%
 \section{Preprocessing for Integration of Biological Knowledge}\label{preprocess}}
 
-The integration of biological knowledge into omics datasets can be achieved through a preprocessing step aimed at expanding the original data matrices with annotations accessed from specialized R libraries, which provided direct access to curated biological databases such as Gene Ontology (GO(\protect\hyperlink{ref-ashburner_gene_2000}{Ashburner et al., 2000})) and biochemical pathways information (e.g., KEGG(\protect\hyperlink{ref-kanehisa_kegg_2000}{Kanehisa \& Goto, 2000})). This process, that combines the annotation of the most significant biological entities with the quantification and integration of their annotation values to the data matrices, ends up with what we term ``Expanded Datasets'', which include the original biological features (e.g., gene expression or protein quantification values) as well as new variables coming from the annotation of biological terms. The following steps explain this preprocessing procedure in more detail:
+The integration of biological knowledge into omics datasets can be achieved through a preprocessing step aimed at expanding the original data matrices with annotations accessed from specialized R libraries, which provided direct access to curated biological databases such as Gene Ontology (GO(\protect\hyperlink{ref-ashburner_gene_2000}{Ashburner et al., 2000}),(\protect\hyperlink{ref-thegeneontologyconsortium_gene_2019}{The~Gene~Ontology~Consortium, 2019})) and biochemical pathways information (e.g., KEGG(\protect\hyperlink{ref-kanehisa_kegg_2000}{Kanehisa \& Goto, 2000})). This process, that combines the annotation of the most significant biological entities with the quantification and integration of their annotation values to the data matrices, ends up with what we term ``Expanded Datasets'', which include the original biological features (e.g., gene expression or protein quantification values) as well as new variables coming from the annotation of biological terms. The following steps explain this preprocessing procedure in more detail:
 
 \begin{itemize}
 \item
@@ -1312,6 +1325,9 @@ Subramanian, I., Verma, S., Kumar, S., Jere, A., \& Anamika, K. (2020). Multi-om
 
 \leavevmode\vadjust pre{\hypertarget{ref-de_tayrac_simultaneous_2009}{}}%
 Tayrac, M. de, Lê, S., Aubry, M., Mosser, J., \& Husson, F. (2009). Simultaneous analysis of distinct {Omics} data sets with integration of biological knowledge: {Multiple} {Factor} {Analysis} approach. \emph{BMC Genomics}, \emph{10}(1), 32. \url{https://doi.org/10.1186/1471-2164-10-32}
+
+\leavevmode\vadjust pre{\hypertarget{ref-thegeneontologyconsortium_gene_2019}{}}%
+The~Gene~Ontology~Consortium. (2019). The {Gene} {Ontology} {Resource}: 20 years and still {GOing} strong. \emph{Nucleic Acids Research}, \emph{47}(D1), D330--D338. \url{https://doi.org/10.1093/nar/gky1055}
 
 \leavevmode\vadjust pre{\hypertarget{ref-tyekucheva_integrating_2011}{}}%
 Tyekucheva, S., Marchionni, L., Karchin, R., \& Parmigiani, G. (2011). Integrating diverse genomic data using gene sets. \emph{Genome Biology}, \emph{12}(10), R105. \url{https://doi.org/10.1186/gb-2011-12-10-r105}
