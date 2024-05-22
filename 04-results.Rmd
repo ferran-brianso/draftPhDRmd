@@ -19,20 +19,30 @@ Fer que 4.1 sigui l'actual 4.2 (tota la info d'aplicar el mètode)
 
 ESTRUCTURA DELS RESULTATS:
 
-4.1 Implementació dels algos i les funcions en R
+4.1 Mètode proposat per a la integració de info bio 
 
-4.2 Pipeline d'anàlisi en amb el paquet 'targets'
+4.2 Packet d'R amb els scripts corresponents
 
-4.3 Exemples i aplicacions
+4.3 Workflow (Pipeline) d'anàlisi en amb el paquet 'targets'
+
+4.4 Aplicacions a casos reals
 4.3.1 Results from the analysis of human brain tissue samples
 4.3.2 Results from the expansion of omics data with biological annotations
 4.3.3 Results from the analysis of 150 TCGA-BRCA samples
 4.3.4 Results from the application of MFA on TCGA-BRCA data with, and without, expanded data
 4.3.5 ...
 
-## Results from the analysis of human brain tissue samples
+## Mètode proposat per a la integració de info bio 
 
-## Results from the expansion of omics data with biological annotations
+## Packet d'R amb els scripts corresponents
+
+## Workflow (Pipeline) d'anàlisi en amb el paquet 'targets'
+
+## Aplicacions a casos reals
+
+### Results from the analysis of human brain tissue samples
+
+### Results from the expansion of omics data with biological annotations
 
 Figure \@ref(fig:fig4-1) is an snapshot (F) of one of the heat maps created to show the expanded matrices obtained in (Figures \@ref(fig:fig3-4) i \@ref(fig:fig3-5) prèvies, de Methods).
 
@@ -41,7 +51,7 @@ knitr::include_graphics("figures/chapter4/4-1_heatmap_expanded.png")
 ```
 
 
-## Results from the analysis of 150 TCGA-BRCA samples
+### Results from the analysis of 150 TCGA-BRCA samples
 
 Figure \@ref(fig:fig4-2) contains some of the graphical results of the analysis of the 150 samples from TCGA-BRCA: Heat maps (A, C) and association networks (B, D) resulting from the integration by Regularized Canonical Correlations Analysis with mixomics R package. Performed with the original data sets (A, B) or using data expanded with biological annotations to Gene Ontology (C, D), so adding some GO terms to the features from each source, where the outputs contain higher level of information (higher density in both type of plots).
 
@@ -49,7 +59,7 @@ Figure \@ref(fig:fig4-2) contains some of the graphical results of the analysis 
 knitr::include_graphics("figures/chapter4/4-2_BRCA_results_overview.png")
 ```
 
-## Results from the application of MFA on TCGA-BRCA data with, and without, expanded data
+### Results from the application of MFA on TCGA-BRCA data with, and without, expanded data
 
 Figure \@ref(fig:fig4-3) includes a Correlation Circle (left), with most relevant genes, proteins and added GO annotations. Distribution of samples (right) along the first two plotted dimensions. Both results coming from the application of Multiple Factor Analysis (FactoMineR and factoextra R packages) performed on the same 150 samples (Basal, Her2 and LuminalA conditions) from TCGA-BRCA.
 
@@ -57,7 +67,6 @@ Figure \@ref(fig:fig4-3) includes a Correlation Circle (left), with most relevan
 knitr::include_graphics("figures/chapter4/4-3_BRCA_results_withMFA.png")
 ```
 
-## Resultats de la creacio del paquet amb Targets...
 
 \clearpage
 

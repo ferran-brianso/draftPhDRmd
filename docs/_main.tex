@@ -269,7 +269,7 @@ Departament de Genètica, Microbiologia i Estadística}
 % The level that gets a number:
 \setcounter{secnumdepth}{2}
 % The level that shows up in the ToC:
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 
 
 %%%%% ABSTRACT SEPARATE
@@ -434,7 +434,7 @@ Altogether, the previous approaches show several things: Although the idea that 
 \hypertarget{backgroundstate-of-the-art}{%
 \section{Background/State of the Art}\label{backgroundstate-of-the-art}}
 
-FALTA DESENVOLUPAR PUNTS
+FFF:WORK IN PROGRESS
 
 \hypertarget{omics-data-analyses}{%
 \subsection{Omics data analyses}\label{omics-data-analyses}}
@@ -457,9 +457,13 @@ Among the primary omics data types one can highlight the following:
   Epigenomics: The exploration of changes in gene expression that are not attributed to alterations in DNA sequence.
 \end{itemize}
 
+FFF:INSERIR AQUÍ IMATGE AMB ESQUEMA DE LA OMICS CASCADE
+
+These layers provide complementary biological information and collectively offer a comprehensive view of biological systems.
+
 Omics data integration stands as a complex endeavor requiring advanced statistical and computational methods. It is employed for a range of biomedical applications, such as identifying novel genes and proteins linked to diseases, developing new drugs, and enhancing diagnostic accuracy.
 
-3 PROBLEMES ESENCIALS (veure projecte recerca Alex):
+FFF: 3 PROBLEMES ESENCIALS (veure projecte recerca Alex):
 
 \begin{itemize}
 \item
@@ -470,33 +474,29 @@ Omics data integration stands as a complex endeavor requiring advanced statistic
   \textbf{These kind of data analytics are difficult to standardize}, as it is not easy to make complex pipelines of multi-omics analyses, which integrate multiple processes with multiple sources, easy to reproduce or communicate.
 \end{itemize}
 
-MES EL TEMA DE LA p\textgreater\textgreater n (Dimensionallity Reduction Techniques; The p\textgreater\textgreater n situation)
+FFF: MES EL TEMA DE LA p\textgreater\textgreater n (Dimensionallity Reduction Techniques; The p\textgreater\textgreater n situation, ja en part superat)
 
-\hypertarget{the-problem-of-having-partly-incomplete-data}{%
-\subsection{The problem of having partly incomplete data}\label{the-problem-of-having-partly-incomplete-data}}
+\hypertarget{the-problem-of-data-incompleteness}{%
+\subsection{The problem of data incompleteness}\label{the-problem-of-data-incompleteness}}
 
-Having partly incomplete data is a common challenge in biomedical multi-omics data analyses, where not all omics layers or samples have complete measurements for all variables of interest. This problem, known as missing data, can hinder the integrative analysis and interpretation of multi-omics datasets.
+Having partly incomplete data is a common challenge in biomedical multi-omics data analyses, where not all omics layers or samples have complete measurements for all elements of interest. In this context, ``missing data'' refers to the absence of values for certain variables within a dataset, which can arise due to various reasons like experimental limitations or technical constraints (\protect\hyperlink{ref-hornung_prediction_2024}{Hornung et al., 2024}). On the other hand, ``missing data types'' specifically refer to situations where different omics data types are not available for all individuals in a study, leading to block-wise missing data patterns (\protect\hyperlink{ref-flores_missing_2023}{Flores et al., 2023}). Both situations, missing data values and missing data types, can hinder the integrative analysis and interpretation of multi-omics datasets.
 
-\textbf{Missing Data Types}: Missing data can occur in various forms in multi-omics datasets. For example, some omics layers may have missing values for certain variables (e.g., genes, proteins, metabolites), or specific samples may be missing data for certain omics layers. This can result from technical limitations, experimental design, or inherent biological variability.(\protect\hyperlink{ref-flores_missing_2023}{Flores et al., 2023})
+\textbf{Missing Data Values} FFF: ampliar detalls
 
-\textbf{Impact on Analysis}: Incomplete data can introduce biases and distort the results of multi-omics analyses. It can affect downstream statistical analyses, clustering, network inference, and machine learning algorithms, leading to inaccurate or unreliable findings. Addressing missing data appropriately is crucial for obtaining valid and meaningful results. Reference:
+\textbf{Missing Data Types} FFF: ampliar detalls
+
+\textbf{Impact on Analysis}: Incomplete data can introduce biases and distort the results of multi-omics analyses. It can affect downstream statistical analyses, clustering, network inference, and machine learning algorithms, leading to inaccurate or unreliable findings. Existing imputation methods face challenges in high-dimensional settings, potentially leading to biased findings (\protect\hyperlink{ref-harris_evaluating_2023}{Harris et al., 2023}). Different strategies, such as combining biospecimen data matrices for imputation, have been explored to preserve correlation structures in multi-biospecimen studies (\protect\hyperlink{ref-dai_multiple_2022}{Dai et al., 2022}). Integrative imputation techniques leveraging correlations among multi-omics datasets are essential for accurate downstream analyses in multi-omics studies (\protect\hyperlink{ref-wilson_imputation_2022}{Wilson et al., 2022}). Novel multi-omics imputation methods have been proposed to integrate multiple correlated omics datasets, improving imputation accuracy and enhancing downstream analysis performance (\protect\hyperlink{ref-song_review_2020}{Song et al., 2020}).
 
 \textbf{Missing Data Mechanisms}: Understanding the underlying mechanisms of missing data is essential for selecting appropriate imputation methods. Missing data can occur due to different mechanisms, such as missing completely at random (MCAR), missing at random (MAR), or missing not at random (MNAR). These mechanisms influence the choice of imputation techniques and the assumptions made during data analysis.(\protect\hyperlink{ref-little_missing_2002}{Little \& Rubin, 2002})
 
-\textbf{Imputation Methods}: Imputation techniques are employed to estimate missing values in multi-omics datasets. Various imputation methods, including mean imputation, regression imputation, multiple imputation, and machine learning-based approaches, have been proposed to handle missing data in different omics layers. Each method has its assumptions, strengths, and limitations, and the choice of imputation strategy should be carefully considered. Reference: Buuren, S. V., \& Groothuis-Oudshoorn, K. (2011). mice: Multivariate imputation by chained equations in R. Journal of Statistical Software, 45(3), 1-67.
+\textbf{Imputation Methods}: Imputation techniques are employed to estimate missing values in multi-omics datasets. Various methods have been proposed to handle missing data in omics datasets, such as imputation techniques(\protect\hyperlink{ref-zhou_clclsa_2023}{Zhou et al., 2023}) (\protect\hyperlink{ref-buyukozkan_rox_2023}{Buyukozkan et al., 2023}), decision charts for selecting suitable imputation methods(\protect\hyperlink{ref-kong_dealing_2022}{Kong et al., 2022}), and statistical models that directly incorporate missing values into calculations(\protect\hyperlink{ref-kidd_mediation_2023}{Kidd et al., 2023}). These approaches aim to mitigate the limitations posed by missing data, ensuring robust statistical analysis and interpretation of omics data(\protect\hyperlink{ref-lin_general_2020}{Lin et al., 2020}). By leveraging advanced techniques like deep learning for multi-omics integration with incomplete data, researchers can enhance the understanding of complex biological processes and improve disease classification accuracy using incomplete multiomics data.
 
-\textbf{Uncertainty and Sensitivity Analysis}: Dealing with missing data introduces uncertainty in the imputed values and subsequent analyses. Sensitivity analyses, such as multiple imputation and bootstrapping, can help assess the robustness of the results to missing data assumptions and imputation methods. Reference: Sterne, J. A., et al.~(2009). Multiple imputation for missing data in epidemiological and clinical research: Potential and pitfalls. BMJ, 338, b2393.
-
-Addressing the issue of incomplete data in multi-omics analyses is crucial to avoid biased or misleading results. By utilizing appropriate imputation methods and understanding the missing data mechanisms, researchers can mitigate the impact of missing data and enhance the accuracy and reliability of their analyses.
-
-\emph{PENDENT REVISAR TOT}
-
-\emph{AFEGIR MENCIO A LA OMICS CASCADE}
+\textbf{Uncertainty and Sensitivity Analysis}: After imputation methods in omics data analysis, uncertainty and sensitivity analysis play crucial roles in assessing the reliability of the results. Various approaches have been proposed to address missing data issues, such as multiple imputation (MI) and nonparametric multiple imputation strategies. MI-MFA, a method combining multiple imputation with multiple factor analysis, has shown promising results in integrating incomplete datasets(\protect\hyperlink{ref-yin_simulation-based_2019}{Yin \& Shi, 2019}). Additionally, sensitivity analysis approaches have been developed using standardized sensitivity parameters to evaluate the impact of missingness mechanisms, particularly in cases of missing not at random (MNAR) data. These approaches involve selecting imputing sets based on predictive scores and sensitivity parameters, aiming to provide robust estimates even in the presence of misspecifications(\protect\hyperlink{ref-voillet_handling_2016}{Voillet et al., 2016}) (\protect\hyperlink{ref-uranga_multiple_2022}{Uranga et al., 2022}). Overall, these methods contribute to enhancing the accuracy and reliability of omics data analysis post-imputation.
 
 \hypertarget{results-interpretation-in-the-context-of-integrative-multi-omics-data-analyses}{%
 \subsection{Results interpretation in the context of integrative multi-omics data analyses}\label{results-interpretation-in-the-context-of-integrative-multi-omics-data-analyses}}
 
-Interpretation of results in integrative multi-omics data analyses is a critical challenge due to the complexity and high dimensionality of the data, as well as the need to integrate information from multiple omics layers. Here, I will explain the problem of result interpretation in this context and provide relevant bibliographic references.
+Interpretation of results in integrative multi-omics data analyses is a critical challenge due to the complexity and high dimensionality of the data, as well as the need to integrate information from multiple omics layers.
 
 \textbf{Data Integration Challenges}: Integrating multi-omics data involves combining information from different molecular layers such as genomics, transcriptomics, proteomics, and metabolomics. Each omics layer provides a unique perspective on biological processes, and integrating these layers can reveal comprehensive insights. However, interpreting the integrated results becomes challenging due to the heterogeneity and scale differences among the omics data. Reference: Wang, X., \& Zhang, B. (2018). Integrating multiple `omics' data for biomarker discovery and clinical assessment. Molecular \& Cellular Proteomics, 17(6), 991-1003.
 
@@ -510,7 +510,7 @@ Interpretation of results in integrative multi-omics data analyses is a critical
 
 In summary, the problem of result interpretation in integrative multi-omics data analyses stems from the challenges of data integration, high dimensionality, contextual understanding, validation, and visual exploration. Addressing these challenges requires a combination of statistical methods, biological knowledge, and interactive tools to extract meaningful insights from the integrated data.
 
-PENDENT REVISAR REFS ANTERIORS
+FFF: PENDENT REVISAR REFS ANTERIORS
 
 \hypertarget{approaches-for-the-biological-and-clinical-interpretation}{%
 \subsection{Approaches for the biological and clinical interpretation}\label{approaches-for-the-biological-and-clinical-interpretation}}
@@ -533,7 +533,7 @@ The biological and clinical interpretation of multi-omics data analysis results 
 
 These methods, among others, contribute to the biological and clinical interpretation of multi-omics data analysis results, providing insights into disease mechanisms, biomarker discovery, and potential therapeutic targets.
 
-PENDENT REVISAR REFS ANTERIORS
+FFF: PENDENT REVISAR REFS ANTERIORS
 
 \hypertarget{data-processing-and-standarization}{%
 \subsection{Data processing and standarization}\label{data-processing-and-standarization}}
@@ -552,15 +552,17 @@ Data processing and standardization are critical steps in biomedical multi-omics
 
 Effective data processing and standardization in multi-omics analyses are crucial for accurate and meaningful interpretations. These steps ensure data quality, comparability, and compatibility, enabling integrative analyses and cross-study comparisons.
 
-PENDENT REVISAR REFS ANTERIORS
+FFF: PENDENT REVISAR REFS ANTERIORS
 
 \hypertarget{tools-for-the-development-of-bioinformatics-pipelines-in-biomedical-multi-omics-data-integration}{%
 \subsection{Tools for the development of bioinformatics pipelines in biomedical multi-omics data integration}\label{tools-for-the-development-of-bioinformatics-pipelines-in-biomedical-multi-omics-data-integration}}
 
-PENDENT DE PRIMERES NOTES
+FFF: PENDENT DE PRIMERES NOTES
 
 \hypertarget{motivation-for-integrative-analysis}{%
 \subsection{Motivation for Integrative analysis}\label{motivation-for-integrative-analysis}}
+
+FFF: POTSER POSAR-HO AL PRINCIPI DEL CAPITOL???
 
 The fable of the blind men and the elephant ( \url{https://en.wikipedia.org/wiki/Blind_men_and_an_elephant}) is a metaphorical story that can be applied to various contexts, including the motivation behind using distinct omics data types in biomedical integrative data analyses. In this fable, several blind men touch different parts of an elephant and form their own interpretations based on the limited information they gather from their individual experiences. See Figure \ref{fig:fig1-1}. In the parable, several blind men touch different parts of an elephant, but each one perceives only a small aspect of the whole animal. As a result, they form vastly different and often conflicting impressions of what an elephant is. Each blind man, based on his limited sense of touch, describes the elephant differently. One might touch the tail and think the elephant is like a rope, while another feeling the leg believes it's like a tree trunk. Yet another touching the ear might think it's like a fan. None of them, however, comprehends the entirety of the elephant. See Figure \ref{fig:fig1-2}.
 
@@ -594,14 +596,14 @@ In conclusion, the fable of the blind men and the elephant serves as an analogy 
 
 \textbf{Interpretability is a weak point of most multi omics approaches}
 
-La reducció ve més motivada per la necessitat de destacar els aspectes més rellevants i de que aquests siguin més fàcilment interpretables
+FFF: La reducció ve més motivada per la necessitat de destacar els aspectes més rellevants i de que aquests siguin més fàcilment interpretables
 
 \textbf{Methods focus much more on feature selection discovery and interaction highlighting measurement than on clinical or biological interpretability.}
 
 \hypertarget{existing-approaches-for-multi-omics-data-integration}{%
 \subsection{Existing approaches for multi-omics data integration}\label{existing-approaches-for-multi-omics-data-integration}}
 
-Maneres de reduir dimensió amb finalitat integració òmiques
+FFF: Maneres de reduir dimensió amb finalitat integració òmiques
 
 MCIA, RGCCA, MFA\ldots{}
 \ldots{}(\protect\hyperlink{ref-culhane_cross-platform_2003}{Culhane et al., 2003})
@@ -613,7 +615,7 @@ MCIA, RGCCA, MFA\ldots{}
 \hypertarget{revisiuxf3-de-muxe8todes-de-creaciuxf3-de-pipelines}{%
 \subsection{Revisió de mètodes de creació de pipelines}\label{revisiuxf3-de-muxe8todes-de-creaciuxf3-de-pipelines}}
 
-PENDENT INCLOURE PRIMERES NOTES
+FFF: PENDENT INCLOURE PRIMERES NOTES
 
 \hypertarget{objectives}{%
 \chapter{Objectives}\label{objectives}}
@@ -715,19 +717,18 @@ It's a joint effort to comprehensively understand the molecular basis of cancer 
 TCGA curates a vast collection of real-world data, covering diverse cancer types.
 This data encompasses omics datasets, such as transcriptomics and proteomics, offering researchers a comprehensive perspective on the molecular landscape of tumors.
 Stringent quality control and standardization measures ensure the data within TCGA is compatible and readily integrable with other datasets.
-This facilitates robust multi-omics analyses.
-This meticulous approach ensures data Compatibility, given that standardized formats eliminate inconsistencies between datasets generated using different platforms or technologies.
-This allows for seamless integration of data from various sources, crucial for multi-omics analyses like the one presented in this thesis.
+This facilitates robust multi-omics analyses, and such approach ensures data Compatibility, given that standardized formats eliminate inconsistencies between datasets generated using different platforms or technologies.
+This also allows for seamless integration of data from various sources, crucial for multi-omics analyses like the one presented in this thesis.
 The integration of transcriptomics and proteomics data, heavily relies on the ability to combine these kind of datasets for a more holistic understanding. Standardized formats within TCGA remove a significant hurdle in this process.
-In addition to that, standardized data collection and processing protocols minimize technical variations that could introduce bias into the data.
-This enhances the reliability and generalizability of findings derived from TCGA records.
+In addition to that, standardized data collection and processing protocols minimize technical variations that could introduce bias into the data, therefore enhancing the reliability and generalizability of findings derived from TCGA records.
 The public availability of TCGA data empowers researchers worldwide to leverage this rich resource in their investigations and, consequently, this fosters open science collaborations and accelerates advancements in cancer research.
 
-In the vast majority of cases, the information is structured directly in tables or matrices (where, for example, the columns contain patient samples or experimental individuals, while the rows represent the values of the measured features). These matrices can be encapsulated in structures such as Expression Set or similar, where information about the omic measurements is accompanied by metadata related to the samples themselves or to the details of the technology used for the analysis.
+In the vast majority of cases, the information is structured directly in tables or matrices (where, for example, the columns contain patient samples or experimental individuals, while the rows represent the values of the measured features). These matrices can be encapsulated in structures such as Expression Sets or similar, where information about the omic measurements is accompanied by metadata related to the samples themselves or to the details of the technology used for the analysis.
 
+FFF:Nota d'exemple de dades
 \emph{Samples in rows (200G, 111P); }
 \emph{Features in columns (150S). }
-\emph{Tenim 200 x 150 i 111(154 originalment) x 150.}
+\emph{Tenim dimensions de 200 x 150 per una banda i 111(154 originalment) x 150 per l'altra.}
 
 It is relatively frequent that the datasets available for multi-omics studies present information on the same samples, analyzed by means of two or more different technologies (e.g., microarrays or RNA-seq for mRNA gene expression, plus quantification for proteins) while the information related to the omic molecules analyzed is, obviously, different. Not only that, but it is also common that there is no direct mapping between the different types of features, so that, for example, not all genes analyzed in an RNA expression experiment are unambiguously represented by their corresponding proteins.
 
@@ -752,7 +753,7 @@ The task of recognizing the labels of the molecules analyzed in each dataset and
 
 }
 
-\caption[Example of gene and protein data loaded in R]{Example of gene expression and protein quantification data, viewed as loaded arrays in R}\label{fig:fig3-10}
+\caption[Example of gene and protein data loaded in R]{Example of gene expression (above) and protein quantification raw data (below), viewed as loaded arrays in R}\label{fig:fig3-10}
 \end{figure}
 
 \clearpage
@@ -777,13 +778,13 @@ The task of recognizing the labels of the molecules analyzed in each dataset and
 \hypertarget{preprocess}{%
 \section{Preprocessing for Integration of Biological Knowledge}\label{preprocess}}
 
-The integration of biological knowledge into omics datasets can be achieved through a preprocessing step aimed at expanding the original data matrices with annotations accessed from specialized R libraries, which provided direct access to curated biological databases such as Gene Ontology (GO(\protect\hyperlink{ref-ashburner_gene_2000}{Ashburner et al., 2000}),(\protect\hyperlink{ref-thegeneontologyconsortium_gene_2019}{The~Gene~Ontology~Consortium, 2019})) and biochemical pathways information (e.g., KEGG(\protect\hyperlink{ref-kanehisa_kegg_2000}{Kanehisa \& Goto, 2000})). This process, that combines the annotation of the most significant biological entities with the quantification and integration of their annotation values to the data matrices, ends up with what we term ``Expanded Datasets'', which include the original biological features (e.g., gene expression or protein quantification values) as well as new variables coming from the annotation of biological terms. The following steps explain this preprocessing procedure in more detail:
+The integration of biological knowledge into omics datasets can be achieved through a preprocessing step aimed at expanding the original data matrices with annotations accessed from specialized R libraries, which provided direct access to curated biological databases such as the Gene Ontology(\protect\hyperlink{ref-ashburner_gene_2000}{Ashburner et al., 2000}),(\protect\hyperlink{ref-thegeneontologyconsortium_gene_2019}{The~Gene~Ontology~Consortium, 2019}) and biochemical pathways information (e.g., KEGG(\protect\hyperlink{ref-kanehisa_kegg_2000}{Kanehisa \& Goto, 2000})). This process, that combines the annotation of the most significant biological entities with the quantification and integration of their annotation values to the data matrices, ends up with what we term ``Expanded Datasets'', which include the original biological features (e.g., gene expression or protein quantification values) as well as new variables coming from the annotation of biological terms. The following steps explain this preprocessing procedure in more detail:
 
 \begin{itemize}
 \item
   Selection of biological knowledge sources to feed annotations. Starting from the most commonly used biological knowledge databases in tasks of omics data analysis and interpretation, the goal is to access those that are most complete and applicable to the different types of data that must be annotated. GO and KEGG are excellent choices for that purpose.
 \item
-  Selection of R packages specialized in the integration of biological information. The choice of the appropriate packages for the integration of biological information will depend on the specific needs of the project. In general, it is important to consider factors such as the type of data that will be integrated, the sources of the data, the integration methods that will be used and the desired level of complexity. In this case, it is appropriate to use R libraries that can work with gene and protein identifiers reliably and completely, without adding too much complexity to the process.
+  Selection of R packages specialized in the integration of biological information. The choice of the appropriate packages for the integration of biological information will depend on the specific needs of the project. In general, it is important to consider factors such as the type of data that will be integrated, the sources of the data, the integration methods that will be used and the desired level of complexity. In this case, it is appropriate to use R packages that can work with gene and protein identifiers reliably and completely, without adding too much complexity to the process.
 \item
   Data-Annotation Mapping. Each omics dataset is mapped to the biological information collected based on its identifiers (for example, gene or protein names) using the capabilities of the selected R packages. This step facilitates the relationship of each of the elements of the omics data with the biological knowledge entities, creating certain temporary objects that collect the information of these links. So this step allows to relate the elements of omics data with biological knowledge entities, such as genes, proteins, metabolic pathways, etc. The mapping is performed using the identifiers of the elements of the omics data. For example, genes can be identified by their name, their symbol, or their Ensembl ID. Proteins can be identified by their name, their sequence, or their UniProt ID.
 \item
@@ -793,11 +794,14 @@ The integration of biological knowledge into omics datasets can be achieved thro
 \hypertarget{biosources}{%
 \subsection{Selection of the sources for biological annotation}\label{biosources}}
 
-\emph{PENDENT DE DETALLAR com escullo les fonts de les anotacions per defecte.}
+Selecting biological information sources for annotations hinges on various criteria: source credibility, information comprehensiveness, content currency, data format standardization, data accessibility, and potentially other relevant considerations like reputation and community acceptance. In the context of the present work, Source Credibility is the reliability and trustworthiness of the source providing the biological information; Comprehensiveness of Information is taken as the breadth and depth of the information contained within the source; Content Currency is the timeliness and up-to-date nature of the information provided;
+Data Format Standardization is the adherence to standardized data formats for ease of integration and analysis; and Data Accessibility is considered as the ease of obtaining and accessing the data from each specific source. Other relevant criteria, such as community acceptance, is also a must to be taken into account.
 
 \emph{Apuntar que es poden facilitar ja anotacions disponibles prèviament, sempre que compleixin amb el format que s'explica al següent apartat. }
 
-\emph{Aquestes poden ser estàndard o bé personalitzades a mida de l'usuari (tot i que si es aixi hi ha certes funcionalitats posteriors que no es podran aprofitar).}
+From the outset, our method was designed to allow the integration of user-prepared annotations, provided they adhered to the specified formats. This flexibility enabled users to leverage their existing knowledge and annotations, seamlessly incorporating them into our framework for enhanced analysis.
+
+These annotations could be provided in either standard formats or customized according to user preferences. However, it is important to note that customized annotations that deviate from standard nomenclatures may not be compatible with certain functionalities of the proposed solution. Therefore, adhering to standard formats is recommended to ensure optimal compatibility and better integration.
 
 \clearpage
 
@@ -813,8 +817,8 @@ The integration of biological knowledge into omics datasets can be achieved thro
 \hypertarget{bioannotation}{%
 \subsection{Biological annotations mapping}\label{bioannotation}}
 
-COM VAM PLANTEJAR fer l'anotació biologica. Quines opcions i amb quins metodes estadístics/bioinformatics\ldots{}
-DUBTO SI LO QUE SEGUEIX NO ANIRIA A RESULTATS
+FFF: COM VAM PLANTEJAR fer l'anotació biologica. Quines opcions i amb quins metodes estadístics/bioinformatics\ldots{}
+FFF: DUBTO SI LO QUE SEGUEIX NO ANIRIA A RESULTATS
 
 For each input dataset, if annotations are not already provided, two distinct basic annotation methods can be performed:
 
@@ -826,7 +830,7 @@ For each input dataset, if annotations are not already provided, two distinct ba
   a Gene Enrichment Analysis (based on Hypergeometric tests against all GO categories, with FDR correction) is performed in order to retrieve the most relevant annotations to that set of genes/features.(\protect\hyperlink{ref-yu_clusterprofiler_2012}{Yu et al., 2012})
 \end{enumerate}
 
-{[}mostrar exemple de llista de gens{]}
+Figure \ref{fig:fig3-8} illustrates an example of a Gene List, where Gene Symbols serve as the standard nomenclature identifiers. These symbols represent unique identifiers for specific genes and are crucial for maintaining consistent gene identification across different species and databases. The use of standardized Gene Symbols ensures clear communication and facilitates data sharing among researchers. While figure \ref{fig:fig3-11} showcases the outcome of annotating the previous Gene List against the Biological Processes (BP terms) of the Gene Ontology (GO). This process involves assigning GO terms to each gene based on its known biological function. GO terms provide a structured and hierarchical vocabulary for describing gene functions, enabling researchers to effectively organize, analyze, and compare gene functions across various organisms.
 
 \begin{figure}
 
@@ -837,12 +841,6 @@ For each input dataset, if annotations are not already provided, two distinct ba
 \caption{List of gene symbols used as example}\label{fig:fig3-8}
 \end{figure}
 
-{[}punt de millora, que l'anotacio basica pugui ser tb a KEGG{]}
-
-{[}mostrar formula{]}
-
-es mostra exemple en Figure \ref{fig:fig3-11} POSSIBLE INTEGRAT EN MARKDOWN?
-
 \begin{figure}
 
 {\centering \includegraphics[width=0.95\linewidth]{figures/chapter3/3-11_basicGO_example} 
@@ -852,9 +850,7 @@ es mostra exemple en Figure \ref{fig:fig3-11} POSSIBLE INTEGRAT EN MARKDOWN?
 \caption[Example of basic GO annotation by raw count]{Example of basic Go annotation by raw count against GO Biological Processes, setting 8 as minimum number of genes included in the BP entity. Annotation performed separately for gene expression and protein quantification input files}\label{fig:fig3-11}
 \end{figure}
 
-COMENTAR AQUI l'opció d'afegir les anotacions com a individus suplementaris enlloc de variables
-
-Figure \ref{fig:fig3-1} is an example.{]}
+In figure \ref{fig:fig3-11} we can see the number of Go terms resulting from the the process, given the specified threshold, for both gene expression and protein data sets, as well as the list of GO Ids returned as result (such as ``\url{GO:0007155}'', which refers to ``cell adhesion'' process and is present in the GO terms returned for both data types, with 11 target gene symbols annotated in both cases).
 
 \begin{figure}
 
@@ -864,6 +860,14 @@ Figure \ref{fig:fig3-1} is an example.{]}
 
 \caption[Example of results from GO annotation]{Example of results from GO annotation. Results of the biological significance analysis performed with the lists of genes against GO through clusterProfiler}\label{fig:fig3-12}
 \end{figure}
+
+Figure \ref{fig:fig3-12} presents a graphical representation of the results obtained by processing the same gene list used in the previous examples with the R package clusterProfiler(\protect\hyperlink{ref-yu_clusterprofiler_2012}{Yu et al., 2012}). This visualization showcases the outcomes of the biological significance analysis performed against the GO categories. clusterProfiler is an R package that automates the process of biological-term classification and the enrichment analysis of gene clusters. The analysis module and visualization module were combined into a reusable workflow, and currently supports three species, including humans, mice, and yeast. In this case, the graphical representation effectively communicates the identified enriched GO terms and their associated significance levels, providing valuable insights into the underlying biological processes associated with the gene list.
+
+\emph{FFF: {[}mostrar formula estadística emprada per les anotacions{]} }
+
+\emph{FFF: {[}punt de millora, que l'anotacio basica pugui ser tb a KEGG{]}}
+
+\emph{FFF: COMENTAR AQUI l'opció d'afegir les anotacions com a individus suplementaris enlloc de variables¿?}
 
 \clearpage
 
@@ -878,13 +882,13 @@ Figure \ref{fig:fig3-1} is an example.{]}
 
 Alternatively, manual annotations can be provided (eg. GO terms, canonical pathways, or even annotation to custom entities) as an optional input file.
 
-{[}mostrar el format requerit{]}.
+FFF: {[}mostrar el format requerit{]}.
 
 Other annotation methods can be implemented, as functions to be used by the main pipeline, if more complex methods for biological information addition are required.
 
-{[}Mostrar el format final de les anotacions, com a matrius dels datasets amb anotacions binàries 1/0 com a columnes extra{]}
+FFF: {[}Mostrar el format final de les anotacions, com a matrius dels datasets amb anotacions binàries 1/0 com a columnes extra{]}
 
-EXPANSIO DE LES MATRIUS (numeritzar anotacions, creació de noves vars a partir de les anotacions)
+FFF: EXPANSIO DE LES MATRIUS (numeritzar anotacions, creació de noves vars a partir de les anotacions)
 
 The process starts already having a couple of datasets from distinct 'omics sources {[}punt de millora: admetre 3 o + inputs, comentar més tard a Discussion{]}, mapped to gene ids (in the default case, where GO annotation have been performed), containing the results from a selection of differentially expressed genes or most relevant proteins analysis, or similar.
 
@@ -956,7 +960,7 @@ To uncover meaningful insights from the expanded datasets and extract relevant i
   Regularized Generalized Canonical Correlation Analysis (RGCCA): RGCCA was used to identify latent variables that capture joint information from omics data and biological annotations. RGCCA extends canonical correlation analysis to handle multi-view data integration and helps reveal correlated features across data sets.
 \end{itemize}
 
-PUNTS A INCLOURE:
+FFF: PUNTS A INCLOURE:
 
 \begin{itemize}
 \item
@@ -982,15 +986,16 @@ The semi-automation of the integrative analysis process was facilitated by lever
 \item
   Dependency Management: Dependencies between different analysis steps were explicitly defined within the pipeline. This ensured that each step was executed in the correct order, and dependencies were automatically managed by the Targets package.
 \item
-  Error Handling: Error handling procedures were implemented to capture and address potential issues during pipeline execution. This included the ability to handle errors, retries, and reporting of errors for troubleshooting. (NO APLICAT ARA PER ARA!)
+  Error Handling: Error handling procedures were implemented to capture and address potential issues during pipeline execution. This included the ability to handle errors, retries, and reporting of errors for troubleshooting.
+  FFF: (NO APLICAT ARA PER ARA!)
 \end{itemize}
 
-PENDENT A AMPLIAR:
+FFF: PENDENT A AMPLIAR:
 
 \begin{itemize}
 \tightlist
 \item
-  Introduccio al paquet Targets en general i de les seves caracteristiques\ldots{}
+  FFF: Introduccio al paquet Targets en general i de les seves caracteristiques\ldots{}
 \end{itemize}
 
 The R `targets' package is a powerful tool for building and managing data science and data analysis pipelines. It is primarily designed for workflow automation, dependency management, and parallel processing in R projects. This package is useful for the following purposes:
@@ -1016,7 +1021,7 @@ So, the `targets' package is especially valuable for projects where data process
 \begin{itemize}
 \tightlist
 \item
-  Sistema que hem aplicat per crear el pipeline amb Targets\ldots{}
+  FFF: Sistema que hem aplicat per crear el pipeline amb Targets\ldots{}
 \end{itemize}
 
 \begin{figure}
@@ -1043,22 +1048,36 @@ Fer que 4.1 sigui l'actual 4.2 (tota la info d'aplicar el mètode)
 
 ESTRUCTURA DELS RESULTATS:
 
-4.1 Implementació dels algos i les funcions en R
+4.1 Mètode proposat per a la integració de info bio
 
-4.2 Pipeline d'anàlisi en amb el paquet `targets'
+4.2 Packet d'R amb els scripts corresponents
 
-4.3 Exemples i aplicacions
+4.3 Workflow (Pipeline) d'anàlisi en amb el paquet `targets'
+
+4.4 Aplicacions a casos reals
 4.3.1 Results from the analysis of human brain tissue samples
 4.3.2 Results from the expansion of omics data with biological annotations
 4.3.3 Results from the analysis of 150 TCGA-BRCA samples
 4.3.4 Results from the application of MFA on TCGA-BRCA data with, and without, expanded data
 4.3.5 \ldots{}
 
+\hypertarget{muxe8tode-proposat-per-a-la-integraciuxf3-de-info-bio}{%
+\section{Mètode proposat per a la integració de info bio}\label{muxe8tode-proposat-per-a-la-integraciuxf3-de-info-bio}}
+
+\hypertarget{packet-dr-amb-els-scripts-corresponents}{%
+\section{Packet d'R amb els scripts corresponents}\label{packet-dr-amb-els-scripts-corresponents}}
+
+\hypertarget{workflow-pipeline-danuxe0lisi-en-amb-el-paquet-targets}{%
+\section{Workflow (Pipeline) d'anàlisi en amb el paquet `targets'}\label{workflow-pipeline-danuxe0lisi-en-amb-el-paquet-targets}}
+
+\hypertarget{aplicacions-a-casos-reals}{%
+\section{Aplicacions a casos reals}\label{aplicacions-a-casos-reals}}
+
 \hypertarget{results-from-the-analysis-of-human-brain-tissue-samples}{%
-\section{Results from the analysis of human brain tissue samples}\label{results-from-the-analysis-of-human-brain-tissue-samples}}
+\subsection{Results from the analysis of human brain tissue samples}\label{results-from-the-analysis-of-human-brain-tissue-samples}}
 
 \hypertarget{results-from-the-expansion-of-omics-data-with-biological-annotations}{%
-\section{Results from the expansion of omics data with biological annotations}\label{results-from-the-expansion-of-omics-data-with-biological-annotations}}
+\subsection{Results from the expansion of omics data with biological annotations}\label{results-from-the-expansion-of-omics-data-with-biological-annotations}}
 
 Figure \ref{fig:fig4-1} is an snapshot (F) of one of the heat maps created to show the expanded matrices obtained in (Figures \ref{fig:fig3-4} i \ref{fig:fig3-5} prèvies, de Methods).
 
@@ -1072,7 +1091,7 @@ Figure \ref{fig:fig4-1} is an snapshot (F) of one of the heat maps created to sh
 \end{figure}
 
 \hypertarget{results-from-the-analysis-of-150-tcga-brca-samples}{%
-\section{Results from the analysis of 150 TCGA-BRCA samples}\label{results-from-the-analysis-of-150-tcga-brca-samples}}
+\subsection{Results from the analysis of 150 TCGA-BRCA samples}\label{results-from-the-analysis-of-150-tcga-brca-samples}}
 
 Figure \ref{fig:fig4-2} contains some of the graphical results of the analysis of the 150 samples from TCGA-BRCA: Heat maps (A, C) and association networks (B, D) resulting from the integration by Regularized Canonical Correlations Analysis with mixomics R package. Performed with the original data sets (A, B) or using data expanded with biological annotations to Gene Ontology (C, D), so adding some GO terms to the features from each source, where the outputs contain higher level of information (higher density in both type of plots).
 
@@ -1086,7 +1105,7 @@ Figure \ref{fig:fig4-2} contains some of the graphical results of the analysis o
 \end{figure}
 
 \hypertarget{results-from-the-application-of-mfa-on-tcga-brca-data-with-and-without-expanded-data}{%
-\section{Results from the application of MFA on TCGA-BRCA data with, and without, expanded data}\label{results-from-the-application-of-mfa-on-tcga-brca-data-with-and-without-expanded-data}}
+\subsection{Results from the application of MFA on TCGA-BRCA data with, and without, expanded data}\label{results-from-the-application-of-mfa-on-tcga-brca-data-with-and-without-expanded-data}}
 
 Figure \ref{fig:fig4-3} includes a Correlation Circle (left), with most relevant genes, proteins and added GO annotations. Distribution of samples (right) along the first two plotted dimensions. Both results coming from the application of Multiple Factor Analysis (FactoMineR and factoextra R packages) performed on the same 150 samples (Basal, Her2 and LuminalA conditions) from TCGA-BRCA.
 
@@ -1098,9 +1117,6 @@ Figure \ref{fig:fig4-3} includes a Correlation Circle (left), with most relevant
 
 \caption{BRCA results with MFA}\label{fig:fig4-3}
 \end{figure}
-
-\hypertarget{resultats-de-la-creacio-del-paquet-amb-targets}{%
-\section{Resultats de la creacio del paquet amb Targets\ldots{}}\label{resultats-de-la-creacio-del-paquet-amb-targets}}
 
 \clearpage
 
@@ -1218,6 +1234,9 @@ Briansó, F., García-Berrocoso, T., Montaner, J., \& Sánchez-Pla, A. (2017). I
 \leavevmode\vadjust pre{\hypertarget{ref-busold_integration_2005}{}}%
 Busold, C. H., Winter, S., Hauser, N., Bauer, A., Dippon, J., Hoheisel, J. D., \& Fellenberg, K. (2005). Integration of {GO} annotations in {Correspondence} {Analysis}: Facilitating the interpretation of microarray data. \emph{Bioinformatics}, \emph{21}(10), 2424--2429. \url{https://doi.org/10.1093/bioinformatics/bti367}
 
+\leavevmode\vadjust pre{\hypertarget{ref-buyukozkan_rox_2023}{}}%
+Buyukozkan, M., Benedetti, E., \& Krumsiek, J. (2023). Rox: {A} {Statistical} {Model} for {Regression} with {Missing} {Values}. \emph{Metabolites}, \emph{13}(1), 127. \url{https://doi.org/10.3390/metabo13010127}
+
 \leavevmode\vadjust pre{\hypertarget{ref-cantini_benchmarking_2021}{}}%
 Cantini, L., Zakeri, P., Hernandez, C., Naldi, A., Thieffry, D., Remy, E., \& Baudot, A. (2021). Benchmarking joint multi-omics dimensionality reduction approaches for the study of cancer. \emph{Nature Communications}, \emph{12}(1), 124. \url{https://doi.org/10.1038/s41467-020-20430-7}
 
@@ -1239,6 +1258,9 @@ Culhane, A. C., Perrière, G., \& Higgins, D. G. (2003). Cross-platform comparis
 \leavevmode\vadjust pre{\hypertarget{ref-culhane_made4_2005}{}}%
 Culhane, A. C., Thioulouse, J., Perrière, G., \& Higgins, D. G. (2005). {MADE4}: An {R} package for multivariate analysis of gene expression data. \emph{Bioinformatics}, \emph{21}(11), 2789--2790. \url{https://doi.org/10.1093/bioinformatics/bti394}
 
+\leavevmode\vadjust pre{\hypertarget{ref-dai_multiple_2022}{}}%
+Dai, Z., Bu, Z., \& Long, Q. (2022). \emph{Multiple {Imputation} with {Neural} {Network} {Gaussian} {Process} for {High}-dimensional {Incomplete} {Data}}. arXiv. \url{https://doi.org/10.48550/arXiv.2211.13297}
+
 \leavevmode\vadjust pre{\hypertarget{ref-flores_missing_2023}{}}%
 Flores, J. E., Claborne, D. M., Weller, Z. D., Webb-Robertson, B.-J. M., Waters, K. M., \& Bramer, L. M. (2023). Missing data in multi-omics integration: {Recent} advances through artificial intelligence. \emph{Frontiers in Artificial Intelligence}, \emph{6}, 1098308. \url{https://doi.org/10.3389/frai.2023.1098308}
 
@@ -1251,6 +1273,12 @@ García-Berrocoso, T., Simats, A., Briansó, F., Llombart, V., Hainard, A., Sán
 \leavevmode\vadjust pre{\hypertarget{ref-gomez-cabrero_data_2014}{}}%
 Gomez-Cabrero, D., Abugessaisa, I., Maier, D., Teschendorff, A., Merkenschlager, M., Gisel, A., Ballestar, E., Bongcam-Rudloff, E., Conesa, A., \& Tegnér, J. (2014). Data integration in the era of omics: Current and future challenges. \emph{BMC Systems Biology}, \emph{8}(2), I1. \url{https://doi.org/10.1186/1752-0509-8-S2-I1}
 
+\leavevmode\vadjust pre{\hypertarget{ref-harris_evaluating_2023}{}}%
+Harris, L., Fondrie, W. E., Oh, S., \& Noble, W. S. (2023). Evaluating {Proteomics} {Imputation} {Methods} with {Improved} {Criteria}. \emph{Journal of Proteome Research}, \emph{22}(11), 3427--3438. \url{https://doi.org/10.1021/acs.jproteome.3c00205}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hornung_prediction_2024}{}}%
+Hornung, R., Ludwigs, F., Hagenberg, J., \& Boulesteix, A.-L. (2024). Prediction approaches for partly missing multi-omics covariate data: {A} literature review and an empirical comparison study. \emph{WIREs Computational Statistics}, \emph{16}(1), e1626. \url{https://doi.org/10.1002/wics.1626}
+
 \leavevmode\vadjust pre{\hypertarget{ref-huang_bioinformatics_2009}{}}%
 Huang, D. W., Sherman, B. T., \& Lempicki, R. A. (2009). Bioinformatics enrichment tools: Paths toward the comprehensive functional analysis of large gene lists. \emph{Nucleic Acids Research}, \emph{37}(1), 1--13. \url{https://doi.org/10.1093/nar/gkn923}
 
@@ -1260,8 +1288,14 @@ Huber, W., Carey, V. J., Gentleman, R., Anders, S., Carlson, M., Carvalho, B. S.
 \leavevmode\vadjust pre{\hypertarget{ref-kanehisa_kegg_2000}{}}%
 Kanehisa, M., \& Goto, S. (2000). {KEGG}: {Kyoto} {Encyclopedia} of {Genes} and {Genomes}. \emph{Nucleic Acids Research}, \emph{28}(1), 27--30. \url{https://doi.org/10.1093/nar/28.1.27}
 
+\leavevmode\vadjust pre{\hypertarget{ref-kidd_mediation_2023}{}}%
+Kidd, J., Raulerson, C. K., Mohlke, K. L., \& Lin, D.-Y. (2023). Mediation analysis of multiple mediators with incomplete omics data. \emph{Genetic Epidemiology}, \emph{47}(1), 61--77. \url{https://doi.org/10.1002/gepi.22504}
+
 \leavevmode\vadjust pre{\hypertarget{ref-koboldt_comprehensive_2012}{}}%
 Koboldt, D. C., Fulton, R. S., McLellan, M. D., Schmidt, H., Kalicki-Veizer, J., McMichael, J. F., Fulton, L. L., Dooling, D. J., Ding, L., Mardis, E. R., Wilson, R. K., Ally, A., Balasundaram, M., Butterfield, Y. S. N., Carlsen, R., Carter, C., Chu, A., Chuah, E., Chun, H.-J. E., \ldots{} MD Anderson Cancer Center. (2012). Comprehensive molecular portraits of human breast tumours. \emph{Nature}, \emph{490}(7418), 61--70. \url{https://doi.org/10.1038/nature11412}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kong_dealing_2022}{}}%
+Kong, W., Hui, H. W. H., Peng, H., \& Goh, W. W. B. (2022). Dealing with missing values in proteomics data. \emph{PROTEOMICS}, \emph{22}(23-24), 2200092. \url{https://doi.org/10.1002/pmic.202200092}
 
 \leavevmode\vadjust pre{\hypertarget{ref-krassowski_state_2020}{}}%
 Krassowski, M., Das, V., Sahu, S. K., \& Misra, B. B. (2020). State of the {Field} in {Multi}-{Omics} {Research}: {From} {Computational} {Needs} to {Data} {Mining} and {Sharing}. \emph{Frontiers in Genetics}, \emph{11}. \url{https://www.frontiersin.org/articles/10.3389/fgene.2020.610798}
@@ -1274,6 +1308,9 @@ Lê Cao, K.-A., Martin, P. G., Robert-Granié, C., \& Besse, P. (2009). Sparse c
 
 \leavevmode\vadjust pre{\hypertarget{ref-lenzerini_data_2002}{}}%
 Lenzerini, M. (2002). Data integration: A theoretical perspective. \emph{Proceedings of the Twenty-First {ACM} {SIGMOD}-{SIGACT}-{SIGART} Symposium on {Principles} of Database Systems}, 233--246. \url{https://doi.org/10.1145/543613.543644}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lin_general_2020}{}}%
+Lin, D.-Y., Zeng, D., \& Couper, D. (2020). A general framework for integrative analysis of incomplete multiomics data. \emph{Genetic Epidemiology}, \emph{44}(7), 646--664. \url{https://doi.org/10.1002/gepi.22328}
 
 \leavevmode\vadjust pre{\hypertarget{ref-little_missing_2002}{}}%
 Little, R. J. A., \& Rubin, D. B. (2002). Missing {Data} in {Experiments}. In \emph{Statistical {Analysis} with {Missing} {Data}} (pp. 24--40). John Wiley \& Sons, Ltd. \url{https://doi.org/10.1002/9781119013563.ch2}
@@ -1317,6 +1354,9 @@ Simats, A., Ramiro, L., García-Berrocoso, T., Briansó, F., Gonzalo, R., Martí
 \leavevmode\vadjust pre{\hypertarget{ref-singh_diablo_2016}{}}%
 Singh, A., Gautier, B., Shannon, C. P., Vacher, M., Rohart, F., Tebbutt, S. J., \& Cao, K.-A. L. (2016). \emph{{DIABLO} -- an integrative, multi-omics, multivariate method for multi-group classification}. bioRxiv. \url{https://doi.org/10.1101/067611}
 
+\leavevmode\vadjust pre{\hypertarget{ref-song_review_2020}{}}%
+Song, M., Greenbaum, J., Luttrell, J., Zhou, W., Wu, C., Shen, H., Gong, P., Zhang, C., \& Deng, H.-W. (2020). A {Review} of {Integrative} {Imputation} for {Multi}-{Omics} {Datasets}. \emph{Frontiers in Genetics}, \emph{11}. \url{https://doi.org/10.3389/fgene.2020.570255}
+
 \leavevmode\vadjust pre{\hypertarget{ref-sorlie_gene_2001}{}}%
 Sørlie, T., Perou, C. M., Tibshirani, R., Aas, T., Geisler, S., Johnsen, H., Hastie, T., Eisen, M. B., Rijn, M. van de, Jeffrey, S. S., Thorsen, T., Quist, H., Matese, J. C., Brown, P. O., Botstein, D., Lønning, P. E., \& Børresen-Dale, A.-L. (2001). Gene expression patterns of breast carcinomas distinguish tumor subclasses with clinical implications. \emph{Proceedings of the National Academy of Sciences}, \emph{98}(19), 10869--10874. \url{https://doi.org/10.1073/pnas.191367098}
 
@@ -1332,8 +1372,14 @@ The~Gene~Ontology~Consortium. (2019). The {Gene} {Ontology} {Resource}: 20 years
 \leavevmode\vadjust pre{\hypertarget{ref-tyekucheva_integrating_2011}{}}%
 Tyekucheva, S., Marchionni, L., Karchin, R., \& Parmigiani, G. (2011). Integrating diverse genomic data using gene sets. \emph{Genome Biology}, \emph{12}(10), R105. \url{https://doi.org/10.1186/gb-2011-12-10-r105}
 
+\leavevmode\vadjust pre{\hypertarget{ref-uranga_multiple_2022}{}}%
+Uranga, R., Molenberghs, G., \& Allende, S. (2022). A multiple regression imputation method with application to sensitivity analysis under intermittent missingness. \emph{Communications in Statistics - Theory and Methods}, \emph{51}(15), 5146--5161. \url{https://doi.org/10.1080/03610926.2020.1834581}
+
 \leavevmode\vadjust pre{\hypertarget{ref-vahabi_unsupervised_2022}{}}%
 Vahabi, N., \& Michailidis, G. (2022). Unsupervised {Multi}-{Omics} {Data} {Integration} {Methods}: {A} {Comprehensive} {Review}. \emph{Frontiers in Genetics}, \emph{13}. \url{https://www.frontiersin.org/articles/10.3389/fgene.2022.854752}
+
+\leavevmode\vadjust pre{\hypertarget{ref-voillet_handling_2016}{}}%
+Voillet, V., Besse, P., Liaubet, L., San Cristobal, M., \& González, I. (2016). Handling missing rows in multi-omics data integration: Multiple imputation in multiple factor analysis framework. \emph{BMC Bioinformatics}, \emph{17}(1), 402. \url{https://doi.org/10.1186/s12859-016-1273-5}
 
 \leavevmode\vadjust pre{\hypertarget{ref-wang_circulating_2014}{}}%
 Wang, F., Chen, C., \& Wang, D. (2014). Circulating {microRNAs} in cardiovascular diseases: From biomarkers to therapeutic targets. \emph{Frontiers of Medicine}, \emph{8}(4), 404--418. \url{https://doi.org/10.1007/s11684-014-0379-2}
@@ -1347,11 +1393,20 @@ Wanichthanarak, K., Fahrmann, J. F., \& Grapov, D. (2015). Genomic, {Proteomic},
 \leavevmode\vadjust pre{\hypertarget{ref-wekesa_review_2023}{}}%
 Wekesa, J. S., \& Kimwele, M. (2023). A review of multi-omics data integration through deep learning approaches for disease diagnosis, prognosis, and treatment. \emph{Frontiers in Genetics}, \emph{14}. \url{https://www.frontiersin.org/articles/10.3389/fgene.2023.1199087}
 
+\leavevmode\vadjust pre{\hypertarget{ref-wilson_imputation_2022}{}}%
+Wilson, M. D., Ponzini, M. D., Taylor, S. L., \& Kim, K. (2022). Imputation of {Missing} {Values} for {Multi}-{Biospecimen} {Metabolomics} {Studies}: {Bias} and {Effects} on {Statistical} {Validity}. \emph{Metabolites}, \emph{12}(7), 671. \url{https://doi.org/10.3390/metabo12070671}
+
 \leavevmode\vadjust pre{\hypertarget{ref-wu_selective_2019}{}}%
 Wu, C., Zhou, F., Ren, J., Li, X., Jiang, Y., \& Ma, S. (2019). A {Selective} {Review} of {Multi}-{Level} {Omics} {Data} {Integration} {Using} {Variable} {Selection}. \emph{High-Throughput}, \emph{8}(1), 4. \url{https://doi.org/10.3390/ht8010004}
 
+\leavevmode\vadjust pre{\hypertarget{ref-yin_simulation-based_2019}{}}%
+Yin, P., \& Shi, J. Q. (2019). Simulation-based sensitivity analysis for non-ignorably missing data. \emph{Statistical Methods in Medical Research}, \emph{28}(1), 289--308. \url{https://doi.org/10.1177/0962280217722382}
+
 \leavevmode\vadjust pre{\hypertarget{ref-yu_clusterprofiler_2012}{}}%
 Yu, G., Wang, L.-G., Han, Y., \& He, Q.-Y. (2012). {clusterProfiler}: An {R} {Package} for {Comparing} {Biological} {Themes} {Among} {Gene} {Clusters}. \emph{OMICS : A Journal of Integrative Biology}, \emph{16}(5), 284--287. \url{https://doi.org/10.1089/omi.2011.0118}
+
+\leavevmode\vadjust pre{\hypertarget{ref-zhou_clclsa_2023}{}}%
+Zhou, W., Zhao, C., Liu, A., Zhang, X., Cao, X., Ding, Z., Sha, Q., Shen, H., \& Deng, H.-W. (2023). \emph{{CLCLSA}: {Cross}-omics {Linked} embedding with {Contrastive} {Learning} and {Self} {Attention} for multi-omics integration with incomplete multi-omics data}. \url{https://doi.org/10.21203/rs.3.rs-2768563/v1}
 
 \end{CSLReferences}
 

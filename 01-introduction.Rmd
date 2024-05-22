@@ -39,7 +39,8 @@ Altogether, the previous approaches show several things: Although the idea that 
 
 
 ## Background/State of the Art
-FALTA DESENVOLUPAR PUNTS
+
+FFF:WORK IN PROGRESS
 
 ### Omics data analyses
 
@@ -53,42 +54,44 @@ Among the primary omics data types one can highlight the following:
 * Metabolomics: The study of metabolism, the ensemble of chemical reactions occurring within an organism.
 * Epigenomics: The exploration of changes in gene expression that are not attributed to alterations in DNA sequence.
 
+
+FFF:INSERIR AQUÍ IMATGE AMB ESQUEMA DE LA OMICS CASCADE
+
+These layers provide complementary biological information and collectively offer a comprehensive view of biological systems.
+
+
 Omics data integration stands as a complex endeavor requiring advanced statistical and computational methods. It is employed for a range of biomedical applications, such as identifying novel genes and proteins linked to diseases, developing new drugs, and enhancing diagnostic accuracy.
 
-3 PROBLEMES ESENCIALS (veure projecte recerca Alex):
+FFF: 3 PROBLEMES ESENCIALS (veure projecte recerca Alex):
 
- * **Omics data may be partly incomplete**, especially in multiomics studies, where not all types of data are usually available for all individuals.
-
+* **Omics data may be partly incomplete**, especially in multiomics studies, where not all types of data are usually available for all individuals.
+ 
 * **The results of these analyses are difficult to interpret**. If we agree that the ultimate goal of many analyzes is a better understanding of the underlying biological processes, for example, in a disease study context, it should be possible to establish a clear relationship between the outcome of an analysis and what this means biologically. And this is not always so.
 
 * **These kind of data analytics are difficult to standardize**, as it is not easy to make complex pipelines of multi-omics analyses, which integrate multiple processes with multiple sources, easy to reproduce or communicate.
 
-MES EL TEMA DE LA p>>n (Dimensionallity Reduction Techniques; The p>>n situation)
+FFF: MES EL TEMA DE LA p>>n (Dimensionallity Reduction Techniques; The p>>n situation, ja en part superat)
 
-### The problem of having partly incomplete data
+### The problem of data incompleteness
 
-Having partly incomplete data is a common challenge in biomedical multi-omics data analyses, where not all omics layers or samples have complete measurements for all variables of interest. This problem, known as missing data, can hinder the integrative analysis and interpretation of multi-omics datasets. 
+Having partly incomplete data is a common challenge in biomedical multi-omics data analyses, where not all omics layers or samples have complete measurements for all elements of interest. In this context, "missing data" refers to the absence of values for certain variables within a dataset, which can arise due to various reasons like experimental limitations or technical constraints [@hornung_prediction_2024]. On the other hand, "missing data types" specifically refer to situations where different omics data types are not available for all individuals in a study, leading to block-wise missing data patterns [@flores_missing_2023]. Both situations, missing data values and missing data types, can hinder the integrative analysis and interpretation of multi-omics datasets. 
 
-**Missing Data Types**: Missing data can occur in various forms in multi-omics datasets. For example, some omics layers may have missing values for certain variables (e.g., genes, proteins, metabolites), or specific samples may be missing data for certain omics layers. This can result from technical limitations, experimental design, or inherent biological variability.[@flores_missing_2023]
+**Missing Data Values** FFF: ampliar detalls
 
-**Impact on Analysis**: Incomplete data can introduce biases and distort the results of multi-omics analyses. It can affect downstream statistical analyses, clustering, network inference, and machine learning algorithms, leading to inaccurate or unreliable findings. Addressing missing data appropriately is crucial for obtaining valid and meaningful results. Reference: 
+**Missing Data Types** FFF: ampliar detalls
+
+**Impact on Analysis**: Incomplete data can introduce biases and distort the results of multi-omics analyses. It can affect downstream statistical analyses, clustering, network inference, and machine learning algorithms, leading to inaccurate or unreliable findings. Existing imputation methods face challenges in high-dimensional settings, potentially leading to biased findings [@harris_evaluating_2023]. Different strategies, such as combining biospecimen data matrices for imputation, have been explored to preserve correlation structures in multi-biospecimen studies [@dai_multiple_2022]. Integrative imputation techniques leveraging correlations among multi-omics datasets are essential for accurate downstream analyses in multi-omics studies [@wilson_imputation_2022]. Novel multi-omics imputation methods have been proposed to integrate multiple correlated omics datasets, improving imputation accuracy and enhancing downstream analysis performance [@song_review_2020].
 
 **Missing Data Mechanisms**: Understanding the underlying mechanisms of missing data is essential for selecting appropriate imputation methods. Missing data can occur due to different mechanisms, such as missing completely at random (MCAR), missing at random (MAR), or missing not at random (MNAR). These mechanisms influence the choice of imputation techniques and the assumptions made during data analysis.[@little_missing_2002]
 
-**Imputation Methods**: Imputation techniques are employed to estimate missing values in multi-omics datasets. Various imputation methods, including mean imputation, regression imputation, multiple imputation, and machine learning-based approaches, have been proposed to handle missing data in different omics layers. Each method has its assumptions, strengths, and limitations, and the choice of imputation strategy should be carefully considered. Reference: Buuren, S. V., & Groothuis-Oudshoorn, K. (2011). mice: Multivariate imputation by chained equations in R. Journal of Statistical Software, 45(3), 1-67.
+**Imputation Methods**: Imputation techniques are employed to estimate missing values in multi-omics datasets. Various methods have been proposed to handle missing data in omics datasets, such as imputation techniques[@zhou_clclsa_2023] [@buyukozkan_rox_2023], decision charts for selecting suitable imputation methods[@kong_dealing_2022], and statistical models that directly incorporate missing values into calculations[@kidd_mediation_2023]. These approaches aim to mitigate the limitations posed by missing data, ensuring robust statistical analysis and interpretation of omics data[@lin_general_2020]. By leveraging advanced techniques like deep learning for multi-omics integration with incomplete data, researchers can enhance the understanding of complex biological processes and improve disease classification accuracy using incomplete multiomics data.
 
-**Uncertainty and Sensitivity Analysis**: Dealing with missing data introduces uncertainty in the imputed values and subsequent analyses. Sensitivity analyses, such as multiple imputation and bootstrapping, can help assess the robustness of the results to missing data assumptions and imputation methods. Reference: Sterne, J. A., et al. (2009). Multiple imputation for missing data in epidemiological and clinical research: Potential and pitfalls. BMJ, 338, b2393.
-
-Addressing the issue of incomplete data in multi-omics analyses is crucial to avoid biased or misleading results. By utilizing appropriate imputation methods and understanding the missing data mechanisms, researchers can mitigate the impact of missing data and enhance the accuracy and reliability of their analyses.
-
-*PENDENT REVISAR TOT*
-
-*AFEGIR MENCIO A LA OMICS CASCADE*
+**Uncertainty and Sensitivity Analysis**: After imputation methods in omics data analysis, uncertainty and sensitivity analysis play crucial roles in assessing the reliability of the results. Various approaches have been proposed to address missing data issues, such as multiple imputation (MI) and nonparametric multiple imputation strategies. MI-MFA, a method combining multiple imputation with multiple factor analysis, has shown promising results in integrating incomplete datasets[@yin_simulation-based_2019]. Additionally, sensitivity analysis approaches have been developed using standardized sensitivity parameters to evaluate the impact of missingness mechanisms, particularly in cases of missing not at random (MNAR) data. These approaches involve selecting imputing sets based on predictive scores and sensitivity parameters, aiming to provide robust estimates even in the presence of misspecifications[@voillet_handling_2016] [@uranga_multiple_2022]. Overall, these methods contribute to enhancing the accuracy and reliability of omics data analysis post-imputation.
 
 
 ### Results interpretation in the context of integrative multi-omics data analyses
 
-Interpretation of results in integrative multi-omics data analyses is a critical challenge due to the complexity and high dimensionality of the data, as well as the need to integrate information from multiple omics layers. Here, I will explain the problem of result interpretation in this context and provide relevant bibliographic references.
+Interpretation of results in integrative multi-omics data analyses is a critical challenge due to the complexity and high dimensionality of the data, as well as the need to integrate information from multiple omics layers. 
 
 **Data Integration Challenges**: Integrating multi-omics data involves combining information from different molecular layers such as genomics, transcriptomics, proteomics, and metabolomics. Each omics layer provides a unique perspective on biological processes, and integrating these layers can reveal comprehensive insights. However, interpreting the integrated results becomes challenging due to the heterogeneity and scale differences among the omics data. Reference: Wang, X., & Zhang, B. (2018). Integrating multiple 'omics' data for biomarker discovery and clinical assessment. Molecular & Cellular Proteomics, 17(6), 991-1003.
 
@@ -102,7 +105,7 @@ Interpretation of results in integrative multi-omics data analyses is a critical
 
 In summary, the problem of result interpretation in integrative multi-omics data analyses stems from the challenges of data integration, high dimensionality, contextual understanding, validation, and visual exploration. Addressing these challenges requires a combination of statistical methods, biological knowledge, and interactive tools to extract meaningful insights from the integrated data.
 
-PENDENT REVISAR REFS ANTERIORS
+FFF: PENDENT REVISAR REFS ANTERIORS
 
 ### Approaches for the biological and clinical interpretation
 
@@ -120,7 +123,7 @@ The biological and clinical interpretation of multi-omics data analysis results 
 
 These methods, among others, contribute to the biological and clinical interpretation of multi-omics data analysis results, providing insights into disease mechanisms, biomarker discovery, and potential therapeutic targets.
 
-PENDENT REVISAR REFS ANTERIORS
+FFF: PENDENT REVISAR REFS ANTERIORS
 
 
 ### Data processing and standarization
@@ -139,17 +142,19 @@ Data processing and standardization are critical steps in biomedical multi-omics
 
 Effective data processing and standardization in multi-omics analyses are crucial for accurate and meaningful interpretations. These steps ensure data quality, comparability, and compatibility, enabling integrative analyses and cross-study comparisons.
 
-PENDENT REVISAR REFS ANTERIORS
+FFF: PENDENT REVISAR REFS ANTERIORS
 
 
 ### Tools for the development of bioinformatics pipelines in biomedical multi-omics data integration
 
-PENDENT DE PRIMERES NOTES
+FFF: PENDENT DE PRIMERES NOTES
 
 
 
 
 ### Motivation for Integrative analysis
+
+FFF: POTSER POSAR-HO AL PRINCIPI DEL CAPITOL???
 
 The fable of the blind men and the elephant ( [https://en.wikipedia.org/wiki/Blind_men_and_an_elephant](https://en.wikipedia.org/wiki/Blind_men_and_an_elephant)) is a metaphorical story that can be applied to various contexts, including the motivation behind using distinct omics data types in biomedical integrative data analyses. In this fable, several blind men touch different parts of an elephant and form their own interpretations based on the limited information they gather from their individual experiences. See Figure \@ref(fig:fig1-1). In the parable, several blind men touch different parts of an elephant, but each one perceives only a small aspect of the whole animal. As a result, they form vastly different and often conflicting impressions of what an elephant is. Each blind man, based on his limited sense of touch, describes the elephant differently. One might touch the tail and think the elephant is like a rope, while another feeling the leg believes it's like a tree trunk. Yet another touching the ear might think it's like a fan. None of them, however, comprehends the entirety of the elephant. See Figure \@ref(fig:fig1-2).
 
@@ -176,7 +181,7 @@ In conclusion, the fable of the blind men and the elephant serves as an analogy 
 
 **Interpretability is a weak point of most multi omics approaches**
 
-La reducció ve més motivada per la necessitat de destacar els aspectes més rellevants i de que aquests siguin més fàcilment interpretables
+FFF: La reducció ve més motivada per la necessitat de destacar els aspectes més rellevants i de que aquests siguin més fàcilment interpretables
 
 
 
@@ -185,7 +190,7 @@ La reducció ve més motivada per la necessitat de destacar els aspectes més re
 
 ### Existing approaches for multi-omics data integration
 
-Maneres de reduir dimensió amb finalitat integració òmiques
+FFF: Maneres de reduir dimensió amb finalitat integració òmiques
 
 MCIA, RGCCA, MFA... 
 ...[@culhane_cross-platform_2003]
@@ -197,5 +202,5 @@ MCIA, RGCCA, MFA...
 
 ### Revisió de mètodes de creació de pipelines
 
-PENDENT INCLOURE PRIMERES NOTES
+FFF: PENDENT INCLOURE PRIMERES NOTES
 

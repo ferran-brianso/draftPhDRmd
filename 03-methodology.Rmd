@@ -57,21 +57,21 @@ It's a joint effort  to comprehensively understand the molecular basis of cancer
 TCGA curates a vast collection of real-world data, covering diverse cancer types. 
 This data encompasses omics datasets, such as transcriptomics and proteomics, offering researchers a comprehensive perspective on the molecular landscape of tumors.
 Stringent quality control and standardization measures ensure the data within TCGA is compatible and readily integrable with other datasets. 
-This facilitates robust multi-omics analyses. 
-This meticulous approach ensures data Compatibility, given that standardized formats eliminate inconsistencies between datasets generated using different platforms or technologies. 
-This allows for seamless integration of data from various sources, crucial for multi-omics analyses like the one presented in this thesis. 
+This facilitates robust multi-omics analyses, and such approach ensures data Compatibility, given that standardized formats eliminate inconsistencies between datasets generated using different platforms or technologies. 
+This also allows for seamless integration of data from various sources, crucial for multi-omics analyses like the one presented in this thesis. 
 The integration of transcriptomics and proteomics data, heavily relies on the ability to combine these kind of datasets for a more holistic understanding. Standardized formats within TCGA remove a significant hurdle in this process.
-In addition to that, standardized data collection and processing protocols minimize technical variations that could introduce bias into the data. 
-This enhances the reliability and generalizability of findings derived from TCGA records. 
+In addition to that, standardized data collection and processing protocols minimize technical variations that could introduce bias into the data, therefore enhancing the reliability and generalizability of findings derived from TCGA records. 
 The public availability of TCGA data empowers researchers worldwide to leverage this rich resource in their investigations and, consequently, this fosters open science collaborations and accelerates advancements in cancer research.
 
 
-In the vast majority of cases, the information is structured directly in tables or matrices (where, for example, the columns contain patient samples or experimental individuals, while the rows represent the values of the measured features). These matrices can be encapsulated in structures such as Expression Set or similar, where information about the omic measurements is accompanied by metadata related to the samples themselves or to the details of the technology used for the analysis.
+In the vast majority of cases, the information is structured directly in tables or matrices (where, for example, the columns contain patient samples or experimental individuals, while the rows represent the values of the measured features). These matrices can be encapsulated in structures such as Expression Sets or similar, where information about the omic measurements is accompanied by metadata related to the samples themselves or to the details of the technology used for the analysis.
 
 
+FFF:Nota d'exemple de dades
 *Samples in rows (200G, 111P); *
 *Features in columns (150S). *
-*Tenim 200 x 150 i 111(154 originalment) x 150.*
+*Tenim dimensions de 200 x 150 per una banda i 111(154 originalment) x 150 per l'altra.*
+
 
 It is relatively frequent that the datasets available for multi-omics studies present information on the same samples, analyzed by means of two or more different technologies (e.g., microarrays or RNA-seq for mRNA gene expression, plus quantification for proteins) while the information related to the omic molecules analyzed is, obviously, different. Not only that, but it is also common that there is no direct mapping between the different types of features, so that, for example, not all genes analyzed in an RNA expression experiment are unambiguously represented by their corresponding proteins.
 
@@ -87,7 +87,7 @@ The task of recognizing the labels of the molecules analyzed in each dataset and
 knitr::include_graphics("figures/chapter3/3-9_protein_data_example.png")
 ```
 
-```{r fig3-10, fig.align='center', fig.scap="Example of gene and protein data loaded in R", fig.cap="Example of gene expression and protein quantification data, viewed as loaded arrays in R", out.width="95%", echo=FALSE}
+```{r fig3-10, fig.align='center', fig.scap="Example of gene and protein data loaded in R", fig.cap="Example of gene expression (above) and protein quantification raw data (below), viewed as loaded arrays in R", out.width="95%", echo=FALSE}
 knitr::include_graphics("figures/chapter3/3-10_input_data_R_example_2.png")
 ```
 
@@ -111,23 +111,26 @@ knitr::include_graphics(c("figures/chapter3/3-13a_mrna_data_unscaled.png","figur
 
 ## Preprocessing for Integration of Biological Knowledge {#preprocess}
 
-The integration of biological knowledge into omics datasets can be achieved through a preprocessing step aimed at expanding the original data matrices with annotations accessed from specialized R libraries, which provided direct access to curated biological databases such as Gene Ontology (GO[@ashburner_gene_2000],[@thegeneontologyconsortium_gene_2019]) and biochemical pathways information (e.g., KEGG[@kanehisa_kegg_2000]). This process, that combines the annotation of the most significant biological entities with the quantification and integration of their annotation values to the data matrices, ends up with what we term "Expanded Datasets", which include the original biological features (e.g., gene expression or protein quantification values) as well as new variables coming from the annotation of biological  terms. The following steps explain this preprocessing procedure in more detail:
+The integration of biological knowledge into omics datasets can be achieved through a preprocessing step aimed at expanding the original data matrices with annotations accessed from specialized R libraries, which provided direct access to curated biological databases such as the Gene Ontology[@ashburner_gene_2000],[@thegeneontologyconsortium_gene_2019] and biochemical pathways information (e.g., KEGG[@kanehisa_kegg_2000]). This process, that combines the annotation of the most significant biological entities with the quantification and integration of their annotation values to the data matrices, ends up with what we term "Expanded Datasets", which include the original biological features (e.g., gene expression or protein quantification values) as well as new variables coming from the annotation of biological  terms. The following steps explain this preprocessing procedure in more detail:
 
 
 * Selection of biological knowledge sources to feed annotations. Starting from the most commonly used biological knowledge databases in tasks of omics data analysis and interpretation, the goal is to access those that are most complete and applicable to the different types of data that must be annotated. GO and KEGG are excellent choices for that purpose.
 
-* Selection of R packages specialized in the integration of biological information. The choice of the appropriate packages for the integration of biological information will depend on the specific needs of the project. In general, it is important to consider factors such as the type of data that will be integrated, the sources of the data, the integration methods that will be used and the desired level of complexity. In this case, it is appropriate to use R libraries that can work with gene and protein identifiers reliably and completely, without adding too much complexity to the process. 
+* Selection of R packages specialized in the integration of biological information. The choice of the appropriate packages for the integration of biological information will depend on the specific needs of the project. In general, it is important to consider factors such as the type of data that will be integrated, the sources of the data, the integration methods that will be used and the desired level of complexity. In this case, it is appropriate to use R packages that can work with gene and protein identifiers reliably and completely, without adding too much complexity to the process.
 
 * Data-Annotation Mapping. Each omics dataset is mapped to the biological information collected based on its identifiers (for example, gene or protein names) using the capabilities of the selected R packages. This step facilitates the relationship of each of the elements of the omics data with the biological knowledge entities, creating certain temporary objects that collect the information of these links. So this step allows to relate the elements of omics data with biological knowledge entities, such as genes, proteins, metabolic pathways, etc. The mapping is performed using the identifiers of the elements of the omics data. For example, genes can be identified by their name, their symbol, or their Ensembl ID. Proteins can be identified by their name, their sequence, or their UniProt ID.
 
 * Annotation Integration. The most relevant annotation elements resulting from the previous step can be integrated into the matrix structure of the original omics dataset that has been used for its biological annotation, resulting in an expanded data matrix that combines the initial quantitative omics measurements with new values associated with the biological annotations obtained in the process. This step is implemented by executing new R functions specifically developed for this purpose. The resulting data matrices (which contain the integration of the most relevant biological annotations) are called 'Expanded Matrices', and will be the basis for the subsequent application of integrative analysis methods of the different omics analyzed.
 
 ### Selection of the sources for biological annotation {#biosources}
-*PENDENT DE DETALLAR com escullo les fonts de les anotacions per defecte.*
+Selecting biological information sources for annotations hinges on various criteria: source credibility, information comprehensiveness, content currency, data format standardization, data accessibility, and potentially other relevant considerations like reputation and community acceptance. In the context of the present work, Source Credibility is the reliability and trustworthiness of the source providing the biological information; Comprehensiveness of Information is taken as the breadth and depth of the information contained within the source; Content Currency is the timeliness and up-to-date nature of the information provided; 
+Data Format Standardization is the adherence to standardized data formats for ease of integration and analysis; and Data Accessibility is considered as the ease of obtaining and accessing the data from each specific source. Other relevant criteria, such as community acceptance, is also a must to be taken into account.
 
 *Apuntar que es poden facilitar ja anotacions disponibles prèviament, sempre que compleixin amb el format que s'explica al següent apartat. *
 
-*Aquestes poden ser estàndard o bé personalitzades a mida de l'usuari (tot i que si es aixi hi ha certes funcionalitats posteriors que no es podran aprofitar).*
+From the outset, our method was designed to allow the integration of user-prepared annotations, provided they adhered to the specified formats. This flexibility enabled users to leverage their existing knowledge and annotations, seamlessly incorporating them into our framework for enhanced analysis.
+
+These annotations could be provided in either standard formats or customized according to user preferences. However, it is important to note that customized annotations that deviate from standard nomenclatures may not be compatible with certain functionalities of the proposed solution. Therefore, adhering to standard formats is recommended to ensure optimal compatibility and better integration.
 
 \clearpage
 
@@ -140,8 +143,8 @@ The integration of biological knowledge into omics datasets can be achieved thro
 
 
 ### Biological annotations mapping {#bioannotation}
-COM VAM PLANTEJAR fer l'anotació biologica. Quines opcions i amb quins metodes estadístics/bioinformatics...
-DUBTO SI LO QUE SEGUEIX NO ANIRIA A RESULTATS
+FFF: COM VAM PLANTEJAR fer l'anotació biologica. Quines opcions i amb quins metodes estadístics/bioinformatics...
+FFF: DUBTO SI LO QUE SEGUEIX NO ANIRIA A RESULTATS
 
 For each input dataset, if annotations are not already provided, two distinct basic annotation methods can be performed:
 
@@ -149,31 +152,33 @@ For each input dataset, if annotations are not already provided, two distinct ba
 
 (ii) a Gene Enrichment Analysis (based on Hypergeometric tests against all GO categories, with FDR correction) is performed in order to retrieve the most relevant annotations to that set of genes/features.[@yu_clusterprofiler_2012]
 
-[mostrar exemple de llista de gens]
+Figure \@ref(fig:fig3-8) illustrates an example of a Gene List, where Gene Symbols serve as the standard nomenclature identifiers. These symbols represent unique identifiers for specific genes and are crucial for maintaining consistent gene identification across different species and databases. The use of standardized Gene Symbols ensures clear communication and facilitates data sharing among researchers. While figure \@ref(fig:fig3-11) showcases the outcome of annotating the previous Gene List against the Biological Processes (BP terms) of the Gene Ontology (GO). This process involves assigning GO terms to each gene based on its known biological function. GO terms provide a structured and hierarchical vocabulary for describing gene functions, enabling researchers to effectively organize, analyze, and compare gene functions across various organisms.
+
 
 ```{r fig3-8, fig.align='center', fig.cap="List of gene symbols used as example", out.width="95%", echo=FALSE}
 knitr::include_graphics("figures/chapter3/3-8_gene_list.png")
 ```
 
-[punt de millora, que l'anotacio basica pugui ser tb a KEGG]
-
-[mostrar formula] 
-
-es mostra exemple en Figure \@ref(fig:fig3-11) POSSIBLE INTEGRAT EN MARKDOWN?
 
 ```{r fig3-11, fig.align='center', fig.scap="Example of basic GO annotation by raw count", fig.cap="Example of basic Go annotation by raw count against GO Biological Processes, setting 8 as minimum number of genes included in the BP entity. Annotation performed separately for gene expression and protein quantification input files", out.width="95%", echo=FALSE}
 knitr::include_graphics("figures/chapter3/3-11_basicGO_example.png")
 ```
 
-
-COMENTAR AQUI l'opció d'afegir les anotacions com a individus suplementaris enlloc de variables
-
-Figure \@ref(fig:fig3-1) is an example.]
+In figure \@ref(fig:fig3-11) we can see the number of Go terms resulting from the the process, given the specified threshold, for both gene expression and protein data sets, as well as the list of GO Ids returned as result (such as "GO:0007155", which refers to "cell adhesion" process and is present in the GO terms returned for both data types, with 11 target gene symbols annotated in both cases).
 
 
 ```{r fig3-12, fig.align='center', fig.scap="Example of results from GO annotation", fig.cap="Example of results from GO annotation. Results of the biological significance analysis performed with the lists of genes against GO through clusterProfiler", out.width="95%", echo=FALSE}
 knitr::include_graphics("figures/chapter3/3-12_clusterprofiler_results.png")
 ```
+
+Figure \@ref(fig:fig3-12) presents a graphical representation of the results obtained by processing the same gene list used in the previous examples with the R package clusterProfiler[@yu_clusterprofiler_2012]. This visualization showcases the outcomes of the biological significance analysis performed against the GO categories. clusterProfiler is an R package that automates the process of biological-term classification and the enrichment analysis of gene clusters. The analysis module and visualization module were combined into a reusable workflow, and currently supports three species, including humans, mice, and yeast. In this case, the graphical representation effectively communicates the identified enriched GO terms and their associated significance levels, providing valuable insights into the underlying biological processes associated with the gene list. 
+
+*FFF: [mostrar formula estadística emprada per les anotacions] *
+
+*FFF: [punt de millora, que l'anotacio basica pugui ser tb a KEGG]*
+
+*FFF: COMENTAR AQUI l'opció d'afegir les anotacions com a individus suplementaris enlloc de variables¿?*
+
 
 \clearpage
 
@@ -185,14 +190,14 @@ knitr::include_graphics("figures/chapter3/3-1_addition_of_GO_terms.png")
 
 Alternatively, manual annotations can be provided (eg. GO terms, canonical pathways, or even annotation to custom entities) as an optional input file. 
 
-[mostrar el format requerit].
+FFF: [mostrar el format requerit].
 
 Other annotation methods can be implemented, as functions to be used by the main pipeline, if more complex methods for biological information addition are required.
 
-[Mostrar el format final de les anotacions, com a matrius dels datasets amb anotacions binàries 1/0 com a columnes extra]
+FFF: [Mostrar el format final de les anotacions, com a matrius dels datasets amb anotacions binàries 1/0 com a columnes extra]
 
 
-EXPANSIO DE LES MATRIUS (numeritzar anotacions, creació de noves vars a partir de les anotacions)
+FFF: EXPANSIO DE LES MATRIUS (numeritzar anotacions, creació de noves vars a partir de les anotacions)
 
 The process starts already having a couple of datasets from distinct 'omics sources [punt de millora: admetre 3 o + inputs, comentar més tard a Discussion], mapped to gene ids (in the default case, where GO annotation have been performed), containing the results from a selection of differentially expressed genes or most relevant proteins analysis, or similar.
 
@@ -237,7 +242,7 @@ To uncover meaningful insights from the expanded datasets and extract relevant i
 
 * Regularized Generalized Canonical Correlation Analysis (RGCCA): RGCCA was used to identify latent variables that capture joint information from omics data and biological annotations. RGCCA extends canonical correlation analysis to handle multi-view data integration and helps reveal correlated features across data sets.
 
-PUNTS A INCLOURE: 
+FFF: PUNTS A INCLOURE: 
 
 * Reducció de dimensió. Anàlisi factorial en detall (MFA), + MCIA + RGCCA
 
@@ -258,11 +263,12 @@ The semi-automation of the integrative analysis process was facilitated by lever
 
 * Dependency Management: Dependencies between different analysis steps were explicitly defined within the pipeline. This ensured that each step was executed in the correct order, and dependencies were automatically managed by the Targets package.
 
-* Error Handling: Error handling procedures were implemented to capture and address potential issues during pipeline execution. This included the ability to handle errors, retries, and reporting of errors for troubleshooting. (NO APLICAT ARA PER ARA!)
+* Error Handling: Error handling procedures were implemented to capture and address potential issues during pipeline execution. This included the ability to handle errors, retries, and reporting of errors for troubleshooting. 
+FFF: (NO APLICAT ARA PER ARA!)
  
-PENDENT A AMPLIAR:
+FFF: PENDENT A AMPLIAR:
 
-* Introduccio al paquet Targets en general i de les seves caracteristiques...
+* FFF: Introduccio al paquet Targets en general i de les seves caracteristiques...
 
 The R 'targets' package is a powerful tool for building and managing data science and data analysis pipelines. It is primarily designed for workflow automation, dependency management, and parallel processing in R projects. This package is useful for the following purposes:
 
@@ -280,7 +286,7 @@ The R 'targets' package is a powerful tool for building and managing data scienc
 
 So, the 'targets' package is especially valuable for projects where data processing is a significant component, and you need a structured way to manage the various steps of your analysis or modeling pipeline. It helps ensure that your analyses are reproducible, efficient, and well-documented.
 
-* Sistema que hem aplicat per crear el pipeline amb Targets...
+* FFF: Sistema que hem aplicat per crear el pipeline amb Targets...
 
 ```{r fig3-7, fig.align='center', fig.cap="Workflow overview", out.width="95%", echo=FALSE}
 knitr::include_graphics("figures/chapter3/3-7_workflow_overview.png")
